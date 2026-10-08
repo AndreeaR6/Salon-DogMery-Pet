@@ -48,7 +48,7 @@ textarea { width: 100%; min-height: 140px; padding: 12px; border: 2px solid var(
   function esc(s) { return s.replace(/\\/g, '\\\\').replace(/"/g, '\\"'); }
   function render() {
     out.value = items.map(function (it) {
-      return '{"src": "img/galerie/' + it.name + '.webp", "alt": "' + esc(it.alt) + '"}';
+      return '{"src": "img/galerie/' + it.name + '.webp", "alt": "' + esc(it.alt) + '", "w": ' + it.w + ', "h": ' + it.h + '}';
     }).join(',\n');
   }
   files.addEventListener('change', function () {
@@ -59,7 +59,7 @@ textarea { width: 100%; min-height: 140px; padding: 12px; border: 2px solid var(
         var c = document.createElement('canvas'); c.width = w; c.height = h;
         c.getContext('2d').drawImage(bmp, 0, 0, w, h);
         c.toBlob(function (blob) {
-          var it = { name: slug(f.name), alt: '' }; items.push(it);
+          var it = { name: slug(f.name), alt: '', w: w, h: h }; items.push(it);
           var url = URL.createObjectURL(blob);
           var d = document.createElement('div'); d.className = 'item';
           d.innerHTML = '<img alt="" src="' + url + '"><div><label>Descriere</label>' +

@@ -48,7 +48,7 @@
         if (!p || typeof p.src !== 'string' || !/^img\/galerie\/[\w.-]+$/.test(p.src)) return;
         var fig = document.createElement('figure');
         var im = document.createElement('img');
-        im.src = p.src; im.alt = p.alt || 'Poza din Salon DogMery Pet'; im.loading = 'lazy'; im.width = 800; im.height = 600;
+        im.src = p.src; im.alt = p.alt || 'Poza din Salon DogMery Pet'; im.loading = 'lazy'; im.width = +p.w || 800; im.height = +p.h || 600;
         fig.appendChild(im);
         if (p.legenda) { var c = document.createElement('figcaption'); c.textContent = p.legenda; fig.appendChild(c); }
         gal.appendChild(fig);

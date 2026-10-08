@@ -1,4 +1,118 @@
 {
   "poze": [
+    {
+      "src": "img/galerie/poza-00.webp",
+      "alt": "Catel alb pufos dupa toaletaj, pe masa salonului",
+      "w": 1126,
+      "h": 1200
+    },
+    {
+      "src": "img/galerie/poza-01.webp",
+      "alt": "Catel alb cu snur de martisor rosu si alb la gat, dupa toaletaj",
+      "w": 952,
+      "h": 1200
+    },
+    {
+      "src": "img/galerie/poza-06.webp",
+      "alt": "Catel cu breton lung, alb cu negru, pe masa de toaletaj",
+      "w": 900,
+      "h": 1200
+    },
+    {
+      "src": "img/galerie/poza-11.webp",
+      "alt": "Catel cu blana gri si cafenie, pe masa de toaletaj",
+      "w": 900,
+      "h": 1200
+    },
+    {
+      "src": "img/galerie/poza-14.webp",
+      "alt": "Catel negru pufos, aranjat, pe masa de toaletaj",
+      "w": 1200,
+      "h": 1067
+    },
+    {
+      "src": "img/galerie/poza-15.webp",
+      "alt": "Catel roscat cu blana bogata, aranjat in salon",
+      "w": 1126,
+      "h": 1200
+    },
+    {
+      "src": "img/galerie/poza-16.webp",
+      "alt": "Catel roscat cu blana bogata, vazut din lateral, dupa toaletaj",
+      "w": 900,
+      "h": 1200
+    },
+    {
+      "src": "img/galerie/poza-17.webp",
+      "alt": "Catel alb cu privire blanda, dupa tuns, pe masa de toaletaj",
+      "w": 900,
+      "h": 1200
+    },
+    {
+      "src": "img/galerie/poza-18.webp",
+      "alt": "Catel alb tuns scurt, pe masa de toaletaj",
+      "w": 1200,
+      "h": 900
+    },
+    {
+      "src": "img/galerie/poza-19.webp",
+      "alt": "Catel cu blana gri si aurie, pe masa de toaletaj",
+      "w": 1200,
+      "h": 900
+    },
+    {
+      "src": "img/galerie/poza-22.webp",
+      "alt": "Catel cu fundita galbena, pe fotoliul verde din salon",
+      "w": 540,
+      "h": 1200
+    },
+    {
+      "src": "img/galerie/poza-20.webp",
+      "alt": "Catel alb cu urechi lungi, pe fotoliul verde",
+      "w": 900,
+      "h": 1200
+    },
+    {
+      "src": "img/galerie/poza-29.webp",
+      "alt": "Catel mic cu blana scurta, pe masa de toaletaj",
+      "w": 1120,
+      "h": 1200
+    },
+    {
+      "src": "img/galerie/poza-30.webp",
+      "alt": "Catel la sedinta foto de ziua lui, pe canapeaua verde, cu flori roz si baloane",
+      "w": 1200,
+      "h": 800
+    },
+    {
+      "src": "img/galerie/poza-31.webp",
+      "alt": "Catel alb la sedinta foto de ziua lui, cu flori si baloane",
+      "w": 710,
+      "h": 1200
+    },
+    {
+      "src": "img/galerie/poza-32.webp",
+      "alt": "Catel pe canapeaua verde, la o sedinta foto cu tematica de ziua lui",
+      "w": 1200,
+      "h": 657
+    },
+    {
+      "src": "img/galerie/poza-04.webp",
+      "alt": "Catel alb inainte si dupa toaletaj",
+      "w": 1200,
+      "h": 1200
+    },
+    {
+      "src": "img/galerie/poza-05.webp",
+      "alt": "Catel cu blana alb cu maro, inainte si dupa tuns",
+      "w": 900,
+      "h": 1200
+    },
+    {
+      "src": "img/galerie/poza-08.webp",
+      "alt": "Catel cu blana bej, inainte si dupa toaletaj",
+      "w": 900,
+      "h": 1200
+    }
   ]
 }
