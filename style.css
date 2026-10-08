@@ -280,3 +280,8 @@ tbody th { font-weight: 600; color: var(--ink); }
 .gallery img { display: block; width: 100%; height: auto; border-radius: var(--radius); border: 1px solid var(--pink-line); box-shadow: var(--shadow); background: var(--pink-soft); }
 .gallery figcaption { font-size: .92rem; color: var(--muted); padding: 6px 4px 0; }
 .gallery[hidden], #poze[hidden] { display: none; }
+
+/* hero cu banner */
+.hero .wrap { grid-template-columns: 1fr; }
+.hero .hero-banner { margin-top: 34px; }
+.hero .hero-banner img { box-shadow: 0 18px 40px rgba(194,35,125,.2); }
