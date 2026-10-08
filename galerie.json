@@ -79,24 +79,6 @@
       "h": 1200
     },
     {
-      "src": "img/galerie/poza-30.webp",
-      "alt": "Catel la sedinta foto de ziua lui, pe canapeaua verde, cu flori roz si baloane",
-      "w": 1200,
-      "h": 800
-    },
-    {
-      "src": "img/galerie/poza-31.webp",
-      "alt": "Catel alb la sedinta foto de ziua lui, cu flori si baloane",
-      "w": 710,
-      "h": 1200
-    },
-    {
-      "src": "img/galerie/poza-32.webp",
-      "alt": "Catel pe canapeaua verde, la o sedinta foto cu tematica de ziua lui",
-      "w": 1200,
-      "h": 657
-    },
-    {
       "src": "img/galerie/poza-04.webp",
       "alt": "Catel alb inainte si dupa toaletaj",
       "w": 1200,
@@ -113,6 +95,12 @@
       "alt": "Catel cu blana bej, inainte si dupa toaletaj",
       "w": 900,
       "h": 1200
+    },
+    {
+      "src": "img/galerie/ilustratie-aniversare.svg",
+      "alt": "Ilustratie cu un catelus cu palarie de petrecere, pe canapeaua verde, cu baloane si flori roz",
+      "w": 800,
+      "h": 600
     }
   ]
 }
