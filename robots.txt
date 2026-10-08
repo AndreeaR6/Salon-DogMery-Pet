@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://andreear6.github.io/Salon-DogMery-Pet/sitemap.xml

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="0" height="0" style="position:absolute">
+  <defs>
+    <style>.s{fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}</style>
+  </defs>
+  <symbol id="i-scissors" viewBox="0 0 48 48"><circle class="s" cx="13" cy="35" r="6"/><circle class="s" cx="35" cy="35" r="6"/><path class="s" d="M17 30L36 6M31 30L12 6"/></symbol>
+  <symbol id="i-bath" viewBox="0 0 48 48"><path class="s" d="M24 5c6 8 12 14 12 21a12 12 0 0 1-24 0c0-7 6-13 12-21z"/><path class="s" d="M18 28a6 6 0 0 0 5 5"/></symbol>
+  <symbol id="i-brush" viewBox="0 0 48 48"><rect class="s" x="8" y="8" width="26" height="14" rx="4"/><path class="s" d="M14 22v6M21 22v6M28 22v6M21 28v4l11 11"/></symbol>
+  <symbol id="i-dryer" viewBox="0 0 48 48"><path class="s" d="M6 14h22a8 8 0 0 1 0 16H6z"/><path class="s" d="M14 30l-2 12h8l2-12M36 18l8-3M36 22h8M36 26l8 3"/></symbol>
+  <symbol id="i-ear" viewBox="0 0 48 48"><path class="s" d="M14 8c9-4 22 0 22 12 0 8-8 9-8 16a7 7 0 0 1-13 3"/><path class="s" d="M20 18c0-4 8-4 8 1 0 4-4 4-4 8"/></symbol>
+  <symbol id="i-paw" viewBox="0 0 48 48"><ellipse class="s" cx="24" cy="31" rx="9" ry="8"/><ellipse class="s" cx="10" cy="21" rx="4" ry="5.5"/><ellipse class="s" cx="19" cy="12" rx="4" ry="5.5"/><ellipse class="s" cx="29" cy="12" rx="4" ry="5.5"/><ellipse class="s" cx="38" cy="21" rx="4" ry="5.5"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 48 48"><path class="s" d="M22 6l4 12 12 4-12 4-4 12-4-12-12-4 12-4zM38 30l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 48 48"><circle class="s" cx="24" cy="24" r="18"/><path class="s" d="M24 13v11l8 5"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 48 48"><path class="s" d="M10 6h8l4 10-5 3a24 24 0 0 0 12 12l3-5 10 4v8a4 4 0 0 1-4 4C22 42 6 26 6 10a4 4 0 0 1 4-4z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 48 48"><path class="s" d="M24 44s14-12 14-23a14 14 0 0 0-28 0c0 11 14 23 14 23z"/><circle class="s" cx="24" cy="21" r="5"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 48 48"><path class="s" d="M24 41S6 30 6 18a9 9 0 0 1 18-3 9 9 0 0 1 18 3c0 12-18 23-18 23z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 48 48"><path class="s" d="M24 5l15 6v11c0 10-7 17-15 21C16 39 9 32 9 22V11z"/><path class="s" d="M17 24l5 5 9-10"/></symbol>
+  <symbol id="i-check" viewBox="0 0 48 48"><path class="s" d="M10 25l9 9 19-20"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 48 48"><rect class="s" x="6" y="9" width="36" height="33" rx="5"/><path class="s" d="M6 20h36M15 5v8M33 5v8"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 48 48"><path class="s" d="M8 10h32a3 3 0 0 1 3 3v18a3 3 0 0 1-3 3H22l-9 8v-8H8a3 3 0 0 1-3-3V13a3 3 0 0 1 3-3z"/></symbol>
+  <symbol id="i-ban" viewBox="0 0 48 48"><circle class="s" cx="24" cy="24" r="18"/><path class="s" d="M11 11l26 26"/></symbol>
+  <symbol id="i-gift" viewBox="0 0 48 48"><rect class="s" x="6" y="17" width="36" height="9" rx="2"/><path class="s" d="M10 26v16h28V26M24 17v25M24 17c-4-8-12-8-12-3s8 3 12 3zM24 17c4-8 12-8 12-3s-8 3-12 3z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 48 48"><rect class="s" x="7" y="7" width="34" height="34" rx="10"/><circle class="s" cx="24" cy="24" r="8"/><circle cx="34" cy="14" r="2" fill="currentColor"/></symbol>
+  <symbol id="i-tiktok" viewBox="0 0 48 48"><path class="s" d="M28 6v24a8 8 0 1 1-8-8M28 6c1 6 5 9 11 9"/></symbol>
+  <symbol id="i-facebook" viewBox="0 0 48 48"><path class="s" d="M29 6h-4a7 7 0 0 0-7 7v6h-6v7h6v16h8V26h6l1-7h-7v-5a2 2 0 0 1 2-2h4z"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 48 48"><path class="s" d="M6 42l3-10a17 17 0 1 1 6 6z"/><path class="s" d="M18 17c0 8 6 14 13 14l3-3-5-3-2 2c-3-1-5-3-6-6l2-2-3-5z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 48 48"><path class="s" d="M8 14h32M8 24h32M8 34h32"/></symbol>
+  <symbol id="i-close" viewBox="0 0 48 48"><path class="s" d="M12 12l24 24M36 12L12 36"/></symbol>
+</svg>
