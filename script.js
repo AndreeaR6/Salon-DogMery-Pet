@@ -39,6 +39,24 @@
     } catch (err) { /* ramane textul implicit */ }
   }
 
+  /* ---------- galerie din galerie.json ---------- */
+  var gal = document.getElementById('gallery');
+  if (gal && window.fetch) {
+    fetch('galerie.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+      if (!d || !d.poze || !d.poze.length) return;
+      d.poze.forEach(function (p) {
+        if (!p || typeof p.src !== 'string' || !/^img\/galerie\/[\w.-]+$/.test(p.src)) return;
+        var fig = document.createElement('figure');
+        var im = document.createElement('img');
+        im.src = p.src; im.alt = p.alt || 'Poza din Salon DogMery Pet'; im.loading = 'lazy'; im.width = 800; im.height = 600;
+        fig.appendChild(im);
+        if (p.legenda) { var c = document.createElement('figcaption'); c.textContent = p.legenda; fig.appendChild(c); }
+        gal.appendChild(fig);
+      });
+      if (gal.children.length) document.getElementById('poze').hidden = false;
+    }).catch(function () { /* galeria ramane ascunsa */ });
+  }
+
   /* ---------- harta (se incarca doar la click) ---------- */
   var mapBtn = document.querySelector('[data-load-map]');
   if (mapBtn) {
