@@ -19,37 +19,8 @@ media:
     rename: safe
 
 content:
-  - name: galerie
-    label: Galerie
-    type: file
-    path: galerie.json
-    format: json
-    fields:
-      - name: poze
-        label: Poze
-        type: object
-        list: true
-        fields:
-          - name: src
-            label: Poza
-            type: image
-            options:
-              media: galerie
-          - name: alt
-            label: Descriere poza
-            type: string
-          - name: legenda
-            label: Legenda (optional)
-            type: string
-          - name: w
-            label: Latime (px)
-            type: number
-          - name: h
-            label: Inaltime (px)
-            type: number
-
   - name: preturi
-    label: Preturi
+    label: "Preturi"
     type: file
     path: _data/preturi.yml
     format: yaml
@@ -80,7 +51,7 @@ content:
           - {name: mare, label: Talie mare, type: number}
 
   - name: salon
-    label: Telefon si program
+    label: "Telefon si program"
     type: file
     path: _data/salon.yml
     format: yaml
@@ -104,7 +75,7 @@ content:
       - {name: oras, label: Oras, type: string}
       - {name: cod_postal, label: "Cod postal", type: string}
       - name: retele
-        label: "Retele sociale (trage de ⋮⋮ ca sa schimbi ordinea; bifa 'Arata' ca sa o ascunzi)"
+        label: "Retele sociale (trage de ⋮⋮ ca sa muti)"
         type: block
         list:
           collapsible:
@@ -126,8 +97,37 @@ content:
               - {name: afiseaza, label: "Arata pe site", type: boolean}
       - {name: text_subsol, label: "Text scurt din subsolul paginilor", type: string}
 
+  - name: galerie
+    label: "Poze din galerie"
+    type: file
+    path: galerie.json
+    format: json
+    fields:
+      - name: poze
+        label: Poze
+        type: object
+        list: true
+        fields:
+          - name: src
+            label: Poza
+            type: image
+            options:
+              media: galerie
+          - name: alt
+            label: Descriere poza
+            type: string
+          - name: legenda
+            label: Legenda (optional)
+            type: string
+          - name: w
+            label: Latime (px)
+            type: number
+          - name: h
+            label: Inaltime (px)
+            type: number
+
   - name: video
-    label: Clipuri video
+    label: "Clipuri video"
     type: file
     path: _data/video.yml
     format: yaml
@@ -150,8 +150,23 @@ content:
           - {name: contact, label: "Arata si pe pagina Contact (bifat = apare si acolo; mereu apare in Galerie)", type: boolean}
           - {name: peste_tot, label: "Arata pe TOATE paginile (pagina principala, Servicii, Despre noi, Contact; in Galerie apare mereu)", type: boolean}
 
+  - name: campanie
+    label: "Campanie Secret Santa"
+    type: file
+    path: _data/campanie.yml
+    format: yaml
+    fields:
+      - {name: afisata, label: "Afiseaza campania pe site (pagina principala si Despre noi)", type: boolean}
+      - name: imagine
+        label: "Imaginea din dreptul textului (svg, png sau webp)"
+        type: image
+        options: {media: imagini}
+      - {name: eticheta, label: "Eticheta mica de deasupra titlului", type: string}
+      - {name: titlu, label: Titlu, type: string}
+      - {name: text, label: Text, type: text}
+
   - name: recenzii
-    label: Recenzii (Ce spun clientii)
+    label: "Recenzii"
     type: file
     path: _data/recenzii.yml
     format: yaml
@@ -168,23 +183,8 @@ content:
           - {name: text, label: "Textul recenziei (fara ghilimele)", type: text}
           - {name: autor, label: "Autor (ex. M. U., recenzie Google)", type: string}
 
-  - name: campanie
-    label: Campanie (Secret Santa)
-    type: file
-    path: _data/campanie.yml
-    format: yaml
-    fields:
-      - {name: afisata, label: "Afiseaza campania pe site (pagina principala si Despre noi)", type: boolean}
-      - name: imagine
-        label: "Imaginea din dreptul textului (svg, png sau webp)"
-        type: image
-        options: {media: imagini}
-      - {name: eticheta, label: "Eticheta mica de deasupra titlului", type: string}
-      - {name: titlu, label: Titlu, type: string}
-      - {name: text, label: Text, type: text}
-
   - name: faq
-    label: Intrebari frecvente
+    label: "Intrebari frecvente"
     type: file
     path: _data/faq.yml
     format: yaml
@@ -198,8 +198,25 @@ content:
           - {name: raspuns, label: "Raspuns (poti scrie [preturi] pentru textul cu preturile si [telefon] pentru numarul de telefon, se completeaza automat)", type: text}
           - {name: pe_prima_pagina, label: "Arata si pe pagina principala (pe Servicii apar toate)", type: boolean}
 
+  - name: reguli
+    label: "Reguli de programare"
+    type: file
+    path: _data/reguli.yml
+    format: yaml
+    fields:
+      - {name: pe_rand, label: "Cate carduri pe rand (1, 2, 3 sau 4; gol = automat). Pe telefon e mereu 1 pe rand.", type: number}
+      - name: reguli
+        label: Reguli
+        type: object
+        list:
+          collapsible:
+            collapsed: false
+            summary: "{index}. {text}"
+        fields:
+          - {name: text, label: Regula, type: text}
+
   - name: acasa
-    label: Pagina principala (texte, sectiuni, culori)
+    label: "Pagina principala (texte)"
     type: file
     path: _data/acasa.yml
     format: yaml
@@ -235,41 +252,41 @@ content:
           - name: servicii
             fields:
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: inainte_dupa
             fields:
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: preturi
             fields:
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: pasi
             fields:
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: recenzii
             fields:
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: intrebari
             fields:
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: poza_mare
             fields:
               - {name: poza, label: "Poza (gol = bannerul principal din 'Imagini principale')", type: image, options: {media: imagini}}
               - {name: alt, label: "Descriere poza", type: string}
               - {name: sus, label: "Poza de sus a paginii (se incarca prima)", type: boolean}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: text
             fields:
               - {name: titlu, label: Titlu, type: string}
@@ -285,17 +302,17 @@ content:
                 list: true
                 fields:
                   - {name: text, label: "Text pe buton", type: string}
-                  - {name: link, label: "Link (ex. contact.html, servicii.html, tel:+40..., sau link complet)", type: string}
+                  - {name: link, label: "Link (ex. contact.html sau https://...)", type: string}
                   - {name: contur, label: "Buton cu contur, fara fundal colorat", type: boolean}
-                  - {name: culoare, label: "Culoare buton (optional, ex. #c0207a; gol = culoarea site-ului)", type: string}
+                  - {name: culoare, label: "Culoare buton (ex. #c0207a; gol = ca acum)", type: string}
                   - {name: marime, label: "Marime (mic / mediu / mare; gol = mediu)", type: string}
                   - {name: colturi, label: "Colturi (rotunde / putin / drepte; gol = rotunde)", type: string}
                   - {name: bordura, label: "Bordura (fara / subtire / groasa; gol = normala)", type: string}
                   - {name: text_stil, label: "Text (normal / gros; gol = gros)", type: string}
-                  - {name: aliniere, label: "Aliniere pentru tot randul de butoane (stanga / centru / dreapta; conteaza doar la primul buton; gol = stanga)", type: string}
+                  - {name: aliniere, label: "Aliniere rand (stanga / centru / dreapta; doar primul buton)", type: string}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: valori
             fields:
               - {name: titlu, label: Titlu, type: string}
@@ -307,28 +324,28 @@ content:
                   - {name: titlu, label: Titlu, type: string}
                   - {name: text, label: Text, type: text}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: campanie
             fields:
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: clipuri
             fields:
               - {name: titlu, label: "Titlu (gol = Clipuri video); arata toate clipurile din 'Clipuri video'", type: string}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
 
   - name: despre
-    label: "Despre noi (sectiuni, text, butoane)"
+    label: "Despre noi (texte)"
     type: file
     path: _data/despre.yml
     format: yaml
     fields:
       - name: sectiuni
-        label: "Sectiuni pagina (trage de ⋮⋮ ca sa le muti; sterge ca sa le ascunzi; 'Add' ca sa adaugi)"
+        label: "Sectiuni (trage de ⋮⋮ ca sa muti; sterge = ascunde)"
         type: block
         list:
           collapsible:
@@ -353,33 +370,33 @@ content:
                 list: true
                 fields:
                   - {name: text, label: "Text pe buton", type: string}
-                  - {name: link, label: "Link (ex. contact.html, servicii.html, tel:+40..., sau link complet)", type: string}
+                  - {name: link, label: "Link (ex. contact.html sau https://...)", type: string}
                   - {name: contur, label: "Buton cu contur, fara fundal colorat", type: boolean}
-                  - {name: culoare, label: "Culoare buton (optional, ex. #c0207a; gol = culoarea site-ului)", type: string}
+                  - {name: culoare, label: "Culoare buton (ex. #c0207a; gol = ca acum)", type: string}
                   - {name: marime, label: "Marime (mic / mediu / mare; gol = mediu)", type: string}
                   - {name: colturi, label: "Colturi (rotunde / putin / drepte; gol = rotunde)", type: string}
                   - {name: bordura, label: "Bordura (fara / subtire / groasa; gol = normala)", type: string}
                   - {name: text_stil, label: "Text (normal / gros; gol = gros)", type: string}
-                  - {name: aliniere, label: "Aliniere pentru tot randul de butoane (stanga / centru / dreapta; conteaza doar la primul buton; gol = stanga)", type: string}
+                  - {name: aliniere, label: "Aliniere rand (stanga / centru / dreapta; doar primul buton)", type: string}
               - {name: poza, label: "Poza din dreapta (gol = poza din 'Imagini principale')", type: image, options: {media: imagini}}
               - {name: alt, label: "Descriere poza", type: string}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: unde
             fields:
               - {name: titlu, label: Titlu, type: string}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: poza_mare
             fields:
               - {name: poza, label: "Poza (gol = bannerul principal din 'Imagini principale')", type: image, options: {media: imagini}}
               - {name: alt, label: "Descriere poza", type: string}
               - {name: sus, label: "Poza de sus a paginii (se incarca prima)", type: boolean}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: text
             fields:
               - {name: titlu, label: Titlu, type: string}
@@ -395,17 +412,17 @@ content:
                 list: true
                 fields:
                   - {name: text, label: "Text pe buton", type: string}
-                  - {name: link, label: "Link (ex. contact.html, servicii.html, tel:+40..., sau link complet)", type: string}
+                  - {name: link, label: "Link (ex. contact.html sau https://...)", type: string}
                   - {name: contur, label: "Buton cu contur, fara fundal colorat", type: boolean}
-                  - {name: culoare, label: "Culoare buton (optional, ex. #c0207a; gol = culoarea site-ului)", type: string}
+                  - {name: culoare, label: "Culoare buton (ex. #c0207a; gol = ca acum)", type: string}
                   - {name: marime, label: "Marime (mic / mediu / mare; gol = mediu)", type: string}
                   - {name: colturi, label: "Colturi (rotunde / putin / drepte; gol = rotunde)", type: string}
                   - {name: bordura, label: "Bordura (fara / subtire / groasa; gol = normala)", type: string}
                   - {name: text_stil, label: "Text (normal / gros; gol = gros)", type: string}
-                  - {name: aliniere, label: "Aliniere pentru tot randul de butoane (stanga / centru / dreapta; conteaza doar la primul buton; gol = stanga)", type: string}
+                  - {name: aliniere, label: "Aliniere rand (stanga / centru / dreapta; doar primul buton)", type: string}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: valori
             fields:
               - {name: titlu, label: Titlu, type: string}
@@ -417,28 +434,28 @@ content:
                   - {name: titlu, label: Titlu, type: string}
                   - {name: text, label: Text, type: text}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: campanie
             fields:
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: clipuri
             fields:
               - {name: titlu, label: "Titlu (gol = Clipuri video); arata toate clipurile din 'Clipuri video'", type: string}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
 
   - name: pagina_servicii
-    label: "Servicii (ordinea si culorile sectiunilor)"
+    label: "Avansat - Servicii (sectiuni, culori)"
     type: file
     path: _data/pagina_servicii.yml
     format: yaml
     fields:
       - name: sectiuni
-        label: "Sectiuni pagina (trage de ⋮⋮ ca sa le muti; sterge ca sa le ascunzi; 'Add' ca sa adaugi)"
+        label: "Sectiuni (trage de ⋮⋮ ca sa muti; sterge = ascunde)"
         type: block
         list:
           collapsible:
@@ -449,31 +466,31 @@ content:
           - name: pachete
             fields:
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: comparatie
             fields:
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: reguli
             fields:
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: intrebari
             fields:
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: poza_mare
             fields:
               - {name: poza, label: "Poza (gol = bannerul principal din 'Imagini principale')", type: image, options: {media: imagini}}
               - {name: alt, label: "Descriere poza", type: string}
               - {name: sus, label: "Poza de sus a paginii (se incarca prima)", type: boolean}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: text
             fields:
               - {name: titlu, label: Titlu, type: string}
@@ -489,17 +506,17 @@ content:
                 list: true
                 fields:
                   - {name: text, label: "Text pe buton", type: string}
-                  - {name: link, label: "Link (ex. contact.html, servicii.html, tel:+40..., sau link complet)", type: string}
+                  - {name: link, label: "Link (ex. contact.html sau https://...)", type: string}
                   - {name: contur, label: "Buton cu contur, fara fundal colorat", type: boolean}
-                  - {name: culoare, label: "Culoare buton (optional, ex. #c0207a; gol = culoarea site-ului)", type: string}
+                  - {name: culoare, label: "Culoare buton (ex. #c0207a; gol = ca acum)", type: string}
                   - {name: marime, label: "Marime (mic / mediu / mare; gol = mediu)", type: string}
                   - {name: colturi, label: "Colturi (rotunde / putin / drepte; gol = rotunde)", type: string}
                   - {name: bordura, label: "Bordura (fara / subtire / groasa; gol = normala)", type: string}
                   - {name: text_stil, label: "Text (normal / gros; gol = gros)", type: string}
-                  - {name: aliniere, label: "Aliniere pentru tot randul de butoane (stanga / centru / dreapta; conteaza doar la primul buton; gol = stanga)", type: string}
+                  - {name: aliniere, label: "Aliniere rand (stanga / centru / dreapta; doar primul buton)", type: string}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: valori
             fields:
               - {name: titlu, label: Titlu, type: string}
@@ -511,28 +528,28 @@ content:
                   - {name: titlu, label: Titlu, type: string}
                   - {name: text, label: Text, type: text}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: campanie
             fields:
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: clipuri
             fields:
               - {name: titlu, label: "Titlu (gol = Clipuri video); arata toate clipurile din 'Clipuri video'", type: string}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
 
   - name: pagina_contact
-    label: "Contact (ordinea si culorile sectiunilor)"
+    label: "Avansat - Contact (sectiuni, culori)"
     type: file
     path: _data/pagina_contact.yml
     format: yaml
     fields:
       - name: sectiuni
-        label: "Sectiuni pagina (trage de ⋮⋮ ca sa le muti; sterge ca sa le ascunzi; 'Add' ca sa adaugi)"
+        label: "Sectiuni (trage de ⋮⋮ ca sa muti; sterge = ascunde)"
         type: block
         list:
           collapsible:
@@ -543,26 +560,26 @@ content:
           - name: contact_date
             fields:
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: retele
             fields:
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: reguli
             fields:
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: poza_mare
             fields:
               - {name: poza, label: "Poza (gol = bannerul principal din 'Imagini principale')", type: image, options: {media: imagini}}
               - {name: alt, label: "Descriere poza", type: string}
               - {name: sus, label: "Poza de sus a paginii (se incarca prima)", type: boolean}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: text
             fields:
               - {name: titlu, label: Titlu, type: string}
@@ -578,17 +595,17 @@ content:
                 list: true
                 fields:
                   - {name: text, label: "Text pe buton", type: string}
-                  - {name: link, label: "Link (ex. contact.html, servicii.html, tel:+40..., sau link complet)", type: string}
+                  - {name: link, label: "Link (ex. contact.html sau https://...)", type: string}
                   - {name: contur, label: "Buton cu contur, fara fundal colorat", type: boolean}
-                  - {name: culoare, label: "Culoare buton (optional, ex. #c0207a; gol = culoarea site-ului)", type: string}
+                  - {name: culoare, label: "Culoare buton (ex. #c0207a; gol = ca acum)", type: string}
                   - {name: marime, label: "Marime (mic / mediu / mare; gol = mediu)", type: string}
                   - {name: colturi, label: "Colturi (rotunde / putin / drepte; gol = rotunde)", type: string}
                   - {name: bordura, label: "Bordura (fara / subtire / groasa; gol = normala)", type: string}
                   - {name: text_stil, label: "Text (normal / gros; gol = gros)", type: string}
-                  - {name: aliniere, label: "Aliniere pentru tot randul de butoane (stanga / centru / dreapta; conteaza doar la primul buton; gol = stanga)", type: string}
+                  - {name: aliniere, label: "Aliniere rand (stanga / centru / dreapta; doar primul buton)", type: string}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: valori
             fields:
               - {name: titlu, label: Titlu, type: string}
@@ -600,28 +617,28 @@ content:
                   - {name: titlu, label: Titlu, type: string}
                   - {name: text, label: Text, type: text}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: campanie
             fields:
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: clipuri
             fields:
               - {name: titlu, label: "Titlu (gol = Clipuri video); arata toate clipurile din 'Clipuri video'", type: string}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
 
   - name: pagina_galerie
-    label: "Galerie - pagina (ordinea si culorile sectiunilor)"
+    label: "Avansat - Galerie (sectiuni, culori)"
     type: file
     path: _data/pagina_galerie.yml
     format: yaml
     fields:
       - name: sectiuni
-        label: "Sectiuni pagina (trage de ⋮⋮ ca sa le muti; sterge ca sa le ascunzi; 'Add' ca sa adaugi)"
+        label: "Sectiuni (trage de ⋮⋮ ca sa muti; sterge = ascunde)"
         type: block
         list:
           collapsible:
@@ -632,31 +649,31 @@ content:
           - name: poze
             fields:
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: clipuri_galerie
             fields:
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: retele
             fields:
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: programari
             fields:
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: poza_mare
             fields:
               - {name: poza, label: "Poza (gol = bannerul principal din 'Imagini principale')", type: image, options: {media: imagini}}
               - {name: alt, label: "Descriere poza", type: string}
               - {name: sus, label: "Poza de sus a paginii (se incarca prima)", type: boolean}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: text
             fields:
               - {name: titlu, label: Titlu, type: string}
@@ -672,17 +689,17 @@ content:
                 list: true
                 fields:
                   - {name: text, label: "Text pe buton", type: string}
-                  - {name: link, label: "Link (ex. contact.html, servicii.html, tel:+40..., sau link complet)", type: string}
+                  - {name: link, label: "Link (ex. contact.html sau https://...)", type: string}
                   - {name: contur, label: "Buton cu contur, fara fundal colorat", type: boolean}
-                  - {name: culoare, label: "Culoare buton (optional, ex. #c0207a; gol = culoarea site-ului)", type: string}
+                  - {name: culoare, label: "Culoare buton (ex. #c0207a; gol = ca acum)", type: string}
                   - {name: marime, label: "Marime (mic / mediu / mare; gol = mediu)", type: string}
                   - {name: colturi, label: "Colturi (rotunde / putin / drepte; gol = rotunde)", type: string}
                   - {name: bordura, label: "Bordura (fara / subtire / groasa; gol = normala)", type: string}
                   - {name: text_stil, label: "Text (normal / gros; gol = gros)", type: string}
-                  - {name: aliniere, label: "Aliniere pentru tot randul de butoane (stanga / centru / dreapta; conteaza doar la primul buton; gol = stanga)", type: string}
+                  - {name: aliniere, label: "Aliniere rand (stanga / centru / dreapta; doar primul buton)", type: string}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: valori
             fields:
               - {name: titlu, label: Titlu, type: string}
@@ -694,22 +711,76 @@ content:
                   - {name: titlu, label: Titlu, type: string}
                   - {name: text, label: Text, type: text}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: campanie
             fields:
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
           - name: clipuri
             fields:
               - {name: titlu, label: "Titlu (gol = Clipuri video); arata toate clipurile din 'Clipuri video'", type: string}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
-              - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
-              - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
+              - {name: culoare_fundal, label: "Culoare fundal (ex. #fde7f3; gol = ca acum)", type: string}
+              - {name: culoare_titlu, label: "Culoare titlu (ex. #c0207a; gol = ca acum)", type: string}
+
+  - name: imagini
+    label: "Avansat - Imagini site"
+    type: file
+    path: _data/imagini.yml
+    format: yaml
+    fields:
+      - name: banner
+        label: "Banner (Acasa, Despre noi, Galerie)"
+        type: object
+        fields:
+          - {name: poza, label: Poza, type: image, options: {media: imagini}}
+          - {name: alt, label: "Descriere poza (pentru cei care nu o vad)", type: string}
+      - name: inainte_dupa
+        label: "Colaj 'Inainte si dupa' (Acasa)"
+        type: object
+        fields:
+          - {name: poza, label: Poza, type: image, options: {media: imagini}}
+          - {name: alt, label: "Descriere poza", type: string}
+      - name: social
+        label: "Poza la distribuire pe Facebook/WhatsApp (recomandat 1200x630, jpg)"
+        type: object
+        fields:
+          - {name: poza, label: Poza, type: image, options: {media: imagini}}
+      - name: despre
+        label: "Poza de langa poveste (Despre noi)"
+        type: object
+        fields:
+          - {name: poza, label: Poza, type: image, options: {media: imagini}}
+          - {name: alt, label: "Descriere poza", type: string}
+
+  - name: culori
+    label: "Avansat - Culori site"
+    type: file
+    path: _data/culori.yml
+    format: yaml
+    fields:
+      - {name: buton, label: "BUTOANE: culoare (toate butoanele roz de pe site; gol = ca acum). Ex. #c2237d", type: string}
+      - {name: buton_hover, label: "BUTOANE: culoare la trecerea mouse-ului (gol = ca acum). Ex. #a01b68", type: string}
+      - {name: buton_text, label: "BUTOANE: culoarea textului de pe buton (gol = alb). Ex. #ffffff", type: string}
+      - {name: pink, label: "Culoare principala (accente; butoanele au campuri separate mai sus) - ex. #e6399b", type: string}
+      - {name: pink_dark, label: "Culoare principala inchisa (linkuri, titluri colorate)", type: string}
+      - {name: pink_deep, label: "Culoare principala foarte inchisa (hover)", type: string}
+      - {name: pink_darkest, label: "Culoare inchisa (capat de degrade, sus si jos)", type: string}
+      - {name: pink_soft, label: "Roz deschis (etichete, fundaluri mici)", type: string}
+      - {name: pink_line, label: "Roz pentru linii si borduri", type: string}
+      - {name: pink_glow, label: "Roz pentru degrade (sus)", type: string}
+      - {name: pink_glow_2, label: "Roz pentru degrade (jos)", type: string}
+      - {name: on_pink, label: "Text deschis pe fundal colorat", type: string}
+      - {name: ink, label: "Culoare titluri", type: string}
+      - {name: text, label: "Culoare text", type: string}
+      - {name: muted, label: "Culoare text secundar", type: string}
+      - {name: bg, label: "Fundal pagina", type: string}
+      - {name: alt, label: "Fundal sectiuni alternante", type: string}
 
   - name: seo
-    label: "Google si distribuire (titluri, descrieri)"
+    label: "Avansat - Google (titluri, descrieri)"
     type: file
     path: _data/seo.yml
     format: yaml
@@ -745,74 +816,3 @@ content:
         fields:
           - {name: titlu, label: "Titlul din Google si din fila browserului", type: string}
           - {name: descriere, label: "Descrierea din Google (scrie [telefon] pentru numarul de telefon, [luni_vineri] si [sambata] pentru program)", type: text}
-
-  - name: reguli
-    label: "Reguli de citit inainte de programare (Servicii si Contact)"
-    type: file
-    path: _data/reguli.yml
-    format: yaml
-    fields:
-      - {name: pe_rand, label: "Cate carduri pe rand (1, 2, 3 sau 4; gol = automat). Pe telefon e mereu 1 pe rand.", type: number}
-      - name: reguli
-        label: Reguli
-        type: object
-        list:
-          collapsible:
-            collapsed: false
-            summary: "{index}. {text}"
-        fields:
-          - {name: text, label: Regula, type: text}
-
-  - name: imagini
-    label: Imagini principale (banner, colaje, poza din Despre noi)
-    type: file
-    path: _data/imagini.yml
-    format: yaml
-    fields:
-      - name: banner
-        label: "Banner (Acasa, Despre noi, Galerie)"
-        type: object
-        fields:
-          - {name: poza, label: Poza, type: image, options: {media: imagini}}
-          - {name: alt, label: "Descriere poza (pentru cei care nu o vad)", type: string}
-      - name: inainte_dupa
-        label: "Colaj 'Inainte si dupa' (Acasa)"
-        type: object
-        fields:
-          - {name: poza, label: Poza, type: image, options: {media: imagini}}
-          - {name: alt, label: "Descriere poza", type: string}
-      - name: social
-        label: "Poza la distribuire pe Facebook/WhatsApp (recomandat 1200x630, jpg)"
-        type: object
-        fields:
-          - {name: poza, label: Poza, type: image, options: {media: imagini}}
-      - name: despre
-        label: "Poza de langa poveste (Despre noi)"
-        type: object
-        fields:
-          - {name: poza, label: Poza, type: image, options: {media: imagini}}
-          - {name: alt, label: "Descriere poza", type: string}
-
-  - name: culori
-    label: Culori site
-    type: file
-    path: _data/culori.yml
-    format: yaml
-    fields:
-      - {name: buton, label: "BUTOANE: culoare (toate butoanele roz de pe site; gol = ca acum). Ex. #c2237d", type: string}
-      - {name: buton_hover, label: "BUTOANE: culoare la trecerea mouse-ului (gol = ca acum). Ex. #a01b68", type: string}
-      - {name: buton_text, label: "BUTOANE: culoarea textului de pe buton (gol = alb). Ex. #ffffff", type: string}
-      - {name: pink, label: "Culoare principala (accente; butoanele au campuri separate mai sus) - ex. #e6399b", type: string}
-      - {name: pink_dark, label: "Culoare principala inchisa (linkuri, titluri colorate)", type: string}
-      - {name: pink_deep, label: "Culoare principala foarte inchisa (hover)", type: string}
-      - {name: pink_darkest, label: "Culoare inchisa (capat de degrade, sus si jos)", type: string}
-      - {name: pink_soft, label: "Roz deschis (etichete, fundaluri mici)", type: string}
-      - {name: pink_line, label: "Roz pentru linii si borduri", type: string}
-      - {name: pink_glow, label: "Roz pentru degrade (sus)", type: string}
-      - {name: pink_glow_2, label: "Roz pentru degrade (jos)", type: string}
-      - {name: on_pink, label: "Text deschis pe fundal colorat", type: string}
-      - {name: ink, label: "Culoare titluri", type: string}
-      - {name: text, label: "Culoare text", type: string}
-      - {name: muted, label: "Culoare text secundar", type: string}
-      - {name: bg, label: "Fundal pagina", type: string}
-      - {name: alt, label: "Fundal sectiuni alternante", type: string}
