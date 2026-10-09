@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://andreear6.github.io/Salon-DogMery-Pet/sitemap.xml
+Sitemap: https://salon-dogmery-pet.github.io/SalonDogMeryPet/sitemap.xml
