@@ -1,29 +1,29 @@
 ---
 ---
 {%- assign p = site.data.preturi -%}
-{%- assign lo = p.complet.mica -%}
-{%- if p.spalat.mica < lo -%}{%- assign lo = p.spalat.mica -%}{%- endif -%}
-{%- if p.tuns.mica < lo -%}{%- assign lo = p.tuns.mica -%}{%- endif -%}
-{%- assign hi = p.complet.mare -%}
-{%- if p.spalat.mare > hi -%}{%- assign hi = p.spalat.mare -%}{%- endif -%}
-{%- if p.tuns.mare > hi -%}{%- assign hi = p.tuns.mare -%}{%- endif -%}
-{%- assign slo = p.spalat.mica -%}
-{%- if p.tuns.mica < slo -%}{%- assign slo = p.tuns.mica -%}{%- endif -%}
-{%- assign shi = p.spalat.mare -%}
-{%- if p.tuns.mare > shi -%}{%- assign shi = p.tuns.mare -%}{%- endif -%}
+{%- assign mn_c = p.complet.mica -%}{%- if p.complet.medie < mn_c -%}{%- assign mn_c = p.complet.medie -%}{%- endif -%}{%- if p.complet.mare < mn_c -%}{%- assign mn_c = p.complet.mare -%}{%- endif -%}
+{%- assign mx_c = p.complet.mica -%}{%- if p.complet.medie > mx_c -%}{%- assign mx_c = p.complet.medie -%}{%- endif -%}{%- if p.complet.mare > mx_c -%}{%- assign mx_c = p.complet.mare -%}{%- endif -%}
+{%- assign mn_s = p.spalat.mica -%}{%- if p.spalat.medie < mn_s -%}{%- assign mn_s = p.spalat.medie -%}{%- endif -%}{%- if p.spalat.mare < mn_s -%}{%- assign mn_s = p.spalat.mare -%}{%- endif -%}
+{%- assign mx_s = p.spalat.mica -%}{%- if p.spalat.medie > mx_s -%}{%- assign mx_s = p.spalat.medie -%}{%- endif -%}{%- if p.spalat.mare > mx_s -%}{%- assign mx_s = p.spalat.mare -%}{%- endif -%}
+{%- assign mn_t = p.tuns.mica -%}{%- if p.tuns.medie < mn_t -%}{%- assign mn_t = p.tuns.medie -%}{%- endif -%}{%- if p.tuns.mare < mn_t -%}{%- assign mn_t = p.tuns.mare -%}{%- endif -%}
+{%- assign mx_t = p.tuns.mica -%}{%- if p.tuns.medie > mx_t -%}{%- assign mx_t = p.tuns.medie -%}{%- endif -%}{%- if p.tuns.mare > mx_t -%}{%- assign mx_t = p.tuns.mare -%}{%- endif -%}
+{%- assign lo = mn_c -%}{%- if mn_s < lo -%}{%- assign lo = mn_s -%}{%- endif -%}{%- if mn_t < lo -%}{%- assign lo = mn_t -%}{%- endif -%}
+{%- assign hi = mx_c -%}{%- if mx_s > hi -%}{%- assign hi = mx_s -%}{%- endif -%}{%- if mx_t > hi -%}{%- assign hi = mx_t -%}{%- endif -%}
+{%- assign slo = mn_s -%}{%- if mn_t < slo -%}{%- assign slo = mn_t -%}{%- endif -%}
+{%- assign shi = mx_s -%}{%- if mx_t > shi -%}{%- assign shi = mx_t -%}{%- endif -%}
 <!doctype html>
 <html lang="ro">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Servicii si preturi toaletaj canin Pitesti | DogMery Pet</title>
-<meta name="description" content="Pachete de toaletaj canin in Pitesti: complet {{ p.complet.mica }}-{{ p.complet.mare }} lei, doar spalat sau doar tuns {{ slo }}-{{ shi }} lei. Vezi ce include fiecare pachet si regulile salonului.">
+<meta name="description" content="Pachete de toaletaj canin in Pitesti: complet {{ mn_c }}-{{ mx_c }} lei, doar spalat sau doar tuns {{ slo }}-{{ shi }} lei. Vezi ce include fiecare pachet si regulile salonului.">
 <link rel="canonical" href="https://salon-dogmery-pet.github.io/SalonDogMeryPet/servicii.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ro_RO">
 <meta property="og:site_name" content="Salon DogMery Pet">
 <meta property="og:title" content="Servicii si preturi toaletaj canin Pitesti | DogMery Pet">
-<meta property="og:description" content="Pachete de toaletaj canin in Pitesti: complet {{ p.complet.mica }}-{{ p.complet.mare }} lei, doar spalat sau doar tuns {{ slo }}-{{ shi }} lei. Vezi ce include fiecare pachet si regulile salonului.">
+<meta property="og:description" content="Pachete de toaletaj canin in Pitesti: complet {{ mn_c }}-{{ mx_c }} lei, doar spalat sau doar tuns {{ slo }}-{{ shi }} lei. Vezi ce include fiecare pachet si regulile salonului.">
 <meta property="og:url" content="https://salon-dogmery-pet.github.io/SalonDogMeryPet/servicii.html">
 <meta property="og:image" content="https://salon-dogmery-pet.github.io/SalonDogMeryPet/img/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -129,7 +129,7 @@
   <article class="card featured">
     <span class="flag">Cel mai ales</span>
     <h3>Pachet complet</h3>
-    <p class="from">de la {{ p.complet.mica }} lei</p>
+    <p class="from">de la {{ mn_c }} lei</p>
     <p class="includes">Tuns, spalat, uscat, periat, curatat urechi, taiat unghii, parfumat.</p>
     <ul class="prices">
       <li><span>Talie mica</span><b>{{ p.complet.mica }} lei</b></li>
@@ -141,7 +141,7 @@
   <article class="card">
     
     <h3>Doar spalat</h3>
-    <p class="from">de la {{ p.spalat.mica }} lei</p>
+    <p class="from">de la {{ mn_s }} lei</p>
     <p class="includes">Spalat, uscat, periat, parfumat, curatat urechi, taiat unghii. Fara tuns.</p>
     <ul class="prices">
       <li><span>Talie mica</span><b>{{ p.spalat.mica }} lei</b></li>
@@ -153,7 +153,7 @@
   <article class="card">
     
     <h3>Doar tuns</h3>
-    <p class="from">de la {{ p.tuns.mica }} lei</p>
+    <p class="from">de la {{ mn_t }} lei</p>
     <p class="includes">Tuns, periat, parfumat, curatat urechi, taiat unghii. Fara baie.</p>
     <ul class="prices">
       <li><span>Talie mica</span><b>{{ p.tuns.mica }} lei</b></li>
