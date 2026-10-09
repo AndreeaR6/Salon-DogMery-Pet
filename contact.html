@@ -63,7 +63,11 @@
     <p>Suna sau scrie-ne pe WhatsApp. Te asteptam la salon.</p>
   </div>
 </section>
-<section class="section">
+{%- for bl_s in site.data.pagina_contact.sectiuni -%}
+{%- include stil-bloc.html -%}
+{%- case bl_s.tip -%}
+{%- when 'contact_date' %}
+<section class="section{{ bl_alt }}"{{ bl_sec }}>
   <div class="wrap">
     <div class="contact-grid">
       <div>
@@ -102,11 +106,11 @@
     </div>
   </div>
 </section>
-
-<section class="section alt">
+{%- when 'retele' %}
+<section class="section{{ bl_alt }}"{{ bl_sec }}>
   <div class="wrap">
     <div class="section-head">
-      <h2>Ne gasesti si pe retele</h2>
+      <h2{{ bl_h2 }}>Ne gasesti si pe retele</h2>
     </div>
     <div class="social-cards">
       <a class="social-card" href="{{ salon.facebook | escape }}" rel="noopener"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-facebook"/></svg><h3>Facebook</h3><p>Noutati si recenzii.</p><span>Salon DogMery Pet</span></a>
@@ -115,15 +119,19 @@
     </div>
   </div>
 </section>
-
-<section class="section">
+{%- when 'reguli' %}
+<section class="section{{ bl_alt }}"{{ bl_sec }}>
   <div class="wrap">
     <div class="section-head">
-      <h2>Inainte sa vii</h2>
+      <h2{{ bl_h2 }}>Inainte sa vii</h2>
     </div>
     {% include reguli.html %}
   </div>
 </section>
+{%- else -%}{%- include bloc-comun.html -%}
+{%- endcase -%}
+{%- endfor %}
+
 {%- assign clip_pagina = 'contact' -%}{%- include clipuri.html -%}
 </main>
 <footer class="foot">

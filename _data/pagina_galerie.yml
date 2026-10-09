@@ -1,0 +1,12 @@
+sectiuni:
+  - tip: poza_mare
+    sus: true
+    fundal_alt: false
+  - tip: poze
+    fundal_alt: false
+  - tip: clipuri_galerie
+    fundal_alt: false
+  - tip: retele
+    fundal_alt: false
+  - tip: programari
+    fundal_alt: false

@@ -63,24 +63,23 @@
     <p>Poze si clipuri cu cainii toaletati, pe retelele salonului.</p>
   </div>
 </section>
-<section class="section banner-sec">
+{%- for bl_s in site.data.pagina_galerie.sectiuni -%}
+{%- include stil-bloc.html -%}
+{%- case bl_s.tip -%}
+{%- when 'poze' %}
+<section class="section{{ bl_alt }}"{{ bl_sec }} id="poze" hidden>
   <div class="wrap">
-    <figure class="banner">
-      <img src="{{ site.data.imagini.banner.poza | escape }}" alt="{{ site.data.imagini.banner.alt | escape }}">
-    </figure>
-  </div>
-</section>
-<section class="section" id="poze" hidden>
-  <div class="wrap">
-    <div class="section-head"><h2>Din salon</h2></div>
+    <div class="section-head"><h2{{ bl_h2 }}>Din salon</h2></div>
     <div class="gallery" id="gallery"></div>
   </div>
 </section>
-{%- include clipuri.html -%}
-<section class="section">
+{%- when 'clipuri_galerie' -%}
+{%- assign clip_pagina = 'galerie' -%}{%- include clipuri.html -%}
+{%- when 'retele' %}
+<section class="section{{ bl_alt }}"{{ bl_sec }}>
   <div class="wrap">
     <div class="section-head">
-      <h2>Vezi lucrarile noastre</h2>
+      <h2{{ bl_h2 }}>Vezi lucrarile noastre</h2>
       <p class="muted">Cele mai noi poze si clipuri cu catelusi inainte si dupa toaletaj sunt pe paginile salonului. Alege reteaua preferata.</p>
     </div>
     <div class="social-cards">
@@ -90,13 +89,13 @@
     </div>
   </div>
 </section>
-
-<section class="section">
+{%- when 'programari' %}
+<section class="section{{ bl_alt }}"{{ bl_sec }}>
   <div class="wrap">
     <div class="promo">
       <div>
         <span class="tag">Programari</span>
-        <h2>Un catel curat e un catel fericit</h2>
+        <h2{{ bl_h2 }}>Un catel curat e un catel fericit</h2>
         <p>Baie, tuns, periat si parfumat, cu rabdare si blandete. Programeaza-ti blanosul.</p>
         <div class="actions">
           <a class="btn btn-light" href="https://api.whatsapp.com/send?phone={{ salon.telefon_intl | remove: '+' }}" rel="noopener"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-whatsapp"/></svg> Scrie pe WhatsApp</a>
@@ -106,6 +105,9 @@
     </div>
   </div>
 </section>
+{%- else -%}{%- include bloc-comun.html -%}
+{%- endcase -%}
+{%- endfor %}
 
 <section class="cta">
   <div class="wrap">

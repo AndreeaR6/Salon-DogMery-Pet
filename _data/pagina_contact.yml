@@ -1,0 +1,7 @@
+sectiuni:
+  - tip: contact_date
+    fundal_alt: false
+  - tip: retele
+    fundal_alt: true
+  - tip: reguli
+    fundal_alt: false
