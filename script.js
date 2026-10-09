@@ -75,6 +75,83 @@
     });
   }
 
+  /* ---------- clipuri video incorporate (se incarca doar la click) ---------- */
+  function addScript(src, onload) {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = src;
+    if (onload) s.onload = onload;
+    document.body.appendChild(s);
+    return s;
+  }
+  function loadClip(fig) {
+    var type = fig.getAttribute('data-clip');
+    var url = fig.getAttribute('data-url');
+    var host = document.createElement('div');
+    host.className = 'clip-embed';
+    if (type === 'tiktok') {
+      var bq = document.createElement('blockquote');
+      bq.className = 'tiktok-embed';
+      bq.setAttribute('cite', url);
+      bq.setAttribute('data-video-id', fig.getAttribute('data-id'));
+      bq.style.maxWidth = '605px';
+      bq.style.minWidth = '280px';
+      bq.appendChild(document.createElement('section'));
+      host.appendChild(bq);
+    } else if (type === 'instagram') {
+      var ig = document.createElement('blockquote');
+      ig.className = 'instagram-media';
+      ig.setAttribute('data-instgrm-permalink', url);
+      ig.setAttribute('data-instgrm-version', '14');
+      ig.style.width = '100%';
+      ig.style.maxWidth = '540px';
+      host.appendChild(ig);
+    } else if (type === 'facebook') {
+      if (!document.getElementById('fb-root')) {
+        var root = document.createElement('div');
+        root.id = 'fb-root';
+        document.body.appendChild(root);
+      }
+      var fb = document.createElement('div');
+      fb.className = 'fb-video';
+      fb.setAttribute('data-href', url);
+      fb.setAttribute('data-allowfullscreen', 'true');
+      fb.setAttribute('data-width', '500');
+      host.appendChild(fb);
+    } else {
+      return;
+    }
+    var a = document.createElement('p');
+    a.className = 'clip-open';
+    var link = document.createElement('a');
+    link.href = url;
+    link.rel = 'noopener';
+    link.textContent = 'Deschide pe ' + (type === 'tiktok' ? 'TikTok' : type === 'instagram' ? 'Instagram' : 'Facebook');
+    a.appendChild(link);
+    fig.innerHTML = '';
+    fig.appendChild(host);
+    fig.appendChild(a);
+    if (type === 'tiktok') {
+      var old = document.getElementById('tiktok-embed-js');
+      if (old) old.parentNode.removeChild(old);
+      addScript('https://www.tiktok.com/embed.js').id = 'tiktok-embed-js';
+    } else if (type === 'instagram') {
+      if (window.instgrm && window.instgrm.Embeds) window.instgrm.Embeds.process();
+      else addScript('https://www.instagram.com/embed.js', function () {
+        if (window.instgrm && window.instgrm.Embeds) window.instgrm.Embeds.process();
+      });
+    } else if (type === 'facebook') {
+      if (window.FB && window.FB.XFBML) window.FB.XFBML.parse(host);
+      else addScript('https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2');
+    }
+  }
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest ? e.target.closest('[data-clip-load]') : null;
+    if (!btn) return;
+    var fig = btn.closest('[data-clip]');
+    if (fig) loadClip(fig);
+  });
+
   /* ---------- cookie-uri + Google Analytics (doar dupa acord) ---------- */
   var GA_ID = 'G-ZPYGVTJYLH', KEY = 'dmp-consent';
   window.dataLayer = window.dataLayer || [];

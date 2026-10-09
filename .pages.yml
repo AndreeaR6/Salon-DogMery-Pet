@@ -5,6 +5,12 @@ media:
     output: img/galerie
     extensions: [webp, jpg, jpeg, png]
     rename: safe
+  - name: clipuri
+    label: Clipuri video
+    input: video
+    output: video
+    extensions: [mp4, webm]
+    rename: safe
 
 content:
   - name: galerie
@@ -87,3 +93,25 @@ content:
           - {name: luni_vineri_pana, label: "Luni-Vineri: inchidere (HH:MM, ex. 17:00)", type: string}
           - {name: sambata_de, label: "Sambata: deschidere (HH:MM)", type: string}
           - {name: sambata_pana, label: "Sambata: inchidere (HH:MM)", type: string}
+
+  - name: video
+    label: Clipuri video
+    type: file
+    path: _data/video.yml
+    format: yaml
+    fields:
+      - name: clipuri
+        label: Clipuri
+        type: object
+        list: true
+        fields:
+          - {name: titlu, label: "Titlu (optional)", type: string}
+          - {name: link, label: "Link complet TikTok / Facebook / Instagram (copiat din browser)", type: string}
+          - name: fisier
+            label: "SAU fisier video incarcat (mp4 sau webm, sub 25 MB)"
+            type: file
+            options: {media: clipuri}
+          - name: poza
+            label: "Coperta pentru fisier (optional)"
+            type: image
+            options: {media: galerie}
