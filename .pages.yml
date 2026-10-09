@@ -223,7 +223,7 @@ content:
         list:
           collapsible:
             collapsed: false
-            summary: "{index}. {text}"
+            summary: "Regula {index}"
         fields:
           - {name: text, label: Regula, type: text}
 
