@@ -23,7 +23,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#e6399b">
 <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">{% include culori.html %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -66,10 +66,7 @@
 <section class="section banner-sec">
   <div class="wrap">
     <figure class="banner">
-      <picture>
-        <source type="image/webp" srcset="img/banner-salon.webp">
-        <img src="img/banner-salon.jpg" width="1600" height="595" alt="Banner Salon DogMery Pet: groomerita cu un catel pe masa de toaletaj, intre alti doi catelusi, in salonul roz cu luminite si plante">
-      </picture>
+      <img src="{{ site.data.imagini.banner.poza | escape }}" alt="{{ site.data.imagini.banner.alt | escape }}">
     </figure>
   </div>
 </section>

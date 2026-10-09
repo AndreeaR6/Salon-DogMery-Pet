@@ -1,0 +1,12 @@
+banner:
+  poza: "img/site/banner-salon.webp"
+  alt: "Banner Salon DogMery Pet: groomerita cu un catel pe masa de toaletaj, intre alti doi catelusi, in salonul roz cu luminite si plante"
+inainte_dupa:
+  poza: "img/site/colaj-inainte-dupa.webp"
+  alt: "Trei colaje cu catelusi inainte si dupa toaletaj: unul alb, unul alb cu maro si unul bej, pe masa de toaletaj"
+colaj:
+  poza: "img/site/colaj-canapea.webp"
+  alt: "Colaj cu catelusi aranjati, pe canapeaua si fotoliul verde din salon, in fata peretelui marmorat"
+despre:
+  poza: "img/galerie/poza-17.webp"
+  alt: "Catel alb cu privire blanda, dupa tuns, pe masa de toaletaj"

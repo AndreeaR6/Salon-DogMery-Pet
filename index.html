@@ -35,7 +35,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#e6399b">
 <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">{% include culori.html %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -208,10 +208,7 @@
   </div>
   <div class="wrap">
     <figure class="banner hero-banner">
-      <picture>
-        <source type="image/webp" srcset="img/banner-salon.webp">
-        <img src="img/banner-salon.jpg" width="1600" height="595" fetchpriority="high" alt="Banner Salon DogMery Pet: groomerita cu un catel pe masa de toaletaj, intre alti doi catelusi, in salonul roz cu luminite si plante">
-      </picture>
+      <img src="{{ site.data.imagini.banner.poza | escape }}" fetchpriority="high" alt="{{ site.data.imagini.banner.alt | escape }}">
     </figure>
   </div>
 </section>
@@ -243,7 +240,7 @@
       <h2>Inainte si dupa</h2>
       <p class="muted">Cateva dintre blanosii care au trecut pe la noi.</p>
     </div>
-    <figure class="banner"><img src="img/colaj-inainte-dupa.webp" width="1512" height="632" loading="lazy" alt="Trei colaje cu catelusi inainte si dupa toaletaj: unul alb, unul alb cu maro si unul bej, pe masa de toaletaj"></figure>
+    <figure class="banner"><img src="{{ site.data.imagini.inainte_dupa.poza | escape }}" loading="lazy" alt="{{ site.data.imagini.inainte_dupa.alt | escape }}"></figure>
   </div>
 </section>
 
@@ -307,7 +304,7 @@
 {% assign camp = site.data.campanie %}{% if camp.afisata %}<section class="section">
   <div class="wrap">
     <div class="band">
-      <img src="img/heart-paw.svg" alt="" width="150" height="150" loading="lazy">
+      <img src="{{ camp.imagine | default: 'img/site/heart-paw.svg' | escape }}" alt="" width="150" height="150" loading="lazy">
       <div>
         <span class="tag">{{ camp.eticheta | escape }}</span>
         <h2>{{ camp.titlu | escape }}</h2>

@@ -23,7 +23,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#e6399b">
 <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">{% include culori.html %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -66,10 +66,7 @@
 <section class="section banner-sec">
   <div class="wrap">
     <figure class="banner">
-      <picture>
-        <source type="image/webp" srcset="img/banner-salon.webp">
-        <img src="img/banner-salon.jpg" width="1600" height="595" alt="Banner Salon DogMery Pet: groomerita cu un catel pe masa de toaletaj, intre alti doi catelusi, in salonul roz cu luminite si plante">
-      </picture>
+      <img src="{{ site.data.imagini.banner.poza | escape }}" alt="{{ site.data.imagini.banner.alt | escape }}">
     </figure>
   </div>
 </section>
@@ -87,14 +84,14 @@
           <a class="btn btn-ghost" href="servicii.html">Vezi preturile</a>
         </div>
       </div>
-      <img src="img/galerie/poza-17.webp" width="900" height="1200" loading="lazy" alt="Catel alb cu privire blanda, dupa tuns, pe masa de toaletaj">
+      <img src="{{ site.data.imagini.despre.poza | escape }}" loading="lazy" alt="{{ site.data.imagini.despre.alt | escape }}">
     </div>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap">
-    <figure class="banner"><img src="img/colaj-canapea.webp" width="1600" height="510" loading="lazy" alt="Colaj cu catelusi aranjati, pe canapeaua si fotoliul verde din salon, in fata peretelui marmorat"></figure>
+    <figure class="banner"><img src="{{ site.data.imagini.colaj.poza | escape }}" loading="lazy" alt="{{ site.data.imagini.colaj.alt | escape }}"></figure>
   </div>
 </section>
 
@@ -110,7 +107,7 @@
 {% assign camp = site.data.campanie %}{% if camp.afisata %}<section class="section">
   <div class="wrap">
     <div class="band">
-      <img src="img/heart-paw.svg" alt="" width="150" height="150" loading="lazy">
+      <img src="{{ camp.imagine | default: 'img/site/heart-paw.svg' | escape }}" alt="" width="150" height="150" loading="lazy">
       <div>
         <span class="tag">{{ camp.eticheta | escape }}</span>
         <h2>{{ camp.titlu | escape }}</h2>

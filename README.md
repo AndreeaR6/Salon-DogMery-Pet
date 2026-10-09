@@ -31,4 +31,7 @@ Clipurile de pe retele se incarca doar cand vizitatorul apasa 'Vezi clipul' (vez
 - 'Despre noi': `_data/despre.yml` (povestea si 'Ce ne ghideaza'; pictogramele se pun automat, in ordine: inima, scut, steluta, cadou, laba, bifa).
 - 'Reguli de citit inainte de programare': `_data/reguli.yml`, afisate pe 'Servicii' si 'Contact' (`_includes/reguli.html`).
 - In `{{ }}` nu se pun acolade in textele din cod: Jekyll (GitHub Pages) le citeste gresit si build-ul esueaza.
+- 'Imagini principale': `_data/imagini.yml` (banner, colaje, poza din 'Despre noi'). Pozele noi se incarca in `img/site/`. Dimensiunile nu se mai scriu in cod; pagina se potriveste singura.
+- 'Culori site': `_data/culori.yml`. Se scriu cu `#` si cod hex (ex. `#e6399b`). Valorile invalide sunt ignorate si ramane culoarea din `style.css`. Se aplica prin `_includes/culori.html`, pus in `<head>` dupa `style.css`.
+- Culorile fixe din `style.css` care nu sunt in lista (alb, verdele WhatsApp, umbre) nu se schimba din panou.
 

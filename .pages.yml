@@ -11,6 +11,12 @@ media:
     output: video
     extensions: [mp4, webm]
     rename: safe
+  - name: imagini
+    label: Imagini site
+    input: img/site
+    output: img/site
+    extensions: [webp, jpg, jpeg, png, svg]
+    rename: safe
 
 content:
   - name: galerie
@@ -141,6 +147,10 @@ content:
     format: yaml
     fields:
       - {name: afisata, label: "Afiseaza campania pe site (pagina principala si Despre noi)", type: boolean}
+      - name: imagine
+        label: "Imaginea din dreptul textului (svg, png sau webp)"
+        type: image
+        options: {media: imagini}
       - {name: eticheta, label: "Eticheta mica de deasupra titlului", type: string}
       - {name: titlu, label: Titlu, type: string}
       - {name: text, label: Text, type: text}
@@ -202,3 +212,55 @@ content:
         list: true
         fields:
           - {name: text, label: Regula, type: text}
+
+  - name: imagini
+    label: Imagini principale (banner, colaje, poza din Despre noi)
+    type: file
+    path: _data/imagini.yml
+    format: yaml
+    fields:
+      - name: banner
+        label: "Banner (Acasa, Despre noi, Galerie)"
+        type: object
+        fields:
+          - {name: poza, label: Poza, type: image, options: {media: imagini}}
+          - {name: alt, label: "Descriere poza (pentru cei care nu o vad)", type: string}
+      - name: inainte_dupa
+        label: "Colaj 'Inainte si dupa' (Acasa)"
+        type: object
+        fields:
+          - {name: poza, label: Poza, type: image, options: {media: imagini}}
+          - {name: alt, label: "Descriere poza", type: string}
+      - name: colaj
+        label: "Colaj de pe canapea (Despre noi)"
+        type: object
+        fields:
+          - {name: poza, label: Poza, type: image, options: {media: imagini}}
+          - {name: alt, label: "Descriere poza", type: string}
+      - name: despre
+        label: "Poza de langa poveste (Despre noi)"
+        type: object
+        fields:
+          - {name: poza, label: Poza, type: image, options: {media: imagini}}
+          - {name: alt, label: "Descriere poza", type: string}
+
+  - name: culori
+    label: Culori site
+    type: file
+    path: _data/culori.yml
+    format: yaml
+    fields:
+      - {name: pink, label: "Culoare principala (butoane, accente) - ex. #e6399b", type: string}
+      - {name: pink_dark, label: "Culoare principala inchisa (linkuri, titluri colorate)", type: string}
+      - {name: pink_deep, label: "Culoare principala foarte inchisa (hover)", type: string}
+      - {name: pink_darkest, label: "Culoare inchisa (capat de degrade, sus si jos)", type: string}
+      - {name: pink_soft, label: "Roz deschis (etichete, fundaluri mici)", type: string}
+      - {name: pink_line, label: "Roz pentru linii si borduri", type: string}
+      - {name: pink_glow, label: "Roz pentru degrade (sus)", type: string}
+      - {name: pink_glow_2, label: "Roz pentru degrade (jos)", type: string}
+      - {name: on_pink, label: "Text deschis pe fundal colorat", type: string}
+      - {name: ink, label: "Culoare titluri", type: string}
+      - {name: text, label: "Culoare text", type: string}
+      - {name: muted, label: "Culoare text secundar", type: string}
+      - {name: bg, label: "Fundal pagina", type: string}
+      - {name: alt, label: "Fundal sectiuni alternante", type: string}
