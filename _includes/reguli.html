@@ -1,0 +1,1 @@
+{%- assign reg_l = site.data.reguli.reguli -%}<ul class="rules">{%- for reg_r in reg_l -%}<li><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-check"/></svg><span>{{ reg_r.text | escape }}</span></li>{%- endfor -%}</ul>

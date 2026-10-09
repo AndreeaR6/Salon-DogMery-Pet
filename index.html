@@ -197,8 +197,8 @@
   <div class="wrap">
     <div>
       <p class="eyebrow">Toaletaj canin - Pitesti</p>
-      <h1>Rasfat si grija - catelul tau merita tot ce e mai bun</h1>
-      <p class="lead">Tuns, spalat, uscat, periat, curatat urechi si taiat unghii, cu rabdare si grija pentru fiecare blanos.</p>
+      <h1>{{ site.data.acasa.titlu | escape }}</h1>
+      <p class="lead">{{ site.data.acasa.lead | escape }}</p>
       <div class="actions">
         <a class="btn" href="https://api.whatsapp.com/send?phone={{ salon.telefon_intl | remove: '+' }}" rel="noopener"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-whatsapp"/></svg> Programare pe WhatsApp</a>
         <a class="btn btn-ghost" href="tel:+{{ salon.telefon_intl | remove: '+' }}"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-phone"/></svg> {{ salon.telefon }}</a>

@@ -159,3 +159,46 @@ content:
           - {name: intrebare, label: Intrebare, type: string}
           - {name: raspuns, label: "Raspuns (poti scrie [preturi] pentru textul cu preturile si [telefon] pentru numarul de telefon, se completeaza automat)", type: text}
           - {name: pe_prima_pagina, label: "Arata si pe pagina principala (pe Servicii apar toate)", type: boolean}
+
+  - name: acasa
+    label: Pagina principala (titlu si text de sus)
+    type: file
+    path: _data/acasa.yml
+    format: yaml
+    fields:
+      - {name: titlu, label: "Titlu mare", type: string}
+      - {name: lead, label: "Text sub titlu", type: text}
+
+  - name: despre
+    label: Despre noi (poveste si valori)
+    type: file
+    path: _data/despre.yml
+    format: yaml
+    fields:
+      - {name: pe_scurt, label: "Textul dupa 'Pe scurt:'", type: text}
+      - name: paragrafe
+        label: Paragrafe urmatoare
+        type: object
+        list: true
+        fields:
+          - {name: text, label: Paragraf, type: text}
+      - name: valori
+        label: "Ce ne ghideaza (pictogramele se pun automat, in ordine)"
+        type: object
+        list: true
+        fields:
+          - {name: titlu, label: Titlu, type: string}
+          - {name: text, label: Text, type: text}
+
+  - name: reguli
+    label: "Reguli de citit inainte de programare (Servicii si Contact)"
+    type: file
+    path: _data/reguli.yml
+    format: yaml
+    fields:
+      - name: reguli
+        label: Reguli
+        type: object
+        list: true
+        fields:
+          - {name: text, label: Regula, type: text}

@@ -27,4 +27,8 @@ Clipurile de pe retele se incarca doar cand vizitatorul apasa 'Vezi clipul' (vez
 - 'Campanie (Secret Santa)': `_data/campanie.yml` (bifa `afisata` o ascunde de pe pagina principala si 'Despre noi').
 - 'Intrebari frecvente': `_data/faq.yml`. In raspuns, `[preturi]` si `[telefon]` se completeaza automat. Aceleasi intrebari ajung si in datele structurate pentru Google (JSON-LD). Pagina principala arata doar intrebarile bifate, 'Servicii' le arata pe toate.
 - Meta descrierea din `despre-noi.html` mentioneaza Secret Santa si nu se schimba automat.
+- 'Pagina principala': `_data/acasa.yml` (titlul mare si textul de sub el).
+- 'Despre noi': `_data/despre.yml` (povestea si 'Ce ne ghideaza'; pictogramele se pun automat, in ordine: inima, scut, steluta, cadou, laba, bifa).
+- 'Reguli de citit inainte de programare': `_data/reguli.yml`, afisate pe 'Servicii' si 'Contact' (`_includes/reguli.html`).
+- In `{{ }}` nu se pun acolade in textele din cod: Jekyll (GitHub Pages) le citeste gresit si build-ul esueaza.
 

@@ -78,9 +78,10 @@
     <div class="split">
       <div>
         <h2>Povestea salonului</h2>
-        <p><b>Pe scurt:</b> Salon DogMery Pet ofera servicii profesionale de tuns, imbaiere si ingrijire pentru animalele de companie. Ne dedicam confortului si frumusetii prietenului tau necuvantator!</p>
-        <p>Salon DogMery Pet a pornit din dragostea pentru animale si din dorinta de a avea un loc unde catelusii sunt ingrijiti cu blandete si profesionalism.</p>
-        <p>Fiecare blanos este tratat cu rabdare, atentie si produse de calitate. Scopul este ca el sa fie toaletat corect si sa ramana in siguranta.</p>
+        <p><b>Pe scurt:</b> {{ site.data.despre.pe_scurt | escape }}</p>
+{%- for dsp_p in site.data.despre.paragrafe %}
+        <p>{{ dsp_p.text | escape }}</p>
+{%- endfor %}
         <div class="actions">
           <a class="btn" href="contact.html">Vino la noi</a>
           <a class="btn btn-ghost" href="servicii.html">Vezi preturile</a>
@@ -102,7 +103,7 @@
     <div class="section-head">
       <h2>Ce ne ghideaza</h2>
     </div>
-    <div class="values" style="margin-top:0"><div class="value"><h3><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-heart"/></svg> Blandete</h3><p>Fiecare catelus e tratat cu calm si rabdare.</p></div><div class="value"><h3><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-shield"/></svg> Siguranta</h3><p>Scopul este ca blanosul sa fie toaletat corect si sa ramana in siguranta.</p></div><div class="value"><h3><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-sparkle"/></svg> Produse de calitate</h3><p>Folosim produse de calitate pentru blana si pielea cainelui.</p></div><div class="value"><h3><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-gift"/></svg> Grija pentru comunitate</h3><p>Sustinem cainii din adaposturi prin campanii de donatii.</p></div></div>
+    <div class="values" style="margin-top:0">{%- assign dsp_ic = 'heart,shield,sparkle,gift,paw,check' | split: ',' -%}{%- for dsp_v in site.data.despre.valori -%}<div class="value"><h3><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-{{ dsp_ic[forloop.index0] | default: 'heart' }}"/></svg> {{ dsp_v.titlu | escape }}</h3><p>{{ dsp_v.text | escape }}</p></div>{%- endfor -%}</div>
   </div>
 </section>
 
