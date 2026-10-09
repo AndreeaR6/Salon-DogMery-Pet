@@ -25,6 +25,6 @@ Clipurile de pe retele se incarca doar cand vizitatorul apasa 'Vezi clipul' (vez
 
 - 'Recenzii (Ce spun clientii)': `_data/recenzii.yml` (nota, numar, luna, link, lista de recenzii). Lista goala ascunde sectiunea.
 - 'Campanie (Secret Santa)': `_data/campanie.yml` (bifa `afisata` o ascunde de pe pagina principala si 'Despre noi').
-- 'Intrebari frecvente': `_data/faq.yml`. In raspuns, `{preturi}` si `{telefon}` se completeaza automat. Aceleasi intrebari ajung si in datele structurate pentru Google (JSON-LD). Pagina principala arata doar intrebarile bifate, 'Servicii' le arata pe toate.
+- 'Intrebari frecvente': `_data/faq.yml`. In raspuns, `[preturi]` si `[telefon]` se completeaza automat. Aceleasi intrebari ajung si in datele structurate pentru Google (JSON-LD). Pagina principala arata doar intrebarile bifate, 'Servicii' le arata pe toate.
 - Meta descrierea din `despre-noi.html` mentioneaza Secret Santa si nu se schimba automat.
 

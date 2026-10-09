@@ -3,10 +3,10 @@ intrebari:
     raspuns: "Intre 1 h 30 min si 3 h, in functie de rasa, tipul si starea blanii si de comportamentul cainelui."
     pe_prima_pagina: true
   - intrebare: "Cat costa toaletajul?"
-    raspuns: "{preturi} La blana foarte incalcita, subpar abundent sau temperament dificil, pretul final se stabileste dupa evaluarea cainelui."
+    raspuns: "[preturi] La blana foarte incalcita, subpar abundent sau temperament dificil, pretul final se stabileste dupa evaluarea cainelui."
     pe_prima_pagina: true
   - intrebare: "Cum fac o programare?"
-    raspuns: "Ne suni la {telefon} sau ne scrii pe WhatsApp, iar impreuna alegem ziua si ora."
+    raspuns: "Ne suni la [telefon] sau ne scrii pe WhatsApp, iar impreuna alegem ziua si ora."
     pe_prima_pagina: true
   - intrebare: "Primiti orice caine?"
     raspuns: "Nu. Nu folosim anestezic, deci nu primim caini foarte agitati sau agresivi. Nu toaletam nici caini cu probleme dermatologice sau femele gestante."

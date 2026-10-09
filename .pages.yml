@@ -157,5 +157,5 @@ content:
         list: true
         fields:
           - {name: intrebare, label: Intrebare, type: string}
-          - {name: raspuns, label: "Raspuns (poti scrie {preturi} pentru textul cu preturile si {telefon} pentru numarul de telefon, se completeaza automat)", type: text}
+          - {name: raspuns, label: "Raspuns (poti scrie [preturi] pentru textul cu preturile si [telefon] pentru numarul de telefon, se completeaza automat)", type: text}
           - {name: pe_prima_pagina, label: "Arata si pe pagina principala (pe Servicii apar toate)", type: boolean}
