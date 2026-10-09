@@ -1,8 +1,12 @@
 {%- assign vid_lista = site.data.video.clipuri -%}
 {%- assign vid_nr = 0 -%}
-{%- for vid in vid_lista -%}{%- if clip_doar_contact != true or vid.contact == true -%}{%- assign vid_nr = vid_nr | plus: 1 -%}{%- endif -%}{%- endfor -%}
+{%- for vid in vid_lista -%}
+{%- assign vid_ok = true -%}
+{%- if clip_pagina -%}{%- assign vid_ok = false -%}{%- if vid.peste_tot == true -%}{%- assign vid_ok = true -%}{%- elsif clip_pagina == 'contact' and vid.contact == true -%}{%- assign vid_ok = true -%}{%- endif -%}{%- endif -%}
+{%- if vid_ok == true -%}{%- assign vid_nr = vid_nr | plus: 1 -%}{%- endif -%}
+{%- endfor -%}
 {%- if vid_nr > 0 %}
-<section class="section{% if clip_doar_contact == true %} alt{% endif %}" id="clipuri">
+<section class="section{% if clip_pagina == 'contact' %} alt{% endif %}" id="clipuri">
   <div class="wrap">
     <div class="section-head"><h2>Clipuri video</h2></div>
     <div class="clips">
@@ -17,7 +21,9 @@
 {%- elsif vid_link contains 'facebook.com' or vid_link contains 'fb.watch' -%}{%- assign vid_retea = 'facebook' -%}
 {%- elsif vid_link != '' -%}{%- assign vid_retea = 'link' -%}
 {%- endif -%}
-{%- if clip_doar_contact == true and vid.contact != true -%}{%- assign vid_retea = '' -%}{%- endif -%}
+{%- assign vid_ok = true -%}
+{%- if clip_pagina -%}{%- assign vid_ok = false -%}{%- if vid.peste_tot == true -%}{%- assign vid_ok = true -%}{%- elsif clip_pagina == 'contact' and vid.contact == true -%}{%- assign vid_ok = true -%}{%- endif -%}{%- endif -%}
+{%- if vid_ok != true -%}{%- assign vid_retea = '' -%}{%- endif -%}
 {%- if vid_retea == 'fisier' -%}
 {%- assign vid_cale = vid_fisier -%}{%- assign vid_c1 = vid_cale | slice: 0, 1 -%}{%- if vid_c1 == '/' -%}{%- assign vid_cale = vid_cale | remove_first: '/' -%}{%- endif -%}
 {%- assign vid_poza = vid.poza | default: '' | strip -%}{%- assign vid_p1 = vid_poza | slice: 0, 1 -%}{%- if vid_p1 == '/' -%}{%- assign vid_poza = vid_poza | remove_first: '/' -%}{%- endif %}

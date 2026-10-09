@@ -130,6 +130,7 @@ content:
             type: image
             options: {media: galerie}
           - {name: contact, label: "Arata si pe pagina Contact (bifat = apare si acolo; mereu apare in Galerie)", type: boolean}
+          - {name: peste_tot, label: "Arata pe TOATE paginile (pagina principala, Servicii, Despre noi, Contact; in Galerie apare mereu)", type: boolean}
 
   - name: recenzii
     label: Recenzii (Ce spun clientii)
