@@ -14,6 +14,7 @@
 {%- assign hi = mx_c -%}{%- if mx_s > hi -%}{%- assign hi = mx_s -%}{%- endif -%}{%- if mx_t > hi -%}{%- assign hi = mx_t -%}{%- endif -%}
 {%- assign slo = mn_s -%}{%- if mn_t < slo -%}{%- assign slo = mn_t -%}{%- endif -%}
 {%- assign shi = mx_s -%}{%- if mx_t > shi -%}{%- assign shi = mx_t -%}{%- endif -%}
+{%- capture faq_preturi -%}{% include text-preturi.html %}{%- endcapture -%}
 <!doctype html>
 <html lang="ro">
 <head>
@@ -176,31 +177,7 @@
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Cat dureaza o sedinta de toaletaj?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Intre 1 h 30 min si 3 h, in functie de rasa, tipul si starea blanii si de comportamentul cainelui."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Cat costa toaletajul?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "{% include text-preturi.html %} La blana foarte incalcita, subpar abundent sau temperament dificil, pretul final se stabileste dupa evaluarea cainelui."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Cum fac o programare?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ne suni la {{ salon.telefon }} sau ne scrii pe WhatsApp, iar impreuna alegem ziua si ora."
-      }
-    }
+  "mainEntity": [{% assign faq_toate = false %}{% include faq-jsonld.html %}
   ]
 }
 </script>
@@ -327,38 +304,39 @@
   </div>
 </section>
 
-<section class="section">
+{% assign camp = site.data.campanie %}{% if camp.afisata %}<section class="section">
   <div class="wrap">
     <div class="band">
       <img src="img/heart-paw.svg" alt="" width="150" height="150" loading="lazy">
       <div>
-        <span class="tag">Din inima</span>
-        <h2>Secret Santa - O labuta de ajutor</h2>
-        <p>In decembrie 2025, salonul a organizat o campanie de donatii de mancare si textile pentru cainii din Adapostul de caini Smeura, in parteneriat cu PetPro.ro si totulpentrucani.ro.</p>
+        <span class="tag">{{ camp.eticheta | escape }}</span>
+        <h2>{{ camp.titlu | escape }}</h2>
+        <p>{{ camp.text | escape }}</p>
       </div>
     </div>
   </div>
-</section>
+</section>{% endif %}
 
-<section class="section">
+{% assign rec = site.data.recenzii %}{% if rec.recenzii and rec.recenzii.size > 0 %}<section class="section">
   <div class="wrap">
     <div class="section-head">
       <h2>Ce spun clientii</h2>
-      <p class="muted"><b>4,9 din 5</b> pe Google, din 38 de recenzii (octombrie 2026). <a href="https://www.google.com/maps/place/Frizerie+canina+DogMery+Pet/@44.8647426,24.8693434,17z" rel="noopener">Citeste toate recenziile pe Google Maps</a>.</p>
+      <p class="muted"><b>{{ rec.nota | escape }} din 5</b> pe Google, din {{ rec.numar | escape }} de recenzii ({{ rec.luna | escape }}). <a href="{{ rec.link | escape }}" rel="noopener">Citeste toate recenziile pe Google Maps</a>.</p>
     </div>
     <div class="tiles">
-      <div class="tile"><blockquote>&bdquo;Nu numai ca ne-a primit, insa a stat peste program&rdquo;</blockquote><cite>M. U., recenzie Google</cite></div>
-      <div class="tile"><blockquote>&bdquo;Este minunat sa intalnesti oameni care isi fac meseria cu atat de multa pasiune si implicare si respect pentru animalute! Recomand din toata inima!&rdquo;</blockquote><cite>L. U., recenzie Google</cite></div>
+{%- for r in rec.recenzii %}
+      <div class="tile"><blockquote>&bdquo;{{ r.text | escape }}&rdquo;</blockquote><cite>{{ r.autor | escape }}</cite></div>
+{%- endfor %}
     </div>
   </div>
-</section>
+</section>{% endif %}
 
 <section class="section alt">
   <div class="wrap">
     <div class="section-head">
       <h2>Intrebari frecvente</h2>
     </div>
-    <div class="faq"><details><summary>Cat dureaza o sedinta de toaletaj?</summary><p>Intre 1 h 30 min si 3 h, in functie de rasa, tipul si starea blanii si de comportamentul cainelui.</p></details><details><summary>Cat costa toaletajul?</summary><p>{% include text-preturi.html %} La blana foarte incalcita, subpar abundent sau temperament dificil, pretul final se stabileste dupa evaluarea cainelui.</p></details><details><summary>Cum fac o programare?</summary><p>Ne suni la {{ salon.telefon }} sau ne scrii pe WhatsApp, iar impreuna alegem ziua si ora.</p></details></div>
+    {% assign faq_toate = false %}{% include faq-html.html %}
   </div>
 </section>
 

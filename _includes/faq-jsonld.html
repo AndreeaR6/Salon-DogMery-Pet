@@ -1,0 +1,9 @@
+{%- assign faq_n = 0 -%}{%- for faq_q in site.data.faq.intrebari -%}{%- if faq_toate or faq_q.pe_prima_pagina -%}{%- if faq_n > 0 -%},{% endif %}
+    {
+      "@type": "Question",
+      "name": "{{ faq_q.intrebare | strip_newlines | replace: '\', '' | replace: '"', '\"' }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ faq_q.raspuns | strip_newlines | replace: '\', '' | replace: '"', '\"' | replace: '{preturi}', faq_preturi | replace: '{telefon}', salon.telefon }}"
+      }
+    }{%- assign faq_n = faq_n | plus: 1 -%}{%- endif -%}{%- endfor -%}

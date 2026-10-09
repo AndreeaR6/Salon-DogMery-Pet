@@ -14,6 +14,7 @@
 {%- assign hi = mx_c -%}{%- if mx_s > hi -%}{%- assign hi = mx_s -%}{%- endif -%}{%- if mx_t > hi -%}{%- assign hi = mx_t -%}{%- endif -%}
 {%- assign slo = mn_s -%}{%- if mn_t < slo -%}{%- assign slo = mn_t -%}{%- endif -%}
 {%- assign shi = mx_s -%}{%- if mx_t > shi -%}{%- assign shi = mx_t -%}{%- endif -%}
+{%- capture faq_preturi -%}{% include text-preturi.html %}{%- endcapture -%}
 <!doctype html>
 <html lang="ro">
 <head>
@@ -39,39 +40,7 @@
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Cat dureaza o sedinta de toaletaj?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Intre 1 h 30 min si 3 h, in functie de rasa, tipul si starea blanii si de comportamentul cainelui."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Cat costa toaletajul?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "{% include text-preturi.html %} La blana foarte incalcita, subpar abundent sau temperament dificil, pretul final se stabileste dupa evaluarea cainelui."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Cum fac o programare?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ne suni la {{ salon.telefon }} sau ne scrii pe WhatsApp, iar impreuna alegem ziua si ora."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Primiti orice caine?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Nu. Nu folosim anestezic, deci nu primim caini foarte agitati sau agresivi. Nu toaletam nici caini cu probleme dermatologice sau femele gestante."
-      }
-    }
+  "mainEntity": [{% assign faq_toate = true %}{% include faq-jsonld.html %}
   ]
 }
 </script>
@@ -191,7 +160,7 @@
     <div class="section-head">
       <h2>Intrebari frecvente</h2>
     </div>
-    <div class="faq"><details><summary>Cat dureaza o sedinta de toaletaj?</summary><p>Intre 1 h 30 min si 3 h, in functie de rasa, tipul si starea blanii si de comportamentul cainelui.</p></details><details><summary>Cat costa toaletajul?</summary><p>{% include text-preturi.html %} La blana foarte incalcita, subpar abundent sau temperament dificil, pretul final se stabileste dupa evaluarea cainelui.</p></details><details><summary>Cum fac o programare?</summary><p>Ne suni la {{ salon.telefon }} sau ne scrii pe WhatsApp, iar impreuna alegem ziua si ora.</p></details><details><summary>Primiti orice caine?</summary><p>Nu. Nu folosim anestezic, deci nu primim caini foarte agitati sau agresivi. Nu toaletam nici caini cu probleme dermatologice sau femele gestante.</p></details></div>
+    {% assign faq_toate = true %}{% include faq-html.html %}
   </div>
 </section>
 

@@ -1,0 +1,1 @@
+{%- assign faq_t = site.data.faq.intrebari -%}<div class="faq">{%- for faq_q in faq_t -%}{%- if faq_toate or faq_q.pe_prima_pagina -%}<details><summary>{{ faq_q.intrebare | escape }}</summary><p>{{ faq_q.raspuns | escape | replace: '{preturi}', faq_preturi | replace: '{telefon}', salon.telefon }}</p></details>{%- endif -%}{%- endfor -%}</div>

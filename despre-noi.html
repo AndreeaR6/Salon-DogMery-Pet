@@ -106,18 +106,18 @@
   </div>
 </section>
 
-<section class="section">
+{% assign camp = site.data.campanie %}{% if camp.afisata %}<section class="section">
   <div class="wrap">
     <div class="band">
       <img src="img/heart-paw.svg" alt="" width="150" height="150" loading="lazy">
       <div>
-        <span class="tag">Din inima</span>
-        <h2>Secret Santa - O labuta de ajutor</h2>
-        <p>In decembrie 2025, salonul a organizat o campanie de donatii de mancare si textile pentru cainii din Adapostul de caini Smeura, in parteneriat cu PetPro.ro si totulpentrucani.ro.</p>
+        <span class="tag">{{ camp.eticheta | escape }}</span>
+        <h2>{{ camp.titlu | escape }}</h2>
+        <p>{{ camp.text | escape }}</p>
       </div>
     </div>
   </div>
-</section>
+</section>{% endif %}
 
 <section class="section alt">
   <div class="wrap">

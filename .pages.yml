@@ -115,3 +115,47 @@ content:
             label: "Coperta pentru fisier (optional)"
             type: image
             options: {media: galerie}
+
+  - name: recenzii
+    label: Recenzii (Ce spun clientii)
+    type: file
+    path: _data/recenzii.yml
+    format: yaml
+    fields:
+      - {name: nota, label: "Nota pe Google (ex. 4,9)", type: string}
+      - {name: numar, label: "Numar de recenzii", type: number}
+      - {name: luna, label: "Luna si anul notei (ex. octombrie 2026)", type: string}
+      - {name: link, label: "Link catre recenziile de pe Google Maps", type: string}
+      - name: recenzii
+        label: Recenzii afisate pe site
+        type: object
+        list: true
+        fields:
+          - {name: text, label: "Textul recenziei (fara ghilimele)", type: text}
+          - {name: autor, label: "Autor (ex. M. U., recenzie Google)", type: string}
+
+  - name: campanie
+    label: Campanie (Secret Santa)
+    type: file
+    path: _data/campanie.yml
+    format: yaml
+    fields:
+      - {name: afisata, label: "Afiseaza campania pe site (pagina principala si Despre noi)", type: boolean}
+      - {name: eticheta, label: "Eticheta mica de deasupra titlului", type: string}
+      - {name: titlu, label: Titlu, type: string}
+      - {name: text, label: Text, type: text}
+
+  - name: faq
+    label: Intrebari frecvente
+    type: file
+    path: _data/faq.yml
+    format: yaml
+    fields:
+      - name: intrebari
+        label: Intrebari
+        type: object
+        list: true
+        fields:
+          - {name: intrebare, label: Intrebare, type: string}
+          - {name: raspuns, label: "Raspuns (poti scrie {preturi} pentru textul cu preturile si {telefon} pentru numarul de telefon, se completeaza automat)", type: text}
+          - {name: pe_prima_pagina, label: "Arata si pe pagina principala (pe Servicii apar toate)", type: boolean}

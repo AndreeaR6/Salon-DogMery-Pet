@@ -20,3 +20,11 @@ Publicare: 'Settings' > 'Pages' > 'Deploy from a branch' > `main` / `/ (root)`.
 
 In Pages CMS, 'Clipuri video': pentru fiecare clip se completeaza fie linkul complet TikTok / Facebook / Instagram, fie un fisier mp4 sau webm (sub 25 MB, pentru incarcare din browser). Datele sunt in `_data/video.yml`, fisierele in `video/`.
 Clipurile de pe retele se incarca doar cand vizitatorul apasa 'Vezi clipul' (vezi `script.js`). Lista goala ascunde sectiunea.
+
+## Alte texte editabile din Pages CMS
+
+- 'Recenzii (Ce spun clientii)': `_data/recenzii.yml` (nota, numar, luna, link, lista de recenzii). Lista goala ascunde sectiunea.
+- 'Campanie (Secret Santa)': `_data/campanie.yml` (bifa `afisata` o ascunde de pe pagina principala si 'Despre noi').
+- 'Intrebari frecvente': `_data/faq.yml`. In raspuns, `{preturi}` si `{telefon}` se completeaza automat. Aceleasi intrebari ajung si in datele structurate pentru Google (JSON-LD). Pagina principala arata doar intrebarile bifate, 'Servicii' le arata pe toate.
+- Meta descrierea din `despre-noi.html` mentioneaza Secret Santa si nu se schimba automat.
+
