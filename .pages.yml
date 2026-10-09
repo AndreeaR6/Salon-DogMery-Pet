@@ -106,7 +106,10 @@ content:
       - name: poze
         label: Poze
         type: object
-        list: true
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{index}. {alt}"
         fields:
           - name: src
             label: Poza
@@ -135,7 +138,10 @@ content:
       - name: clipuri
         label: Clipuri
         type: object
-        list: true
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{index}. {titlu}"
         fields:
           - {name: titlu, label: "Titlu (optional)", type: string}
           - {name: link, label: "Link complet TikTok / Facebook / Instagram (copiat din browser)", type: string}
@@ -178,7 +184,10 @@ content:
       - name: recenzii
         label: Recenzii afisate pe site
         type: object
-        list: true
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{index}. {autor}"
         fields:
           - {name: text, label: "Textul recenziei (fara ghilimele)", type: text}
           - {name: autor, label: "Autor (ex. M. U., recenzie Google)", type: string}
@@ -192,7 +201,10 @@ content:
       - name: intrebari
         label: Intrebari
         type: object
-        list: true
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{index}. {intrebare}"
         fields:
           - {name: intrebare, label: Intrebare, type: string}
           - {name: raspuns, label: "Raspuns (poti scrie [preturi] pentru textul cu preturile si [telefon] pentru numarul de telefon, se completeaza automat)", type: text}
@@ -228,7 +240,10 @@ content:
       - name: servicii
         label: "Ce face salonul: lista (pictogramele se pun automat, in ordine)"
         type: object
-        list: true
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{index}. {titlu}"
         fields:
           - {name: titlu, label: Titlu, type: string}
           - {name: text, label: Text, type: text}
@@ -236,7 +251,10 @@ content:
       - name: pasi
         label: "Cum decurge o programare: pasii (poti scrie [telefon] pentru numarul de telefon)"
         type: object
-        list: true
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{index}. {titlu}"
         fields:
           - {name: titlu, label: Titlu, type: string}
           - {name: text, label: Text, type: text}
@@ -293,13 +311,19 @@ content:
               - name: paragrafe
                 label: Paragrafe
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{index}. {text}"
                 fields:
                   - {name: text, label: Paragraf, type: text}
               - name: butoane
                 label: "Butoane (se pot muta prin tragere)"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: false
+                    summary: "{index}. {text}"
                 fields:
                   - {name: text, label: "Text pe buton", type: string}
                   - {name: link, label: "Link (ex. contact.html sau https://...)", type: string}
@@ -319,7 +343,10 @@ content:
               - name: elemente
                 label: "Elemente (pictogramele se pun automat, in ordine)"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{index}. {titlu}"
                 fields:
                   - {name: titlu, label: Titlu, type: string}
                   - {name: text, label: Text, type: text}
@@ -361,13 +388,19 @@ content:
               - name: paragrafe
                 label: Paragrafe
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{index}. {text}"
                 fields:
                   - {name: text, label: Paragraf, type: text}
               - name: butoane
                 label: "Butoane (se pot muta prin tragere)"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: false
+                    summary: "{index}. {text}"
                 fields:
                   - {name: text, label: "Text pe buton", type: string}
                   - {name: link, label: "Link (ex. contact.html sau https://...)", type: string}
@@ -403,13 +436,19 @@ content:
               - name: paragrafe
                 label: Paragrafe
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{index}. {text}"
                 fields:
                   - {name: text, label: Paragraf, type: text}
               - name: butoane
                 label: "Butoane (se pot muta prin tragere)"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: false
+                    summary: "{index}. {text}"
                 fields:
                   - {name: text, label: "Text pe buton", type: string}
                   - {name: link, label: "Link (ex. contact.html sau https://...)", type: string}
@@ -429,7 +468,10 @@ content:
               - name: elemente
                 label: "Elemente (pictogramele se pun automat, in ordine)"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{index}. {titlu}"
                 fields:
                   - {name: titlu, label: Titlu, type: string}
                   - {name: text, label: Text, type: text}
@@ -497,13 +539,19 @@ content:
               - name: paragrafe
                 label: Paragrafe
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{index}. {text}"
                 fields:
                   - {name: text, label: Paragraf, type: text}
               - name: butoane
                 label: "Butoane (se pot muta prin tragere)"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: false
+                    summary: "{index}. {text}"
                 fields:
                   - {name: text, label: "Text pe buton", type: string}
                   - {name: link, label: "Link (ex. contact.html sau https://...)", type: string}
@@ -523,7 +571,10 @@ content:
               - name: elemente
                 label: "Elemente (pictogramele se pun automat, in ordine)"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{index}. {titlu}"
                 fields:
                   - {name: titlu, label: Titlu, type: string}
                   - {name: text, label: Text, type: text}
@@ -586,13 +637,19 @@ content:
               - name: paragrafe
                 label: Paragrafe
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{index}. {text}"
                 fields:
                   - {name: text, label: Paragraf, type: text}
               - name: butoane
                 label: "Butoane (se pot muta prin tragere)"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: false
+                    summary: "{index}. {text}"
                 fields:
                   - {name: text, label: "Text pe buton", type: string}
                   - {name: link, label: "Link (ex. contact.html sau https://...)", type: string}
@@ -612,7 +669,10 @@ content:
               - name: elemente
                 label: "Elemente (pictogramele se pun automat, in ordine)"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{index}. {titlu}"
                 fields:
                   - {name: titlu, label: Titlu, type: string}
                   - {name: text, label: Text, type: text}
@@ -680,13 +740,19 @@ content:
               - name: paragrafe
                 label: Paragrafe
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{index}. {text}"
                 fields:
                   - {name: text, label: Paragraf, type: text}
               - name: butoane
                 label: "Butoane (se pot muta prin tragere)"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: false
+                    summary: "{index}. {text}"
                 fields:
                   - {name: text, label: "Text pe buton", type: string}
                   - {name: link, label: "Link (ex. contact.html sau https://...)", type: string}
@@ -706,7 +772,10 @@ content:
               - name: elemente
                 label: "Elemente (pictogramele se pun automat, in ordine)"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{index}. {titlu}"
                 fields:
                   - {name: titlu, label: Titlu, type: string}
                   - {name: text, label: Text, type: text}
