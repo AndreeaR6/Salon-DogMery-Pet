@@ -109,7 +109,7 @@ content:
         list:
           collapsible:
             collapsed: true
-            summary: "{index}. {alt}"
+            summary: "Poza {index}"
         fields:
           - name: src
             label: Poza
@@ -314,7 +314,7 @@ content:
                 list:
                   collapsible:
                     collapsed: true
-                    summary: "{index}. {text}"
+                    summary: "Paragraf {index}"
                 fields:
                   - {name: text, label: Paragraf, type: text}
               - name: butoane
@@ -391,7 +391,7 @@ content:
                 list:
                   collapsible:
                     collapsed: true
-                    summary: "{index}. {text}"
+                    summary: "Paragraf {index}"
                 fields:
                   - {name: text, label: Paragraf, type: text}
               - name: butoane
@@ -439,7 +439,7 @@ content:
                 list:
                   collapsible:
                     collapsed: true
-                    summary: "{index}. {text}"
+                    summary: "Paragraf {index}"
                 fields:
                   - {name: text, label: Paragraf, type: text}
               - name: butoane
@@ -542,7 +542,7 @@ content:
                 list:
                   collapsible:
                     collapsed: true
-                    summary: "{index}. {text}"
+                    summary: "Paragraf {index}"
                 fields:
                   - {name: text, label: Paragraf, type: text}
               - name: butoane
@@ -640,7 +640,7 @@ content:
                 list:
                   collapsible:
                     collapsed: true
-                    summary: "{index}. {text}"
+                    summary: "Paragraf {index}"
                 fields:
                   - {name: text, label: Paragraf, type: text}
               - name: butoane
@@ -743,7 +743,7 @@ content:
                 list:
                   collapsible:
                     collapsed: true
-                    summary: "{index}. {text}"
+                    summary: "Paragraf {index}"
                 fields:
                   - {name: text, label: Paragraf, type: text}
               - name: butoane
