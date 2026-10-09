@@ -1,3 +1,8 @@
+---
+---
+{%- assign salon = site.data.salon -%}
+{%- assign lvd = salon.program.luni_vineri_de | split: ':' -%}{%- assign lvp = salon.program.luni_vineri_pana | split: ':' -%}{%- assign sad = salon.program.sambata_de | split: ':' -%}{%- assign sap = salon.program.sambata_pana | split: ':' -%}
+{%- capture t_lvd -%}{{ lvd[0] | plus: 0 }}:{{ lvd[1] }}{%- endcapture -%}{%- capture t_lvp -%}{{ lvp[0] | plus: 0 }}:{{ lvp[1] }}{%- endcapture -%}{%- capture t_sad -%}{{ sad[0] | plus: 0 }}:{{ sad[1] }}{%- endcapture -%}{%- capture t_sap -%}{{ sap[0] | plus: 0 }}:{{ sap[1] }}{%- endcapture -%}
 <!doctype html>
 <html lang="ro">
 <head>
@@ -46,7 +51,7 @@
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Salon DogMery Pet, pagina principala"><span class="mark" aria-hidden="true">M</span><span>DogMery <b>Pet</b></span></a>
     <nav class="nav" id="nav" aria-label="Meniu principal"><a href="index.html">Acasa</a><a href="servicii.html">Servicii si preturi</a><a href="despre-noi.html" aria-current="page">Despre noi</a><a href="galerie.html">Galerie</a><a href="contact.html">Contact</a></nav>
-    <a class="btn btn-small" href="tel:+40791140396"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-phone"/></svg> Suna</a>
+    <a class="btn btn-small" href="tel:+{{ salon.telefon_intl | remove: '+' }}"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-phone"/></svg> Suna</a>
     <button class="menu-btn" type="button" aria-label="Deschide meniul" aria-controls="nav" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-menu"/></svg></button>
   </div>
 </header>
@@ -118,7 +123,7 @@
   <div class="wrap">
     <div class="section-head">
       <h2>Unde ne gasesti</h2>
-      <p>Suntem in Pitesti, pe Str. Tache Ionescu nr. 27, bl. Q2, parter. Programul e Luni - Vineri 9:00 - 17:00 si Sambata 9:00 - 14:00. <a href="contact.html">Vezi pagina de contact</a>.</p>
+      <p>Suntem in Pitesti, pe Str. Tache Ionescu nr. 27, bl. Q2, parter. Programul e Luni - Vineri {{ t_lvd }} - {{ t_lvp }} si Sambata {{ t_sad }} - {{ t_sap }}. <a href="contact.html">Vezi pagina de contact</a>.</p>
     </div>
   </div>
 </section>
@@ -128,8 +133,8 @@
     <h2>Programeaza-ti catelusul</h2>
     <p>Suna sau scrie-ne pe WhatsApp si stabilim ziua si ora potrivita.</p>
     <div class="actions center">
-      <a class="btn btn-light" href="tel:+40791140396"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-phone"/></svg> 0791 140 396</a>
-      <a class="btn btn-wa" href="https://api.whatsapp.com/send?phone=40791140396" rel="noopener"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-whatsapp"/></svg> Scrie pe WhatsApp</a>
+      <a class="btn btn-light" href="tel:+{{ salon.telefon_intl | remove: '+' }}"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-phone"/></svg> {{ salon.telefon }}</a>
+      <a class="btn btn-wa" href="https://api.whatsapp.com/send?phone={{ salon.telefon_intl | remove: '+' }}" rel="noopener"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-whatsapp"/></svg> Scrie pe WhatsApp</a>
     </div>
   </div>
 </section>
@@ -159,11 +164,11 @@
       <div>
         <h2>Contact</h2>
         <p>Str. Tache Ionescu nr. 27, bl. Q2, parter<br>Pitesti, 110143</p>
-        <p><a href="tel:+40791140396">0791 140 396</a><br><a href="https://api.whatsapp.com/send?phone=40791140396" rel="noopener">WhatsApp</a></p>
+        <p><a href="tel:+{{ salon.telefon_intl | remove: '+' }}">{{ salon.telefon }}</a><br><a href="https://api.whatsapp.com/send?phone={{ salon.telefon_intl | remove: '+' }}" rel="noopener">WhatsApp</a></p>
       </div>
       <div>
         <h2>Program</h2>
-        <p>Luni - Vineri: 9:00 - 17:00<br>Sambata: 9:00 - 14:00<br>Duminica: inchis</p>
+        <p>Luni - Vineri: {{ t_lvd }} - {{ t_lvp }}<br>Sambata: {{ t_sad }} - {{ t_sap }}<br>Duminica: inchis</p>
       </div>
     </div>
     <div class="foot-bottom">
@@ -172,7 +177,7 @@
     </div>
   </div>
 </footer>
-<a class="wa-float" href="https://api.whatsapp.com/send?phone=40791140396" rel="noopener" aria-label="Scrie pe WhatsApp"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-whatsapp"/></svg><span>WhatsApp</span></a>
+<a class="wa-float" href="https://api.whatsapp.com/send?phone={{ salon.telefon_intl | remove: '+' }}" rel="noopener" aria-label="Scrie pe WhatsApp"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-whatsapp"/></svg><span>WhatsApp</span></a>
 <div class="consent" id="consent" role="dialog" aria-label="Cookie-uri" hidden>
   <p>Folosim Google Analytics ca sa vedem cate persoane viziteaza site-ul. Se activeaza doar daca esti de acord. Detalii in <a href="confidentialitate.html">pagina de confidentialitate</a>.</p>
   <div class="actions">

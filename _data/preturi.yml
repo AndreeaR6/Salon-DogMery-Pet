@@ -1,12 +1,15 @@
 complet:
+  descriere: "Tuns, spalat, uscat, periat, curatat urechi, taiat unghii, parfumat."
   mica: 140
   medie: 170
   mare: 200
 spalat:
+  descriere: "Spalat, uscat, periat, parfumat, curatat urechi, taiat unghii. Fara tuns."
   mica: 100
   medie: 130
   mare: 150
 tuns:
+  descriere: "Tuns, periat, parfumat, curatat urechi, taiat unghii. Fara baie."
   mica: 100
   medie: 130
   mare: 150

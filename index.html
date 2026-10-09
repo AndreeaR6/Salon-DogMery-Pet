@@ -1,5 +1,8 @@
 ---
 ---
+{%- assign salon = site.data.salon -%}
+{%- assign lvd = salon.program.luni_vineri_de | split: ':' -%}{%- assign lvp = salon.program.luni_vineri_pana | split: ':' -%}{%- assign sad = salon.program.sambata_de | split: ':' -%}{%- assign sap = salon.program.sambata_pana | split: ':' -%}
+{%- capture t_lvd -%}{{ lvd[0] | plus: 0 }}:{{ lvd[1] }}{%- endcapture -%}{%- capture t_lvp -%}{{ lvp[0] | plus: 0 }}:{{ lvp[1] }}{%- endcapture -%}{%- capture t_sad -%}{{ sad[0] | plus: 0 }}:{{ sad[1] }}{%- endcapture -%}{%- capture t_sap -%}{{ sap[0] | plus: 0 }}:{{ sap[1] }}{%- endcapture -%}
 {%- assign p = site.data.preturi -%}
 {%- assign mn_c = p.complet.mica -%}{%- if p.complet.medie < mn_c -%}{%- assign mn_c = p.complet.medie -%}{%- endif -%}{%- if p.complet.mare < mn_c -%}{%- assign mn_c = p.complet.mare -%}{%- endif -%}
 {%- assign mx_c = p.complet.mica -%}{%- if p.complet.medie > mx_c -%}{%- assign mx_c = p.complet.medie -%}{%- endif -%}{%- if p.complet.mare > mx_c -%}{%- assign mx_c = p.complet.mare -%}{%- endif -%}
@@ -17,13 +20,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Salon DogMery Pet | Toaletaj canin in Pitesti</title>
-<meta name="description" content="Salon DogMery Pet, toaletaj canin in Pitesti, Str. Tache Ionescu nr. 27. Tuns, spalat, uscat, periat, urechi, unghii. Programari la 0791 140 396.">
+<meta name="description" content="Salon DogMery Pet, toaletaj canin in Pitesti, Str. Tache Ionescu nr. 27. Tuns, spalat, uscat, periat, urechi, unghii. Programari la {{ salon.telefon }}.">
 <link rel="canonical" href="https://salon-dogmery-pet.github.io/SalonDogMeryPet/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ro_RO">
 <meta property="og:site_name" content="Salon DogMery Pet">
 <meta property="og:title" content="Salon DogMery Pet | Toaletaj canin in Pitesti">
-<meta property="og:description" content="Salon DogMery Pet, toaletaj canin in Pitesti, Str. Tache Ionescu nr. 27. Tuns, spalat, uscat, periat, urechi, unghii. Programari la 0791 140 396.">
+<meta property="og:description" content="Salon DogMery Pet, toaletaj canin in Pitesti, Str. Tache Ionescu nr. 27. Tuns, spalat, uscat, periat, urechi, unghii. Programari la {{ salon.telefon }}.">
 <meta property="og:url" content="https://salon-dogmery-pet.github.io/SalonDogMeryPet/">
 <meta property="og:image" content="https://salon-dogmery-pet.github.io/SalonDogMeryPet/img/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -41,7 +44,7 @@
   "description": "Salon de toaletaj canin in Pitesti: tuns, spalat, uscat, periat, curatat urechi, taiat unghii, parfumat.",
   "url": "https://salon-dogmery-pet.github.io/SalonDogMeryPet/",
   "image": "https://salon-dogmery-pet.github.io/SalonDogMeryPet/img/og-image.jpg",
-  "telephone": "+40791140396",
+  "telephone": "+{{ salon.telefon_intl | remove: '+' }}",
   "priceRange": "{{ lo }}-{{ hi }} RON",
   "address": {
     "@type": "PostalAddress",
@@ -65,14 +68,14 @@
         "Thursday",
         "Friday"
       ],
-      "opens": "09:00",
-      "closes": "17:00"
+      "opens": "{{ salon.program.luni_vineri_de }}",
+      "closes": "{{ salon.program.luni_vineri_pana }}"
     },
     {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": "Saturday",
-      "opens": "09:00",
-      "closes": "14:00"
+      "opens": "{{ salon.program.sambata_de }}",
+      "closes": "{{ salon.program.sambata_pana }}"
     }
   ],
   "sameAs": [
@@ -195,7 +198,7 @@
       "name": "Cum fac o programare?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Ne suni la 0791 140 396 sau ne scrii pe WhatsApp, iar impreuna alegem ziua si ora."
+        "text": "Ne suni la {{ salon.telefon }} sau ne scrii pe WhatsApp, iar impreuna alegem ziua si ora."
       }
     },
     {
@@ -216,7 +219,7 @@
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Salon DogMery Pet, pagina principala"><span class="mark" aria-hidden="true">M</span><span>DogMery <b>Pet</b></span></a>
     <nav class="nav" id="nav" aria-label="Meniu principal"><a href="index.html" aria-current="page">Acasa</a><a href="servicii.html">Servicii si preturi</a><a href="despre-noi.html">Despre noi</a><a href="galerie.html">Galerie</a><a href="contact.html">Contact</a></nav>
-    <a class="btn btn-small" href="tel:+40791140396"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-phone"/></svg> Suna</a>
+    <a class="btn btn-small" href="tel:+{{ salon.telefon_intl | remove: '+' }}"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-phone"/></svg> Suna</a>
     <button class="menu-btn" type="button" aria-label="Deschide meniul" aria-controls="nav" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-menu"/></svg></button>
   </div>
 </header>
@@ -228,10 +231,10 @@
       <h1>Rasfat si grija - catelul tau merita tot ce e mai bun</h1>
       <p class="lead">Tuns, spalat, uscat, periat, curatat urechi si taiat unghii, cu rabdare si grija pentru fiecare blanos.</p>
       <div class="actions">
-        <a class="btn" href="https://api.whatsapp.com/send?phone=40791140396" rel="noopener"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-whatsapp"/></svg> Programare pe WhatsApp</a>
-        <a class="btn btn-ghost" href="tel:+40791140396"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-phone"/></svg> 0791 140 396</a>
+        <a class="btn" href="https://api.whatsapp.com/send?phone={{ salon.telefon_intl | remove: '+' }}" rel="noopener"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-whatsapp"/></svg> Programare pe WhatsApp</a>
+        <a class="btn btn-ghost" href="tel:+{{ salon.telefon_intl | remove: '+' }}"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-phone"/></svg> {{ salon.telefon }}</a>
       </div>
-      <p class="open-now" data-open-now>Program: Luni-Vineri 9:00-17:00, Sambata 9:00-14:00</p>
+      <p class="open-now" data-open-now data-lv-de="{{ salon.program.luni_vineri_de }}" data-lv-pana="{{ salon.program.luni_vineri_pana }}" data-sa-de="{{ salon.program.sambata_de }}" data-sa-pana="{{ salon.program.sambata_pana }}" data-program="Luni-Vineri {{ t_lvd }}-{{ t_lvp }}, Sambata {{ t_sad }}-{{ t_sap }}">Program: Luni-Vineri {{ t_lvd }}-{{ t_lvp }}, Sambata {{ t_sad }}-{{ t_sap }}</p>
     </div>
   </div>
   <div class="wrap">
@@ -247,10 +250,10 @@
 <div class="strip">
   <div class="wrap">
     <ul>
-      <li><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-clock"/></svg><span>Luni - Vineri 9:00 - 17:00<small>Sambata 9:00 - 14:00</small></span></li>
+      <li><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-clock"/></svg><span>Luni - Vineri {{ t_lvd }} - {{ t_lvp }}<small>Sambata {{ t_sad }} - {{ t_sap }}</small></span></li>
       <li><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-pin"/></svg><span>Str. Tache Ionescu nr. 27<small>bl. Q2, parter, Pitesti</small></span></li>
       <li><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-heart"/></svg><span>Preturi de la {{ lo }} lei<small>in functie de talie</small></span></li>
-      <li><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-phone"/></svg><span>0791 140 396<small>telefon si WhatsApp</small></span></li>
+      <li><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-phone"/></svg><span>{{ salon.telefon }}<small>telefon si WhatsApp</small></span></li>
     </ul>
   </div>
 </div>
@@ -286,7 +289,7 @@
     <span class="flag">Cel mai ales</span>
     <h3>Pachet complet</h3>
     <p class="from">de la {{ mn_c }} lei</p>
-    <p class="includes">Tuns, spalat, uscat, periat, curatat urechi, taiat unghii, parfumat.</p>
+    <p class="includes">{{ p.complet.descriere }}</p>
     <ul class="prices">
       <li><span>Talie mica</span><b>{{ p.complet.mica }} lei</b></li>
       <li><span>Talie medie</span><b>{{ p.complet.medie }} lei</b></li>
@@ -298,7 +301,7 @@
     
     <h3>Doar spalat</h3>
     <p class="from">de la {{ mn_s }} lei</p>
-    <p class="includes">Spalat, uscat, periat, parfumat, curatat urechi, taiat unghii. Fara tuns.</p>
+    <p class="includes">{{ p.spalat.descriere }}</p>
     <ul class="prices">
       <li><span>Talie mica</span><b>{{ p.spalat.mica }} lei</b></li>
       <li><span>Talie medie</span><b>{{ p.spalat.medie }} lei</b></li>
@@ -310,7 +313,7 @@
     
     <h3>Doar tuns</h3>
     <p class="from">de la {{ mn_t }} lei</p>
-    <p class="includes">Tuns, periat, parfumat, curatat urechi, taiat unghii. Fara baie.</p>
+    <p class="includes">{{ p.tuns.descriere }}</p>
     <ul class="prices">
       <li><span>Talie mica</span><b>{{ p.tuns.mica }} lei</b></li>
       <li><span>Talie medie</span><b>{{ p.tuns.medie }} lei</b></li>
@@ -328,7 +331,7 @@
     <div class="section-head center">
       <h2>Cum decurge o programare</h2>
     </div>
-    <ol class="steps"><li><h3>Ne suni sau ne scrii</h3><p>Pe 0791 140 396 sau pe WhatsApp. Ne spui rasa si talia cainelui.</p></li><li><h3>Stabilim ziua si ora</h3><p>Alegem impreuna intervalul care ti se potriveste.</p></li><li><h3>Te anuntam cand e gata</h3><p>Daca ai lasat cainele la salon, te sunam cand poti sa-l iei.</p></li></ol>
+    <ol class="steps"><li><h3>Ne suni sau ne scrii</h3><p>Pe {{ salon.telefon }} sau pe WhatsApp. Ne spui rasa si talia cainelui.</p></li><li><h3>Stabilim ziua si ora</h3><p>Alegem impreuna intervalul care ti se potriveste.</p></li><li><h3>Te anuntam cand e gata</h3><p>Daca ai lasat cainele la salon, te sunam cand poti sa-l iei.</p></li></ol>
   </div>
 </section>
 
@@ -363,7 +366,7 @@
     <div class="section-head">
       <h2>Intrebari frecvente</h2>
     </div>
-    <div class="faq"><details><summary>Cat dureaza o sedinta de toaletaj?</summary><p>Intre 1 h 30 min si 3 h, in functie de rasa, tipul si starea blanii si de comportamentul cainelui.</p></details><details><summary>Cat costa toaletajul?</summary><p>{% include text-preturi.html %} La blana foarte incalcita, subpar abundent sau temperament dificil, pretul final se stabileste dupa evaluarea cainelui.</p></details><details><summary>Cum fac o programare?</summary><p>Ne suni la 0791 140 396 sau ne scrii pe WhatsApp, iar impreuna alegem ziua si ora.</p></details><details><summary>Pot sa las cainele la salon?</summary><p>Da. Reveniti doar dupa ce sunteti contactat telefonic. Daca preferati sa ramaneti, aveti rabdare pana se termina serviciul.</p></details></div>
+    <div class="faq"><details><summary>Cat dureaza o sedinta de toaletaj?</summary><p>Intre 1 h 30 min si 3 h, in functie de rasa, tipul si starea blanii si de comportamentul cainelui.</p></details><details><summary>Cat costa toaletajul?</summary><p>{% include text-preturi.html %} La blana foarte incalcita, subpar abundent sau temperament dificil, pretul final se stabileste dupa evaluarea cainelui.</p></details><details><summary>Cum fac o programare?</summary><p>Ne suni la {{ salon.telefon }} sau ne scrii pe WhatsApp, iar impreuna alegem ziua si ora.</p></details><details><summary>Pot sa las cainele la salon?</summary><p>Da. Reveniti doar dupa ce sunteti contactat telefonic. Daca preferati sa ramaneti, aveti rabdare pana se termina serviciul.</p></details></div>
   </div>
 </section>
 
@@ -372,8 +375,8 @@
     <h2>Programeaza-ti catelusul</h2>
     <p>Suna sau scrie-ne pe WhatsApp si stabilim ziua si ora potrivita.</p>
     <div class="actions center">
-      <a class="btn btn-light" href="tel:+40791140396"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-phone"/></svg> 0791 140 396</a>
-      <a class="btn btn-wa" href="https://api.whatsapp.com/send?phone=40791140396" rel="noopener"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-whatsapp"/></svg> Scrie pe WhatsApp</a>
+      <a class="btn btn-light" href="tel:+{{ salon.telefon_intl | remove: '+' }}"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-phone"/></svg> {{ salon.telefon }}</a>
+      <a class="btn btn-wa" href="https://api.whatsapp.com/send?phone={{ salon.telefon_intl | remove: '+' }}" rel="noopener"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-whatsapp"/></svg> Scrie pe WhatsApp</a>
     </div>
   </div>
 </section>
@@ -403,11 +406,11 @@
       <div>
         <h2>Contact</h2>
         <p>Str. Tache Ionescu nr. 27, bl. Q2, parter<br>Pitesti, 110143</p>
-        <p><a href="tel:+40791140396">0791 140 396</a><br><a href="https://api.whatsapp.com/send?phone=40791140396" rel="noopener">WhatsApp</a></p>
+        <p><a href="tel:+{{ salon.telefon_intl | remove: '+' }}">{{ salon.telefon }}</a><br><a href="https://api.whatsapp.com/send?phone={{ salon.telefon_intl | remove: '+' }}" rel="noopener">WhatsApp</a></p>
       </div>
       <div>
         <h2>Program</h2>
-        <p>Luni - Vineri: 9:00 - 17:00<br>Sambata: 9:00 - 14:00<br>Duminica: inchis</p>
+        <p>Luni - Vineri: {{ t_lvd }} - {{ t_lvp }}<br>Sambata: {{ t_sad }} - {{ t_sap }}<br>Duminica: inchis</p>
       </div>
     </div>
     <div class="foot-bottom">
@@ -416,7 +419,7 @@
     </div>
   </div>
 </footer>
-<a class="wa-float" href="https://api.whatsapp.com/send?phone=40791140396" rel="noopener" aria-label="Scrie pe WhatsApp"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-whatsapp"/></svg><span>WhatsApp</span></a>
+<a class="wa-float" href="https://api.whatsapp.com/send?phone={{ salon.telefon_intl | remove: '+' }}" rel="noopener" aria-label="Scrie pe WhatsApp"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-whatsapp"/></svg><span>WhatsApp</span></a>
 <div class="consent" id="consent" role="dialog" aria-label="Cookie-uri" hidden>
   <p>Folosim Google Analytics ca sa vedem cate persoane viziteaza site-ul. Se activeaza doar daca esti de acord. Detalii in <a href="confidentialitate.html">pagina de confidentialitate</a>.</p>
   <div class="actions">

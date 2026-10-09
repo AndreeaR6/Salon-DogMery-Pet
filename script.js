@@ -27,14 +27,17 @@
       var get = function (t) { for (var i = 0; i < parts.length; i++) if (parts[i].type === t) return parts[i].value; return ''; };
       var day = get('weekday');
       var mins = parseInt(get('hour'), 10) * 60 + parseInt(get('minute'), 10);
-      var openMins = 9 * 60, closeMins = null;
-      if (['Mon', 'Tue', 'Wed', 'Thu', 'Fri'].indexOf(day) > -1) closeMins = 17 * 60;
-      else if (day === 'Sat') closeMins = 14 * 60;
+      var toMins = function (v) { var p = String(v || '').split(':'); return parseInt(p[0], 10) * 60 + parseInt(p[1] || '0', 10); };
+      var fmt = function (v) { var p = String(v).split(':'); return parseInt(p[0], 10) + ':' + (p[1] || '00'); };
+      var ds = badge.dataset;
+      var openMins = null, closeMins = null, closeTxt = '';
+      if (['Mon', 'Tue', 'Wed', 'Thu', 'Fri'].indexOf(day) > -1) { openMins = toMins(ds.lvDe); closeMins = toMins(ds.lvPana); closeTxt = fmt(ds.lvPana); }
+      else if (day === 'Sat') { openMins = toMins(ds.saDe); closeMins = toMins(ds.saPana); closeTxt = fmt(ds.saPana); }
       if (closeMins && mins >= openMins && mins < closeMins) {
         badge.classList.add('is-open');
-        badge.textContent = 'Deschis acum, pana la ' + (closeMins === 17 * 60 ? '17:00' : '14:00');
+        badge.textContent = 'Deschis acum, pana la ' + closeTxt;
       } else {
-        badge.textContent = 'Inchis acum. Program: Luni-Vineri 9:00-17:00, Sambata 9:00-14:00';
+        badge.textContent = 'Inchis acum. Program: ' + (ds.program || '');
       }
     } catch (err) { /* ramane textul implicit */ }
   }

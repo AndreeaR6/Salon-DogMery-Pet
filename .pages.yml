@@ -46,6 +46,7 @@ content:
         label: Pachet complet (lei)
         type: object
         fields:
+          - {name: descriere, label: Descriere (ce include), type: text}
           - {name: mica, label: Talie mica, type: number}
           - {name: medie, label: Talie medie, type: number}
           - {name: mare, label: Talie mare, type: number}
@@ -53,6 +54,7 @@ content:
         label: Doar spalat (lei)
         type: object
         fields:
+          - {name: descriere, label: Descriere (ce include), type: text}
           - {name: mica, label: Talie mica, type: number}
           - {name: medie, label: Talie medie, type: number}
           - {name: mare, label: Talie mare, type: number}
@@ -60,6 +62,28 @@ content:
         label: Doar tuns (lei)
         type: object
         fields:
+          - {name: descriere, label: Descriere (ce include), type: text}
           - {name: mica, label: Talie mica, type: number}
           - {name: medie, label: Talie medie, type: number}
           - {name: mare, label: Talie mare, type: number}
+
+  - name: salon
+    label: Telefon si program
+    type: file
+    path: _data/salon.yml
+    format: yaml
+    fields:
+      - name: telefon
+        label: Telefon afisat (ex. 0791 140 396)
+        type: string
+      - name: telefon_intl
+        label: Telefon pentru link-uri (ex. +40791140396)
+        type: string
+      - name: program
+        label: Program
+        type: object
+        fields:
+          - {name: luni_vineri_de, label: "Luni-Vineri: deschidere (HH:MM, ex. 09:00)", type: string}
+          - {name: luni_vineri_pana, label: "Luni-Vineri: inchidere (HH:MM, ex. 17:00)", type: string}
+          - {name: sambata_de, label: "Sambata: deschidere (HH:MM)", type: string}
+          - {name: sambata_pana, label: "Sambata: inchidere (HH:MM)", type: string}
