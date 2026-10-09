@@ -63,81 +63,40 @@
     <p>Un salon pornit din dragostea pentru animale.</p>
   </div>
 </section>
-{%- for dsp_s in site.data.despre.sectiuni -%}
-{%- assign dsp_alt = '' -%}{%- if dsp_s.fundal_alt == true -%}{%- assign dsp_alt = ' alt' -%}{%- endif -%}
-{%- case dsp_s.tip -%}
-{%- when 'poza_mare' -%}
-{%- assign dsp_poza = dsp_s.poza | default: '' | strip -%}{%- assign dsp_pa = dsp_s.alt | default: '' -%}
-{%- if dsp_poza == '' -%}{%- assign dsp_poza = site.data.imagini.banner.poza -%}{%- assign dsp_pa = site.data.imagini.banner.alt -%}{%- endif %}
-<section class="section{% if dsp_s.sus == true %} banner-sec{% endif %}{{ dsp_alt }}">
-  <div class="wrap">
-    <figure class="banner"><img src="{{ dsp_poza | escape }}"{% if dsp_s.sus != true %} loading="lazy"{% endif %} alt="{{ dsp_pa | escape }}"></figure>
-  </div>
-</section>
+{%- for bl_s in site.data.despre.sectiuni -%}
+{%- include stil-bloc.html -%}
+{%- case bl_s.tip -%}
 {%- when 'poveste' -%}
-{%- assign dsp_poza = dsp_s.poza | default: '' | strip -%}{%- assign dsp_pa = dsp_s.alt | default: '' -%}
+{%- assign dsp_poza = bl_s.poza | default: '' | strip -%}{%- assign dsp_pa = bl_s.alt | default: '' -%}
 {%- if dsp_poza == '' -%}{%- assign dsp_poza = site.data.imagini.despre.poza -%}{%- assign dsp_pa = site.data.imagini.despre.alt -%}{%- endif %}
-<section class="section{{ dsp_alt }}">
+<section class="section{{ bl_alt }}"{{ bl_sec }}>
   <div class="wrap">
     <div class="split">
       <div>
-        <h2>{{ dsp_s.titlu | escape }}</h2>
-{%- assign dsp_et = dsp_s.eticheta | default: '' | strip -%}{%- assign dsp_ps = dsp_s.pe_scurt | default: '' | strip -%}
+        <h2{{ bl_h2 }}>{{ bl_s.titlu | escape }}</h2>
+{%- assign dsp_et = bl_s.eticheta | default: '' | strip -%}{%- assign dsp_ps = bl_s.pe_scurt | default: '' | strip -%}
 {%- if dsp_ps != '' %}
         <p>{% if dsp_et != '' %}<b>{{ dsp_et | escape }}</b> {% endif %}{{ dsp_ps | escape }}</p>
 {%- endif -%}
-{%- for dsp_p in dsp_s.paragrafe %}
+{%- for dsp_p in bl_s.paragrafe %}
         <p>{{ dsp_p.text | escape }}</p>
 {%- endfor -%}
-{%- assign btn_lista = dsp_s.butoane -%}{%- include butoane-edit.html %}
+{%- assign btn_lista = bl_s.butoane -%}{%- include butoane-edit.html %}
       </div>
       <img src="{{ dsp_poza | escape }}" loading="lazy" alt="{{ dsp_pa | escape }}">
     </div>
   </div>
 </section>
-{%- when 'text' %}
-<section class="section{{ dsp_alt }}">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>{{ dsp_s.titlu | escape }}</h2>
-    </div>
-{%- for dsp_p in dsp_s.paragrafe %}
-    <p>{{ dsp_p.text | escape }}</p>
-{%- endfor -%}
-{%- assign btn_lista = dsp_s.butoane -%}{%- include butoane-edit.html %}
-  </div>
-</section>
-{%- when 'valori' %}
-<section class="section{{ dsp_alt }}">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>{{ dsp_s.titlu | escape }}</h2>
-    </div>
-    <div class="values" style="margin-top:0">{%- assign dsp_ic = 'heart,shield,sparkle,gift,paw,check' | split: ',' -%}{%- for dsp_v in dsp_s.elemente -%}<div class="value"><h3><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-{{ dsp_ic[forloop.index0] | default: 'heart' }}"/></svg> {{ dsp_v.titlu | escape }}</h3><p>{{ dsp_v.text | escape }}</p></div>{%- endfor -%}</div>
-  </div>
-</section>
-{%- when 'campanie' %}
-{% assign camp = site.data.campanie %}{% if camp.afisata %}<section class="section{{ dsp_alt }}">
-  <div class="wrap">
-    <div class="band">
-      <img src="{{ camp.imagine | default: 'img/site/heart-paw.svg' | escape }}" alt="" width="150" height="150" loading="lazy">
-      <div>
-        <span class="tag">{{ camp.eticheta | escape }}</span>
-        <h2>{{ camp.titlu | escape }}</h2>
-        <p>{{ camp.text | escape }}</p>
-      </div>
-    </div>
-  </div>
-</section>{% endif %}
 {%- when 'unde' %}
-<section class="section{{ dsp_alt }}">
+<section class="section{{ bl_alt }}"{{ bl_sec }}>
   <div class="wrap">
     <div class="section-head">
-      <h2>{{ dsp_s.titlu | escape }}</h2>
+      <h2{{ bl_h2 }}>{{ bl_s.titlu | escape }}</h2>
       <p>Suntem in {{ salon.oras | escape }}, pe {{ salon.strada | escape }}, {{ salon.detalii_adresa | escape }}. Programul e Luni - Vineri {{ t_lvd }} - {{ t_lvp }} si Sambata {{ t_sad }} - {{ t_sap }}. <a href="contact.html">Vezi pagina de contact</a>.</p>
     </div>
   </div>
 </section>
+{%- else -%}{%- include bloc-comun.html -%}
 {%- endcase -%}
 {%- endfor %}
 

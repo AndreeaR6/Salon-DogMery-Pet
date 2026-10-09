@@ -83,10 +83,14 @@
     <p>Trei pachete simple, cu preturi in functie de talia cainelui.</p>
   </div>
 </section>
-<section class="section">
+{%- for bl_s in site.data.pagina_servicii.sectiuni -%}
+{%- include stil-bloc.html -%}
+{%- case bl_s.tip -%}
+{%- when 'pachete' %}
+<section class="section{{ bl_alt }}"{{ bl_sec }}>
   <div class="wrap">
     <div class="section-head">
-      <h2>Alege pachetul potrivit</h2>
+      <h2{{ bl_h2 }}>Alege pachetul potrivit</h2>
       <p class="muted">Preturile sunt in lei si depind de talia cainelui. Daca nu stii in ce categorie intra, intreaba-ne la programare.</p>
     </div>
     <div class="cards">
@@ -130,11 +134,11 @@
     <p class="note">Pentru cainii cu blana foarte incalcita sau cu paraziti, pretul poate suferi mici modificari. La rasele care cer mai mult timp si atentie (blana foarte deasa, lunga sau incalcita, subpar abundent, temperament dificil), pretul final se stabileste dupa evaluarea cainelui.</p>
   </div>
 </section>
-
-<section class="section alt">
+{%- when 'comparatie' %}
+<section class="section{{ bl_alt }}"{{ bl_sec }}>
   <div class="wrap">
     <div class="section-head">
-      <h2>Comparatie intre pachete</h2>
+      <h2{{ bl_h2 }}>Comparatie intre pachete</h2>
     </div>
     <div class="table-wrap"><table>
 <caption>Ce include fiecare pachet</caption>
@@ -144,25 +148,28 @@
 </table></div>
   </div>
 </section>
-
-<section class="section">
+{%- when 'reguli' %}
+<section class="section{{ bl_alt }}"{{ bl_sec }}>
   <div class="wrap">
     <div class="section-head">
-      <h2>Informatii de citit inainte de programare</h2>
+      <h2{{ bl_h2 }}>Informatii de citit inainte de programare</h2>
       <p class="muted">Cateva reguli care ajuta toaletajul sa decurga in siguranta pentru toti.</p>
     </div>
     {% include reguli.html %}
   </div>
 </section>
-
-<section class="section alt">
+{%- when 'intrebari' %}
+<section class="section{{ bl_alt }}"{{ bl_sec }}>
   <div class="wrap">
     <div class="section-head">
-      <h2>Intrebari frecvente</h2>
+      <h2{{ bl_h2 }}>Intrebari frecvente</h2>
     </div>
     {% assign faq_toate = true %}{% include faq-html.html %}
   </div>
 </section>
+{%- else -%}{%- include bloc-comun.html -%}
+{%- endcase -%}
+{%- endfor %}
 
 {%- assign clip_pagina = 'servicii' -%}{%- include clipuri.html %}
 <section class="cta">

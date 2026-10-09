@@ -2,13 +2,13 @@
 {%- assign vid_nr = 0 -%}
 {%- for vid in vid_lista -%}
 {%- assign vid_ok = true -%}
-{%- if clip_pagina -%}{%- assign vid_ok = false -%}{%- if vid.peste_tot == true -%}{%- assign vid_ok = true -%}{%- elsif clip_pagina == 'contact' and vid.contact == true -%}{%- assign vid_ok = true -%}{%- endif -%}{%- endif -%}
+{%- if clip_pagina and clip_pagina != 'bloc' -%}{%- assign vid_ok = false -%}{%- if vid.peste_tot == true -%}{%- assign vid_ok = true -%}{%- elsif clip_pagina == 'contact' and vid.contact == true -%}{%- assign vid_ok = true -%}{%- endif -%}{%- endif -%}
 {%- if vid_ok == true -%}{%- assign vid_nr = vid_nr | plus: 1 -%}{%- endif -%}
 {%- endfor -%}
 {%- if vid_nr > 0 %}
-<section class="section{% if clip_pagina == 'contact' %} alt{% endif %}" id="clipuri">
+<section class="section{% if clip_pagina == 'contact' %} alt{% endif %}{% if clip_pagina == 'bloc' %}{{ bl_alt }}{% endif %}"{% if clip_pagina == 'bloc' %}{{ bl_sec }}{% else %} id="clipuri"{% endif %}>
   <div class="wrap">
-    <div class="section-head"><h2>Clipuri video</h2></div>
+    <div class="section-head"><h2{% if clip_pagina == 'bloc' %}{{ bl_h2 }}{% endif %}>{% if clip_pagina == 'bloc' and bl_s.titlu and bl_s.titlu != '' %}{{ bl_s.titlu | escape }}{% else %}Clipuri video{% endif %}</h2></div>
     <div class="clips">
 {%- for vid in vid_lista -%}
 {%- assign vid_titlu = vid.titlu | default: '' -%}
@@ -22,7 +22,7 @@
 {%- elsif vid_link != '' -%}{%- assign vid_retea = 'link' -%}
 {%- endif -%}
 {%- assign vid_ok = true -%}
-{%- if clip_pagina -%}{%- assign vid_ok = false -%}{%- if vid.peste_tot == true -%}{%- assign vid_ok = true -%}{%- elsif clip_pagina == 'contact' and vid.contact == true -%}{%- assign vid_ok = true -%}{%- endif -%}{%- endif -%}
+{%- if clip_pagina and clip_pagina != 'bloc' -%}{%- assign vid_ok = false -%}{%- if vid.peste_tot == true -%}{%- assign vid_ok = true -%}{%- elsif clip_pagina == 'contact' and vid.contact == true -%}{%- assign vid_ok = true -%}{%- endif -%}{%- endif -%}
 {%- if vid_ok != true -%}{%- assign vid_retea = '' -%}{%- endif -%}
 {%- if vid_retea == 'fisier' -%}
 {%- assign vid_cale = vid_fisier -%}{%- assign vid_c1 = vid_cale | slice: 0, 1 -%}{%- if vid_c1 == '/' -%}{%- assign vid_cale = vid_cale | remove_first: '/' -%}{%- endif -%}

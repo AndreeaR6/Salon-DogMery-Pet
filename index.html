@@ -224,30 +224,34 @@
   </div>
 </div>
 
-<section class="section">
+{%- for bl_s in site.data.acasa.sectiuni -%}
+{%- include stil-bloc.html -%}
+{%- case bl_s.tip -%}
+{%- when 'servicii' %}
+<section class="section{{ bl_alt }}"{{ bl_sec }}>
   <div class="wrap">
     <div class="section-head">
-      <h2>{{ site.data.acasa.servicii_titlu | escape }}</h2>
+      <h2{{ bl_h2 }}>{{ site.data.acasa.servicii_titlu | escape }}</h2>
       <p class="muted">{{ site.data.acasa.servicii_text | escape }}</p>
     </div>
     <div class="tiles">{%- assign ac_ic = 'scissors,bath,dryer,brush,ear,paw,heart,sparkle,check,clock' | split: ',' -%}{%- for ac_s in site.data.acasa.servicii -%}<div class="tile"><div class="badge-ico"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-{{ ac_ic[forloop.index0] | default: 'paw' }}"/></svg></div><h3>{{ ac_s.titlu | escape }}</h3><p>{{ ac_s.text | escape }}</p></div>{%- endfor -%}</div>
   </div>
 </section>
-
-<section class="section">
+{%- when 'inainte_dupa' %}
+<section class="section{{ bl_alt }}"{{ bl_sec }}>
   <div class="wrap">
     <div class="section-head">
-      <h2>Inainte si dupa</h2>
+      <h2{{ bl_h2 }}>Inainte si dupa</h2>
       <p class="muted">Cateva dintre blanosii care au trecut pe la noi.</p>
     </div>
     <figure class="banner"><img src="{{ site.data.imagini.inainte_dupa.poza | escape }}" loading="lazy" alt="{{ site.data.imagini.inainte_dupa.alt | escape }}"></figure>
   </div>
 </section>
-
-<section class="section alt">
+{%- when 'preturi' %}
+<section class="section{{ bl_alt }}"{{ bl_sec }}>
   <div class="wrap">
     <div class="section-head">
-      <h2>Pachete si preturi</h2>
+      <h2{{ bl_h2 }}>Pachete si preturi</h2>
       <p class="muted">Preturile sunt in lei si depind de talia cainelui.</p>
     </div>
     <div class="cards">
@@ -291,33 +295,20 @@
     <p class="note">Pentru cainii cu blana foarte incalcita sau cu paraziti, pretul poate suferi mici modificari. <a href="servicii.html">Vezi toate detaliile si regulile salonului</a>.</p>
   </div>
 </section>
-
-<section class="section">
+{%- when 'pasi' %}
+<section class="section{{ bl_alt }}"{{ bl_sec }}>
   <div class="wrap">
     <div class="section-head center">
-      <h2>{{ site.data.acasa.pasi_titlu | escape }}</h2>
+      <h2{{ bl_h2 }}>{{ site.data.acasa.pasi_titlu | escape }}</h2>
     </div>
     <ol class="steps">{%- for ac_p in site.data.acasa.pasi -%}<li><h3>{{ ac_p.titlu | escape }}</h3><p>{{ ac_p.text | escape | replace: '[telefon]', salon.telefon }}</p></li>{%- endfor -%}</ol>
   </div>
 </section>
-
-{% assign camp = site.data.campanie %}{% if camp.afisata %}<section class="section">
-  <div class="wrap">
-    <div class="band">
-      <img src="{{ camp.imagine | default: 'img/site/heart-paw.svg' | escape }}" alt="" width="150" height="150" loading="lazy">
-      <div>
-        <span class="tag">{{ camp.eticheta | escape }}</span>
-        <h2>{{ camp.titlu | escape }}</h2>
-        <p>{{ camp.text | escape }}</p>
-      </div>
-    </div>
-  </div>
-</section>{% endif %}
-
-{% assign rec = site.data.recenzii %}{% if rec.recenzii and rec.recenzii.size > 0 %}<section class="section">
+{%- when 'recenzii' %}
+{% assign rec = site.data.recenzii %}{% if rec.recenzii and rec.recenzii.size > 0 %}<section class="section{{ bl_alt }}"{{ bl_sec }}>
   <div class="wrap">
     <div class="section-head">
-      <h2>Ce spun clientii</h2>
+      <h2{{ bl_h2 }}>Ce spun clientii</h2>
       <p class="muted"><b>{{ rec.nota | escape }} din 5</b> pe Google, din {{ rec.numar | escape }} de recenzii ({{ rec.luna | escape }}). <a href="{{ rec.link | escape }}" rel="noopener">Citeste toate recenziile pe Google Maps</a>.</p>
     </div>
     <div class="tiles">
@@ -327,15 +318,18 @@
     </div>
   </div>
 </section>{% endif %}
-
-<section class="section alt">
+{%- when 'intrebari' %}
+<section class="section{{ bl_alt }}"{{ bl_sec }}>
   <div class="wrap">
     <div class="section-head">
-      <h2>Intrebari frecvente</h2>
+      <h2{{ bl_h2 }}>Intrebari frecvente</h2>
     </div>
     {% assign faq_toate = false %}{% include faq-html.html %}
   </div>
 </section>
+{%- else -%}{%- include bloc-comun.html -%}
+{%- endcase -%}
+{%- endfor %}
 
 {%- assign clip_pagina = 'index' -%}{%- include clipuri.html %}
 <section class="cta">

@@ -1,0 +1,9 @@
+sectiuni:
+  - tip: pachete
+    fundal_alt: false
+  - tip: comparatie
+    fundal_alt: true
+  - tip: reguli
+    fundal_alt: false
+  - tip: intrebari
+    fundal_alt: true

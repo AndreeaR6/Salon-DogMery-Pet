@@ -39,3 +39,8 @@ Bifele din `_data/video.yml`: `contact` (clipul apare si pe Contact) si `peste_t
 - 'Telefon si program' (`_data/salon.yml`) are acum si adresa, linkurile catre Facebook/Instagram/TikTok si textul din subsol. Adresa si linkurile apar in toate paginile.
 - Nu se schimba automat din panou: meta descrierile si datele structurate pentru Google (JSON-LD, inclusiv adresa si `streetAddress`), titlurile de sectiune din restul paginilor, textele butoanelor.
 
+
+## Sectiuni mutabile si culori
+Paginile Principala, Servicii si Despre noi citesc lista `sectiuni` (`_data/acasa.yml`, `_data/pagina_servicii.yml`, `_data/despre.yml`). Ordinea din lista = ordinea pe pagina; o sectiune scoasa din lista nu se mai afiseaza.
+Fiecare sectiune are `fundal_alt`, `culoare_fundal` si `culoare_titlu` (hex valid, altfel ignorata). Tipuri comune: `poza_mare`, `text`, `valori`, `campanie`, `clipuri` (`_includes/bloc-comun.html`); stilul se calculeaza in `_includes/stil-bloc.html`; butoanele in `_includes/butoane-edit.html`.
+Atentie: lista `sectiuni` goala = pagina fara continut intre antet si butonul final.

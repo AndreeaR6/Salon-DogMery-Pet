@@ -1,0 +1,46 @@
+{%- case bl_s.tip -%}
+{%- when 'poza_mare' -%}
+{%- assign bl_poza = bl_s.poza | default: '' | strip -%}{%- assign bl_pa = bl_s.alt | default: '' -%}
+{%- if bl_poza == '' -%}{%- assign bl_poza = site.data.imagini.banner.poza -%}{%- assign bl_pa = site.data.imagini.banner.alt -%}{%- endif %}
+<section class="section{% if bl_s.sus == true %} banner-sec{% endif %}{{ bl_alt }}"{{ bl_sec }}>
+  <div class="wrap">
+    <figure class="banner"><img src="{{ bl_poza | escape }}"{% if bl_s.sus != true %} loading="lazy"{% endif %} alt="{{ bl_pa | escape }}"></figure>
+  </div>
+</section>
+{%- when 'text' %}
+<section class="section{{ bl_alt }}"{{ bl_sec }}>
+  <div class="wrap">
+    <div class="section-head">
+      <h2{{ bl_h2 }}>{{ bl_s.titlu | escape }}</h2>
+    </div>
+{%- for bl_p in bl_s.paragrafe %}
+    <p>{{ bl_p.text | escape }}</p>
+{%- endfor -%}
+{%- assign btn_lista = bl_s.butoane -%}{%- include butoane-edit.html %}
+  </div>
+</section>
+{%- when 'valori' %}
+<section class="section{{ bl_alt }}"{{ bl_sec }}>
+  <div class="wrap">
+    <div class="section-head">
+      <h2{{ bl_h2 }}>{{ bl_s.titlu | escape }}</h2>
+    </div>
+    <div class="values" style="margin-top:0">{%- assign bl_ic = 'heart,shield,sparkle,gift,paw,check' | split: ',' -%}{%- for bl_v in bl_s.elemente -%}<div class="value"><h3><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-{{ bl_ic[forloop.index0] | default: 'heart' }}"/></svg> {{ bl_v.titlu | escape }}</h3><p>{{ bl_v.text | escape }}</p></div>{%- endfor -%}</div>
+  </div>
+</section>
+{%- when 'campanie' %}
+{% assign camp = site.data.campanie %}{% if camp.afisata %}<section class="section{{ bl_alt }}"{{ bl_sec }}>
+  <div class="wrap">
+    <div class="band">
+      <img src="{{ camp.imagine | default: 'img/site/heart-paw.svg' | escape }}" alt="" width="150" height="150" loading="lazy">
+      <div>
+        <span class="tag">{{ camp.eticheta | escape }}</span>
+        <h2{{ bl_h2 }}>{{ camp.titlu | escape }}</h2>
+        <p>{{ camp.text | escape }}</p>
+      </div>
+    </div>
+  </div>
+</section>{% endif %}
+{%- when 'clipuri' -%}
+{%- assign clip_pagina = 'bloc' -%}{%- include clipuri.html -%}
+{%- endcase -%}

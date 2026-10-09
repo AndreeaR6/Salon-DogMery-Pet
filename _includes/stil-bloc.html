@@ -1,0 +1,6 @@
+{%- assign bl_alt = '' -%}{%- if bl_s.fundal_alt == true -%}{%- assign bl_alt = ' alt' -%}{%- endif -%}
+{%- assign bl_sec = '' -%}{%- assign bl_h2 = '' -%}
+{%- assign bl_cf = bl_s.culoare_fundal | default: '' | strip -%}
+{%- if bl_cf.size > 3 and bl_cf.size < 10 and bl_cf contains '#' -%}{%- unless bl_cf contains ';' or bl_cf contains '}' or bl_cf contains '{' or bl_cf contains '<' or bl_cf contains ':' or bl_cf contains '(' or bl_cf contains ' ' or bl_cf contains '"' -%}{%- capture bl_sec %} style="background:{{ bl_cf | escape }}"{% endcapture -%}{%- endunless -%}{%- endif -%}
+{%- assign bl_ct = bl_s.culoare_titlu | default: '' | strip -%}
+{%- if bl_ct.size > 3 and bl_ct.size < 10 and bl_ct contains '#' -%}{%- unless bl_ct contains ';' or bl_ct contains '}' or bl_ct contains '{' or bl_ct contains '<' or bl_ct contains ':' or bl_ct contains '(' or bl_ct contains ' ' or bl_ct contains '"' -%}{%- capture bl_h2 %} style="color:{{ bl_ct | escape }}"{% endcapture -%}{%- endunless -%}{%- endif -%}

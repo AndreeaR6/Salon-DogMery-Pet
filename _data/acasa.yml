@@ -24,3 +24,18 @@ pasi:
   - titlu: "Te anuntam cand e gata"
     text: "Daca ai lasat cainele la salon, te sunam cand poti sa-l iei."
 
+sectiuni:
+  - tip: servicii
+    fundal_alt: false
+  - tip: inainte_dupa
+    fundal_alt: false
+  - tip: preturi
+    fundal_alt: true
+  - tip: pasi
+    fundal_alt: false
+  - tip: campanie
+    fundal_alt: false
+  - tip: recenzii
+    fundal_alt: false
+  - tip: intrebari
+    fundal_alt: true
