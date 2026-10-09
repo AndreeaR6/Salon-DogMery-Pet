@@ -63,48 +63,61 @@
     <p>Un salon pornit din dragostea pentru animale.</p>
   </div>
 </section>
-<section class="section banner-sec">
+{%- for dsp_s in site.data.despre.sectiuni -%}
+{%- assign dsp_alt = '' -%}{%- if dsp_s.fundal_alt == true -%}{%- assign dsp_alt = ' alt' -%}{%- endif -%}
+{%- case dsp_s.tip -%}
+{%- when 'poza_mare' -%}
+{%- assign dsp_poza = dsp_s.poza | default: '' | strip -%}{%- assign dsp_pa = dsp_s.alt | default: '' -%}
+{%- if dsp_poza == '' -%}{%- assign dsp_poza = site.data.imagini.banner.poza -%}{%- assign dsp_pa = site.data.imagini.banner.alt -%}{%- endif %}
+<section class="section{% if dsp_s.sus == true %} banner-sec{% endif %}{{ dsp_alt }}">
   <div class="wrap">
-    <figure class="banner">
-      <img src="{{ site.data.imagini.banner.poza | escape }}" alt="{{ site.data.imagini.banner.alt | escape }}">
-    </figure>
+    <figure class="banner"><img src="{{ dsp_poza | escape }}"{% if dsp_s.sus != true %} loading="lazy"{% endif %} alt="{{ dsp_pa | escape }}"></figure>
   </div>
 </section>
-<section class="section">
+{%- when 'poveste' -%}
+{%- assign dsp_poza = dsp_s.poza | default: '' | strip -%}{%- assign dsp_pa = dsp_s.alt | default: '' -%}
+{%- if dsp_poza == '' -%}{%- assign dsp_poza = site.data.imagini.despre.poza -%}{%- assign dsp_pa = site.data.imagini.despre.alt -%}{%- endif %}
+<section class="section{{ dsp_alt }}">
   <div class="wrap">
     <div class="split">
       <div>
-        <h2>Povestea salonului</h2>
-        <p><b>Pe scurt:</b> {{ site.data.despre.pe_scurt | escape }}</p>
-{%- for dsp_p in site.data.despre.paragrafe %}
+        <h2>{{ dsp_s.titlu | escape }}</h2>
+{%- assign dsp_et = dsp_s.eticheta | default: '' | strip -%}{%- assign dsp_ps = dsp_s.pe_scurt | default: '' | strip -%}
+{%- if dsp_ps != '' %}
+        <p>{% if dsp_et != '' %}<b>{{ dsp_et | escape }}</b> {% endif %}{{ dsp_ps | escape }}</p>
+{%- endif -%}
+{%- for dsp_p in dsp_s.paragrafe %}
         <p>{{ dsp_p.text | escape }}</p>
-{%- endfor %}
-        <div class="actions">
-          <a class="btn" href="contact.html">Vino la noi</a>
-          <a class="btn btn-ghost" href="servicii.html">Vezi preturile</a>
-        </div>
+{%- endfor -%}
+{%- assign btn_lista = dsp_s.butoane -%}{%- include butoane-edit.html %}
       </div>
-      <img src="{{ site.data.imagini.despre.poza | escape }}" loading="lazy" alt="{{ site.data.imagini.despre.alt | escape }}">
+      <img src="{{ dsp_poza | escape }}" loading="lazy" alt="{{ dsp_pa | escape }}">
     </div>
   </div>
 </section>
-
-<section class="section">
-  <div class="wrap">
-    <figure class="banner"><img src="{{ site.data.imagini.colaj.poza | escape }}" loading="lazy" alt="{{ site.data.imagini.colaj.alt | escape }}"></figure>
-  </div>
-</section>
-
-<section class="section alt">
+{%- when 'text' %}
+<section class="section{{ dsp_alt }}">
   <div class="wrap">
     <div class="section-head">
-      <h2>Ce ne ghideaza</h2>
+      <h2>{{ dsp_s.titlu | escape }}</h2>
     </div>
-    <div class="values" style="margin-top:0">{%- assign dsp_ic = 'heart,shield,sparkle,gift,paw,check' | split: ',' -%}{%- for dsp_v in site.data.despre.valori -%}<div class="value"><h3><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-{{ dsp_ic[forloop.index0] | default: 'heart' }}"/></svg> {{ dsp_v.titlu | escape }}</h3><p>{{ dsp_v.text | escape }}</p></div>{%- endfor -%}</div>
+{%- for dsp_p in dsp_s.paragrafe %}
+    <p>{{ dsp_p.text | escape }}</p>
+{%- endfor -%}
+{%- assign btn_lista = dsp_s.butoane -%}{%- include butoane-edit.html %}
   </div>
 </section>
-
-{% assign camp = site.data.campanie %}{% if camp.afisata %}<section class="section">
+{%- when 'valori' %}
+<section class="section{{ dsp_alt }}">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>{{ dsp_s.titlu | escape }}</h2>
+    </div>
+    <div class="values" style="margin-top:0">{%- assign dsp_ic = 'heart,shield,sparkle,gift,paw,check' | split: ',' -%}{%- for dsp_v in dsp_s.elemente -%}<div class="value"><h3><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-{{ dsp_ic[forloop.index0] | default: 'heart' }}"/></svg> {{ dsp_v.titlu | escape }}</h3><p>{{ dsp_v.text | escape }}</p></div>{%- endfor -%}</div>
+  </div>
+</section>
+{%- when 'campanie' %}
+{% assign camp = site.data.campanie %}{% if camp.afisata %}<section class="section{{ dsp_alt }}">
   <div class="wrap">
     <div class="band">
       <img src="{{ camp.imagine | default: 'img/site/heart-paw.svg' | escape }}" alt="" width="150" height="150" loading="lazy">
@@ -116,15 +129,17 @@
     </div>
   </div>
 </section>{% endif %}
-
-<section class="section alt">
+{%- when 'unde' %}
+<section class="section{{ dsp_alt }}">
   <div class="wrap">
     <div class="section-head">
-      <h2>Unde ne gasesti</h2>
+      <h2>{{ dsp_s.titlu | escape }}</h2>
       <p>Suntem in {{ salon.oras | escape }}, pe {{ salon.strada | escape }}, {{ salon.detalii_adresa | escape }}. Programul e Luni - Vineri {{ t_lvd }} - {{ t_lvp }} si Sambata {{ t_sad }} - {{ t_sap }}. <a href="contact.html">Vezi pagina de contact</a>.</p>
     </div>
   </div>
 </section>
+{%- endcase -%}
+{%- endfor %}
 
 {%- assign clip_pagina = 'despre-noi' -%}{%- include clipuri.html %}
 <section class="cta">

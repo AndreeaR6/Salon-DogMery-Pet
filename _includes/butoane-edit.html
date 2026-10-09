@@ -1,0 +1,17 @@
+{%- if btn_lista and btn_lista.size > 0 %}
+        <div class="actions">
+{%- for btn in btn_lista -%}
+{%- assign btn_t = btn.text | default: '' | strip -%}
+{%- assign btn_l = btn.link | default: '' | strip -%}
+{%- if btn_t != '' -%}
+{%- if btn_l == '' or btn_l contains 'javascript:' -%}{%- assign btn_l = '#' -%}{%- endif -%}
+{%- assign btn_c = btn.culoare | default: '' | strip -%}
+{%- assign btn_st = '' -%}
+{%- if btn_c.size > 3 and btn_c.size < 10 and btn_c contains '#' -%}{%- unless btn_c contains ';' or btn_c contains '}' or btn_c contains '{' or btn_c contains '<' or btn_c contains ':' or btn_c contains '(' or btn_c contains ' ' -%}
+{%- if btn.contur == true -%}{%- capture btn_st %} style="color:{{ btn_c | escape }};border-color:{{ btn_c | escape }}"{% endcapture -%}{%- else -%}{%- capture btn_st %} style="background:{{ btn_c | escape }};border-color:{{ btn_c | escape }}"{% endcapture -%}{%- endif -%}
+{%- endunless -%}{%- endif %}
+          <a class="btn{% if btn.contur == true %} btn-ghost{% endif %}" href="{{ btn_l | escape }}"{{ btn_st }}>{{ btn_t | escape }}</a>
+{%- endif -%}
+{%- endfor %}
+        </div>
+{%- endif -%}

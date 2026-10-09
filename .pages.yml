@@ -207,25 +207,83 @@ content:
           - {name: text, label: Text, type: text}
 
   - name: despre
-    label: Despre noi (poveste si valori)
+    label: "Despre noi (sectiuni, text, butoane)"
     type: file
     path: _data/despre.yml
     format: yaml
     fields:
-      - {name: pe_scurt, label: "Textul dupa 'Pe scurt:'", type: text}
-      - name: paragrafe
-        label: Paragrafe urmatoare
-        type: object
+      - name: sectiuni
+        label: "Sectiuni pagina (trage de ⋮⋮ ca sa le muti; 'Add' ca sa adaugi)"
+        type: block
         list: true
-        fields:
-          - {name: text, label: Paragraf, type: text}
-      - name: valori
-        label: "Ce ne ghideaza (pictogramele se pun automat, in ordine)"
-        type: object
-        list: true
-        fields:
-          - {name: titlu, label: Titlu, type: string}
-          - {name: text, label: Text, type: text}
+        blockKey: tip
+        blocks:
+          - name: poza_mare
+            fields:
+              - {name: poza, label: "Poza (gol = bannerul principal din 'Imagini principale')", type: image, options: {media: imagini}}
+              - {name: alt, label: "Descriere poza", type: string}
+              - {name: sus, label: "Poza de sus a paginii (se incarca prima)", type: boolean}
+              - {name: fundal_alt, label: "Fundal roz deschis", type: boolean}
+          - name: poveste
+            fields:
+              - {name: titlu, label: Titlu, type: string}
+              - {name: eticheta, label: "Eticheta ingrosata (ex. Pe scurt:)", type: string}
+              - {name: pe_scurt, label: "Textul de dupa eticheta", type: text}
+              - name: paragrafe
+                label: Paragrafe
+                type: object
+                list: true
+                fields:
+                  - {name: text, label: Paragraf, type: text}
+              - name: butoane
+                label: "Butoane (se pot muta prin tragere)"
+                type: object
+                list: true
+                fields:
+                  - {name: text, label: "Text pe buton", type: string}
+                  - {name: link, label: "Link (ex. contact.html, servicii.html, tel:+40..., sau link complet)", type: string}
+                  - {name: contur, label: "Buton cu contur, fara fundal colorat", type: boolean}
+                  - {name: culoare, label: "Culoare buton (optional, ex. #c0207a; gol = culoarea site-ului)", type: string}
+              - {name: poza, label: "Poza din dreapta (gol = poza din 'Imagini principale')", type: image, options: {media: imagini}}
+              - {name: alt, label: "Descriere poza", type: string}
+              - {name: fundal_alt, label: "Fundal roz deschis", type: boolean}
+          - name: text
+            fields:
+              - {name: titlu, label: Titlu, type: string}
+              - name: paragrafe
+                label: Paragrafe
+                type: object
+                list: true
+                fields:
+                  - {name: text, label: Paragraf, type: text}
+              - name: butoane
+                label: "Butoane (se pot muta prin tragere)"
+                type: object
+                list: true
+                fields:
+                  - {name: text, label: "Text pe buton", type: string}
+                  - {name: link, label: "Link (ex. contact.html, servicii.html, tel:+40..., sau link complet)", type: string}
+                  - {name: contur, label: "Buton cu contur, fara fundal colorat", type: boolean}
+                  - {name: culoare, label: "Culoare buton (optional, ex. #c0207a; gol = culoarea site-ului)", type: string}
+              - {name: fundal_alt, label: "Fundal roz deschis", type: boolean}
+          - name: valori
+            fields:
+              - {name: titlu, label: Titlu, type: string}
+              - name: elemente
+                label: "Elemente (pictogramele se pun automat, in ordine)"
+                type: object
+                list: true
+                fields:
+                  - {name: titlu, label: Titlu, type: string}
+                  - {name: text, label: Text, type: text}
+              - {name: fundal_alt, label: "Fundal roz deschis", type: boolean}
+          - name: campanie
+            fields:
+              - {name: fundal_alt, label: "Fundal roz deschis (textul campaniei se schimba din 'Campanie' din meniu)", type: boolean}
+          - name: unde
+            fields:
+              - {name: titlu, label: Titlu, type: string}
+              - {name: fundal_alt, label: "Fundal roz deschis (adresa si programul se schimba din 'Telefon si program')", type: boolean}
 
   - name: reguli
     label: "Reguli de citit inainte de programare (Servicii si Contact)"
@@ -254,12 +312,6 @@ content:
           - {name: alt, label: "Descriere poza (pentru cei care nu o vad)", type: string}
       - name: inainte_dupa
         label: "Colaj 'Inainte si dupa' (Acasa)"
-        type: object
-        fields:
-          - {name: poza, label: Poza, type: image, options: {media: imagini}}
-          - {name: alt, label: "Descriere poza", type: string}
-      - name: colaj
-        label: "Colaj de pe canapea (Despre noi)"
         type: object
         fields:
           - {name: poza, label: Poza, type: image, options: {media: imagini}}
