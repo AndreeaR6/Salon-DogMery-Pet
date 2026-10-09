@@ -1,13 +1,17 @@
-pe_scurt: "Salon DogMery Pet ofera servicii profesionale de tuns, imbaiere si ingrijire pentru animalele de companie. Ne dedicam confortului si frumusetii prietenului tau necuvantator!"
+pe_scurt: Salon DogMery Pet ofera servicii profesionale de tuns, imbaiere si
+  ingrijire pentru animalele de companie. Ne dedicam confortului si frumusetii
+  prietenului tau necuvantator!
 paragrafe:
-  - text: "Salon DogMery Pet a pornit din dragostea pentru animale si din dorinta de a avea un loc unde catelusii sunt ingrijiti cu blandete si profesionalism."
-  - text: "Fiecare blanos este tratat cu rabdare, atentie si produse de calitate. Scopul este ca el sa fie toaletat corect si sa ramana in siguranta."
+  - text: Salon DogMery Pet a pornit din dragostea pentru animale si din dorinta de
+      a avea un loc unde catelusii sunt ingrijiti cu blandete si profesionalism.
+  - text: Fiecare blanos este tratat cu rabdare, atentie si produse de calitate.
+      Scopul este ca el sa fie toaletat corect si sa ramana in siguranta.
 valori:
-  - titlu: "Blandete"
-    text: "Fiecare catelus e tratat cu calm si rabdare."
-  - titlu: "Siguranta"
-    text: "Scopul este ca blanosul sa fie toaletat corect si sa ramana in siguranta."
-  - titlu: "Produse de calitate"
-    text: "Folosim produse de calitate pentru blana si pielea cainelui."
-  - titlu: "Grija pentru comunitate"
-    text: "Sustinem cainii din adaposturi prin campanii de donatii."
+  - titlu: Grija pentru comunitate
+    text: Sustinem cainii din adaposturi prin campanii de donatii.
+  - titlu: Blandete
+    text: Fiecare catelus e tratat cu calm si rabdare.
+  - titlu: Siguranta
+    text: Scopul este ca blanosul sa fie toaletat corect si sa ramana in siguranta.
+  - titlu: Produse de calitate
+    text: Folosim produse de calitate pentru blana si pielea cainelui.
