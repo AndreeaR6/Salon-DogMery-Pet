@@ -1,0 +1,2 @@
+{%- assign ret_n = 0 -%}{%- for ret_r in site.data.salon.retele -%}{%- assign ret_lk = ret_r.link | strip -%}{%- assign ret_lc = ret_lk | downcase -%}{%- assign ret_p = ret_lc | slice: 0, 4 -%}{%- assign ret_ok = false -%}{%- if ret_p == 'http' and ret_r.afiseaza != false -%}{%- assign ret_ok = true -%}{%- endif -%}{%- if ret_ok -%}{%- if ret_n > 0 -%},{%- endif %}
+    "{{ ret_lk | escape }}"{%- assign ret_n = ret_n | plus: 1 -%}{%- endif -%}{%- endfor -%}

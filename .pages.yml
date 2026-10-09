@@ -103,9 +103,27 @@ content:
       - {name: detalii_adresa, label: "Adresa: bloc, scara, parter", type: string}
       - {name: oras, label: Oras, type: string}
       - {name: cod_postal, label: "Cod postal", type: string}
-      - {name: facebook, label: "Link Facebook (complet, cu https://)", type: string}
-      - {name: instagram, label: "Link Instagram (complet, cu https://)", type: string}
-      - {name: tiktok, label: "Link TikTok (complet, cu https://)", type: string}
+      - name: retele
+        label: "Retele sociale (trage de ⋮⋮ ca sa schimbi ordinea; bifa 'Arata' ca sa o ascunzi)"
+        type: block
+        list:
+          collapsible:
+            collapsed: false
+            summary: "{index}. {tip}"
+        blockKey: tip
+        blocks:
+          - name: facebook
+            fields:
+              - {name: link, label: "Link Facebook (complet, cu https://)", type: string}
+              - {name: afiseaza, label: "Arata pe site", type: boolean}
+          - name: instagram
+            fields:
+              - {name: link, label: "Link Instagram (complet, cu https://)", type: string}
+              - {name: afiseaza, label: "Arata pe site", type: boolean}
+          - name: tiktok
+            fields:
+              - {name: link, label: "Link TikTok (complet, cu https://)", type: string}
+              - {name: afiseaza, label: "Arata pe site", type: boolean}
       - {name: text_subsol, label: "Text scurt din subsolul paginilor", type: string}
 
   - name: video

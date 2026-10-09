@@ -113,10 +113,7 @@
     <div class="section-head">
       <h2{{ bl_h2 }}>Ne gasesti si pe retele</h2>
     </div>
-    <div class="social-cards">
-      <a class="social-card" href="{{ salon.facebook | escape }}" rel="noopener"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-facebook"/></svg><h3>Facebook</h3><p>Noutati si recenzii.</p><span>Salon DogMery Pet</span></a>
-      <a class="social-card" href="{{ salon.instagram | escape }}" rel="noopener"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-instagram"/></svg><h3>Instagram</h3><p>Poze cu cainii toaletati.</p><span>@salon_dogmery_pet</span></a>
-      <a class="social-card" href="{{ salon.tiktok | escape }}" rel="noopener"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-tiktok"/></svg><h3>TikTok</h3><p>Clipuri din salon.</p><span>@salon_dogmery_pet</span></a>
+    <div class="social-cards">{%- include retele-carduri-contact.html %}
     </div>
   </div>
 </section>
@@ -141,10 +138,7 @@
       <div>
         <a class="brand" href="index.html"><span class="mark" aria-hidden="true">M</span><span>DogMery <b>Pet</b></span></a>
         <p>{{ salon.text_subsol | escape }}</p>
-        <div class="socials">
-          <a href="{{ salon.facebook | escape }}" rel="noopener" aria-label="Facebook"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-facebook"/></svg></a>
-          <a href="{{ salon.instagram | escape }}" rel="noopener" aria-label="Instagram"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-instagram"/></svg></a>
-          <a href="{{ salon.tiktok | escape }}" rel="noopener" aria-label="TikTok"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-tiktok"/></svg></a>
+        <div class="socials">{%- include retele-subsol.html %}
         </div>
       </div>
       <div>
