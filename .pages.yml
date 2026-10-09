@@ -1,0 +1,37 @@
+media:
+  - name: galerie
+    label: Poze galerie
+    input: img/galerie
+    output: img/galerie
+    extensions: [webp, jpg, jpeg, png]
+    rename: safe
+
+content:
+  - name: galerie
+    label: Galerie
+    type: file
+    path: galerie.json
+    format: json
+    fields:
+      - name: poze
+        label: Poze
+        type: object
+        list: true
+        fields:
+          - name: src
+            label: Poza
+            type: image
+            options:
+              media: galerie
+          - name: alt
+            label: Descriere poza
+            type: string
+          - name: legenda
+            label: Legenda (optional)
+            type: string
+          - name: w
+            label: Latime (px)
+            type: number
+          - name: h
+            label: Inaltime (px)
+            type: number
