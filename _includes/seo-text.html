@@ -1,0 +1,5 @@
+{%- capture seo_pc -%}{{ mn_c }}-{{ mx_c }}{%- endcapture -%}
+{%- capture seo_ps -%}{{ slo }}-{{ shi }}{%- endcapture -%}
+{%- capture seo_lv -%}{{ t_lvd }}-{{ t_lvp }}{%- endcapture -%}
+{%- capture seo_sa -%}{{ t_sad }}-{{ t_sap }}{%- endcapture -%}
+{{- seo_text | escape | replace: '[telefon]', salon.telefon | replace: '[pret_complet]', seo_pc | replace: '[pret_spalat_tuns]', seo_ps | replace: '[luni_vineri]', seo_lv | replace: '[sambata]', seo_sa -}}

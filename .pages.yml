@@ -660,6 +660,44 @@ content:
               - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
               - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
 
+  - name: seo
+    label: "Google si distribuire (titluri, descrieri)"
+    type: file
+    path: _data/seo.yml
+    format: yaml
+    fields:
+      - name: index
+        label: "Pagina principala"
+        type: object
+        fields:
+          - {name: titlu, label: "Titlul din Google si din fila browserului", type: string}
+          - {name: descriere, label: "Descrierea din Google (scrie [telefon] pentru numarul de telefon)", type: text}
+          - {name: descriere_google, label: "Descriere scurta pentru Google (date structurate, fara ghilimele)", type: text}
+      - name: servicii
+        label: "Servicii"
+        type: object
+        fields:
+          - {name: titlu, label: "Titlul din Google si din fila browserului", type: string}
+          - {name: descriere, label: "Descrierea din Google (scrie [telefon] pentru numarul de telefon, [pret_complet] pentru pretul pachetului complet, [pret_spalat_tuns] pentru spalat/tuns)", type: text}
+      - name: despre
+        label: "Despre noi"
+        type: object
+        fields:
+          - {name: titlu, label: "Titlul din Google si din fila browserului", type: string}
+          - {name: descriere, label: "Descrierea din Google (scrie [telefon] pentru numarul de telefon)", type: text}
+      - name: galerie
+        label: "Galerie"
+        type: object
+        fields:
+          - {name: titlu, label: "Titlul din Google si din fila browserului", type: string}
+          - {name: descriere, label: "Descrierea din Google (scrie [telefon] pentru numarul de telefon)", type: text}
+      - name: contact
+        label: "Contact"
+        type: object
+        fields:
+          - {name: titlu, label: "Titlul din Google si din fila browserului", type: string}
+          - {name: descriere, label: "Descrierea din Google (scrie [telefon] pentru numarul de telefon, [luni_vineri] si [sambata] pentru program)", type: text}
+
   - name: reguli
     label: "Reguli de citit inainte de programare (Servicii si Contact)"
     type: file
@@ -691,6 +729,11 @@ content:
         fields:
           - {name: poza, label: Poza, type: image, options: {media: imagini}}
           - {name: alt, label: "Descriere poza", type: string}
+      - name: social
+        label: "Poza la distribuire pe Facebook/WhatsApp (recomandat 1200x630, jpg)"
+        type: object
+        fields:
+          - {name: poza, label: Poza, type: image, options: {media: imagini}}
       - name: despre
         label: "Poza de langa poveste (Despre noi)"
         type: object

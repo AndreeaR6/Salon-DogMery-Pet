@@ -15,21 +15,22 @@
 {%- assign slo = mn_s -%}{%- if mn_t < slo -%}{%- assign slo = mn_t -%}{%- endif -%}
 {%- assign shi = mx_s -%}{%- if mx_t > shi -%}{%- assign shi = mx_t -%}{%- endif -%}
 {%- capture faq_preturi -%}{% include text-preturi.html %}{%- endcapture -%}
+{%- assign seo_text = site.data.seo.servicii.descriere -%}{%- capture seo_desc -%}{% include seo-text.html %}{%- endcapture -%}
 <!doctype html>
 <html lang="ro">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Servicii si preturi toaletaj canin Pitesti | DogMery Pet</title>
-<meta name="description" content="Pachete de toaletaj canin in Pitesti: complet {{ mn_c }}-{{ mx_c }} lei, doar spalat sau doar tuns {{ slo }}-{{ shi }} lei. Vezi ce include fiecare pachet si regulile salonului.">
+<title>{{ site.data.seo.servicii.titlu | escape }}</title>
+<meta name="description" content="{{ seo_desc }}">
 <link rel="canonical" href="https://salon-dogmery-pet.github.io/SalonDogMeryPet/servicii.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ro_RO">
 <meta property="og:site_name" content="Salon DogMery Pet">
-<meta property="og:title" content="Servicii si preturi toaletaj canin Pitesti | DogMery Pet">
-<meta property="og:description" content="Pachete de toaletaj canin in Pitesti: complet {{ mn_c }}-{{ mx_c }} lei, doar spalat sau doar tuns {{ slo }}-{{ shi }} lei. Vezi ce include fiecare pachet si regulile salonului.">
+<meta property="og:title" content="{{ site.data.seo.servicii.titlu | escape }}">
+<meta property="og:description" content="{{ seo_desc }}">
 <meta property="og:url" content="https://salon-dogmery-pet.github.io/SalonDogMeryPet/servicii.html">
-<meta property="og:image" content="https://salon-dogmery-pet.github.io/SalonDogMeryPet/img/og-image.jpg">
+<meta property="og:image" content="{% include seo-og.html %}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">

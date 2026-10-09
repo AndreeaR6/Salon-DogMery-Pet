@@ -3,21 +3,22 @@
 {%- assign salon = site.data.salon -%}
 {%- assign lvd = salon.program.luni_vineri_de | split: ':' -%}{%- assign lvp = salon.program.luni_vineri_pana | split: ':' -%}{%- assign sad = salon.program.sambata_de | split: ':' -%}{%- assign sap = salon.program.sambata_pana | split: ':' -%}
 {%- capture t_lvd -%}{{ lvd[0] | plus: 0 }}:{{ lvd[1] }}{%- endcapture -%}{%- capture t_lvp -%}{{ lvp[0] | plus: 0 }}:{{ lvp[1] }}{%- endcapture -%}{%- capture t_sad -%}{{ sad[0] | plus: 0 }}:{{ sad[1] }}{%- endcapture -%}{%- capture t_sap -%}{{ sap[0] | plus: 0 }}:{{ sap[1] }}{%- endcapture -%}
+{%- assign seo_text = site.data.seo.galerie.descriere -%}{%- capture seo_desc -%}{% include seo-text.html %}{%- endcapture -%}
 <!doctype html>
 <html lang="ro">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Galerie toaletaj canin | Salon DogMery Pet Pitesti</title>
-<meta name="description" content="Vezi poze si clipuri cu cainii toaletati la Salon DogMery Pet din Pitesti, pe Instagram, TikTok si Facebook.">
+<title>{{ site.data.seo.galerie.titlu | escape }}</title>
+<meta name="description" content="{{ seo_desc }}">
 <link rel="canonical" href="https://salon-dogmery-pet.github.io/SalonDogMeryPet/galerie.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ro_RO">
 <meta property="og:site_name" content="Salon DogMery Pet">
-<meta property="og:title" content="Galerie toaletaj canin | Salon DogMery Pet Pitesti">
-<meta property="og:description" content="Vezi poze si clipuri cu cainii toaletati la Salon DogMery Pet din Pitesti, pe Instagram, TikTok si Facebook.">
+<meta property="og:title" content="{{ site.data.seo.galerie.titlu | escape }}">
+<meta property="og:description" content="{{ seo_desc }}">
 <meta property="og:url" content="https://salon-dogmery-pet.github.io/SalonDogMeryPet/galerie.html">
-<meta property="og:image" content="https://salon-dogmery-pet.github.io/SalonDogMeryPet/img/og-image.jpg">
+<meta property="og:image" content="{% include seo-og.html %}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">

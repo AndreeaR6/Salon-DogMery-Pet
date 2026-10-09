@@ -44,3 +44,6 @@ Bifele din `_data/video.yml`: `contact` (clipul apare si pe Contact) si `peste_t
 Paginile Principala, Servicii si Despre noi citesc lista `sectiuni` (`_data/acasa.yml`, `_data/pagina_servicii.yml`, `_data/despre.yml`). Ordinea din lista = ordinea pe pagina; o sectiune scoasa din lista nu se mai afiseaza.
 Fiecare sectiune are `fundal_alt`, `culoare_fundal` si `culoare_titlu` (hex valid, altfel ignorata). Tipuri comune: `poza_mare`, `text`, `valori`, `campanie`, `clipuri` (`_includes/bloc-comun.html`); stilul se calculeaza in `_includes/stil-bloc.html`; butoanele in `_includes/butoane-edit.html`.
 Atentie: lista `sectiuni` goala = pagina fara continut intre antet si butonul final.
+
+## Google si distribuire
+Titlul si descrierea fiecarei pagini sunt in `_data/seo.yml` (marcaje: `[telefon]`, `[pret_complet]`, `[pret_spalat_tuns]`, `[luni_vineri]`, `[sambata]`, inlocuite in `_includes/seo-text.html`). Poza de distribuire: `imagini.social.poza` (`_includes/seo-og.html`). Adresa din datele structurate vine din `salon.yml`. Butoanele roz au culori globale in `culori.yml` (`buton`, `buton_hover`, `buton_text`).

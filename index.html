@@ -15,21 +15,22 @@
 {%- assign slo = mn_s -%}{%- if mn_t < slo -%}{%- assign slo = mn_t -%}{%- endif -%}
 {%- assign shi = mx_s -%}{%- if mx_t > shi -%}{%- assign shi = mx_t -%}{%- endif -%}
 {%- capture faq_preturi -%}{% include text-preturi.html %}{%- endcapture -%}
+{%- assign seo_text = site.data.seo.index.descriere -%}{%- capture seo_desc -%}{% include seo-text.html %}{%- endcapture -%}
 <!doctype html>
 <html lang="ro">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Salon DogMery Pet | Toaletaj canin in Pitesti</title>
-<meta name="description" content="Salon DogMery Pet, toaletaj canin in Pitesti, Str. Tache Ionescu nr. 27. Tuns, spalat, uscat, periat, urechi, unghii. Programari la {{ salon.telefon }}.">
+<title>{{ site.data.seo.index.titlu | escape }}</title>
+<meta name="description" content="{{ seo_desc }}">
 <link rel="canonical" href="https://salon-dogmery-pet.github.io/SalonDogMeryPet/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ro_RO">
 <meta property="og:site_name" content="Salon DogMery Pet">
-<meta property="og:title" content="Salon DogMery Pet | Toaletaj canin in Pitesti">
-<meta property="og:description" content="Salon DogMery Pet, toaletaj canin in Pitesti, Str. Tache Ionescu nr. 27. Tuns, spalat, uscat, periat, urechi, unghii. Programari la {{ salon.telefon }}.">
+<meta property="og:title" content="{{ site.data.seo.index.titlu | escape }}">
+<meta property="og:description" content="{{ seo_desc }}">
 <meta property="og:url" content="https://salon-dogmery-pet.github.io/SalonDogMeryPet/">
-<meta property="og:image" content="https://salon-dogmery-pet.github.io/SalonDogMeryPet/img/og-image.jpg">
+<meta property="og:image" content="{% include seo-og.html %}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -42,16 +43,16 @@
   "@type": "PetGroomer",
   "@id": "https://salon-dogmery-pet.github.io/SalonDogMeryPet/#salon",
   "name": "Salon DogMery Pet",
-  "description": "Salon de toaletaj canin in Pitesti: tuns, spalat, uscat, periat, curatat urechi, taiat unghii, parfumat.",
+  "description": "{{ site.data.seo.index.descriere_google | replace: '"', ' ' }}",
   "url": "https://salon-dogmery-pet.github.io/SalonDogMeryPet/",
-  "image": "https://salon-dogmery-pet.github.io/SalonDogMeryPet/img/og-image.jpg",
+  "image": "{% include seo-og.html %}",
   "telephone": "+{{ salon.telefon_intl | remove: '+' }}",
   "priceRange": "{{ lo }}-{{ hi }} RON",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Str. Tache Ionescu nr. 27, bl. Q2, parter",
-    "addressLocality": "Pitesti",
-    "postalCode": "110143",
+    "streetAddress": "{{ salon.strada | replace: '"', ' ' }}, {{ salon.detalii_adresa | replace: '"', ' ' }}",
+    "addressLocality": "{{ salon.oras | replace: '"', ' ' }}",
+    "postalCode": "{{ salon.cod_postal | replace: '"', ' ' }}",
     "addressCountry": "RO"
   },
   "geo": {

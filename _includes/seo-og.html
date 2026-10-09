@@ -1,0 +1,2 @@
+{%- assign seo_o = site.data.imagini.social.poza | default: 'img/og-image.jpg' | strip -%}{%- assign seo_o1 = seo_o | slice: 0, 1 -%}{%- if seo_o1 == '/' -%}{%- assign seo_o = seo_o | remove_first: '/' -%}{%- endif -%}
+{{- 'https://salon-dogmery-pet.github.io/SalonDogMeryPet/' -}}{{- seo_o | escape -}}
