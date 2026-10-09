@@ -209,7 +209,8 @@
         <p><a href="tel:+{{ salon.telefon_intl | remove: '+' }}">{{ salon.telefon }}</a><br><a href="https://api.whatsapp.com/send?phone={{ salon.telefon_intl | remove: '+' }}" rel="noopener">WhatsApp</a></p>
       </div>
       <div>
-        <h2>Program</h2>
+        <h2>Program</h2>{%- if salon.program_nota_scurt and salon.program_nota_scurt != '' %}
+        <p class="prog-nota">{{ salon.program_nota_scurt | escape }}</p>{%- endif %}
         <p>Luni - Vineri: {{ t_lvd }} - {{ t_lvp }}<br>Sambata: {{ t_sad }} - {{ t_sap }}<br>Duminica: inchis</p>
       </div>
     </div>

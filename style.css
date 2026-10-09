@@ -86,6 +86,7 @@ p { margin: 0 0 14px; }
 .open-now::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: #9a8fa3; }
 .open-now.is-open { color: var(--green); }
 .open-now.is-open::before { background: var(--green); box-shadow: 0 0 0 4px rgba(22,122,67,.18); }
+.prog-nota { margin: 0 0 8px; font-size: .92rem; font-weight: 600; color: var(--muted); }
 
 /* page hero */
 .page-hero { position: relative; padding: 54px 0 48px; color: #fff; background: url("img/pattern-paws.svg"), linear-gradient(135deg, var(--pink-dark), var(--pink-darkest)); }

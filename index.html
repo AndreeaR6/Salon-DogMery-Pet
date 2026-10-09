@@ -201,7 +201,7 @@
         <a class="btn" href="https://api.whatsapp.com/send?phone={{ salon.telefon_intl | remove: '+' }}" rel="noopener"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-whatsapp"/></svg> Programare pe WhatsApp</a>
         <a class="btn btn-ghost" href="tel:+{{ salon.telefon_intl | remove: '+' }}"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-phone"/></svg> {{ salon.telefon }}</a>
       </div>
-      <p class="open-now" data-open-now data-lv-de="{{ salon.program.luni_vineri_de }}" data-lv-pana="{{ salon.program.luni_vineri_pana }}" data-sa-de="{{ salon.program.sambata_de }}" data-sa-pana="{{ salon.program.sambata_pana }}" data-program="Luni-Vineri {{ t_lvd }}-{{ t_lvp }}, Sambata {{ t_sad }}-{{ t_sap }}">Program: Luni-Vineri {{ t_lvd }}-{{ t_lvp }}, Sambata {{ t_sad }}-{{ t_sap }}</p>
+      <p class="open-now"{% if salon.eticheta_deschis != false %} data-open-now{% endif %} data-lv-de="{{ salon.program.luni_vineri_de }}" data-lv-pana="{{ salon.program.luni_vineri_pana }}" data-sa-de="{{ salon.program.sambata_de }}" data-sa-pana="{{ salon.program.sambata_pana }}" data-program="Luni-Vineri {{ t_lvd }}-{{ t_lvp }}, Sambata {{ t_sad }}-{{ t_sap }}">{% if salon.eticheta_deschis == false %}{{ salon.eticheta_text | escape }}{% else %}Program: Luni-Vineri {{ t_lvd }}-{{ t_lvp }}, Sambata {{ t_sad }}-{{ t_sap }}{% endif %}</p>
     </div>
   </div>
   <div class="wrap">
@@ -366,7 +366,8 @@
         <p><a href="tel:+{{ salon.telefon_intl | remove: '+' }}">{{ salon.telefon }}</a><br><a href="https://api.whatsapp.com/send?phone={{ salon.telefon_intl | remove: '+' }}" rel="noopener">WhatsApp</a></p>
       </div>
       <div>
-        <h2>Program</h2>
+        <h2>Program</h2>{%- if salon.program_nota_scurt and salon.program_nota_scurt != '' %}
+        <p class="prog-nota">{{ salon.program_nota_scurt | escape }}</p>{%- endif %}
         <p>Luni - Vineri: {{ t_lvd }} - {{ t_lvp }}<br>Sambata: {{ t_sad }} - {{ t_sap }}<br>Duminica: inchis</p>
       </div>
     </div>

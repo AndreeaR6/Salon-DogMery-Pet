@@ -79,7 +79,8 @@
             <dt><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-pin"/></svg> Adresa</dt>
             <dd>{{ salon.strada | escape }}, {{ salon.detalii_adresa | escape }}<br>{{ salon.oras | escape }}, {{ salon.cod_postal | escape }}</dd>
             <dt><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-clock"/></svg> Program</dt>
-            <dd>
+            <dd>{%- if salon.program_nota and salon.program_nota != '' %}
+              <p class="prog-nota">{{ salon.program_nota | escape }}</p>{%- endif %}
               <table class="hours"><tbody>
                 <tr><th scope="row">Luni - Vineri</th><td>{{ t_lvd }} - {{ t_lvp }}</td></tr>
                 <tr><th scope="row">Sambata</th><td>{{ t_sad }} - {{ t_sap }}</td></tr>
@@ -87,9 +88,9 @@
               </tbody></table>
             </dd>
           </dl>
-        </div>
-        <p class="note" style="margin-top:14px">Programul poate fi diferit in functie de programari.</p>
-        <p class="open-now" data-open-now data-lv-de="{{ salon.program.luni_vineri_de }}" data-lv-pana="{{ salon.program.luni_vineri_pana }}" data-sa-de="{{ salon.program.sambata_de }}" data-sa-pana="{{ salon.program.sambata_pana }}" data-program="Luni-Vineri {{ t_lvd }}-{{ t_lvp }}, Sambata {{ t_sad }}-{{ t_sap }}">Program: Luni-Vineri {{ t_lvd }}-{{ t_lvp }}, Sambata {{ t_sad }}-{{ t_sap }}</p>
+        </div>{%- unless salon.program_nota and salon.program_nota != '' %}
+        <p class="note" style="margin-top:14px">Programul poate fi diferit in functie de programari.</p>{%- endunless %}
+        <p class="open-now"{% if salon.eticheta_deschis != false %} data-open-now{% endif %} data-lv-de="{{ salon.program.luni_vineri_de }}" data-lv-pana="{{ salon.program.luni_vineri_pana }}" data-sa-de="{{ salon.program.sambata_de }}" data-sa-pana="{{ salon.program.sambata_pana }}" data-program="Luni-Vineri {{ t_lvd }}-{{ t_lvp }}, Sambata {{ t_sad }}-{{ t_sap }}">{% if salon.eticheta_deschis == false %}{{ salon.eticheta_text | escape }}{% else %}Program: Luni-Vineri {{ t_lvd }}-{{ t_lvp }}, Sambata {{ t_sad }}-{{ t_sap }}{% endif %}</p>
         <div class="actions">
           <a class="btn" href="tel:+{{ salon.telefon_intl | remove: '+' }}"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-phone"/></svg> Suna acum</a>
           <a class="btn btn-wa" href="https://api.whatsapp.com/send?phone={{ salon.telefon_intl | remove: '+' }}" rel="noopener"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-whatsapp"/></svg> WhatsApp</a>
@@ -157,7 +158,8 @@
         <p><a href="tel:+{{ salon.telefon_intl | remove: '+' }}">{{ salon.telefon }}</a><br><a href="https://api.whatsapp.com/send?phone={{ salon.telefon_intl | remove: '+' }}" rel="noopener">WhatsApp</a></p>
       </div>
       <div>
-        <h2>Program</h2>
+        <h2>Program</h2>{%- if salon.program_nota_scurt and salon.program_nota_scurt != '' %}
+        <p class="prog-nota">{{ salon.program_nota_scurt | escape }}</p>{%- endif %}
         <p>Luni - Vineri: {{ t_lvd }} - {{ t_lvp }}<br>Sambata: {{ t_sad }} - {{ t_sap }}<br>Duminica: inchis</p>
       </div>
     </div>

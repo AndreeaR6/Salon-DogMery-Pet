@@ -95,6 +95,10 @@ content:
             fields:
               - {name: link, label: "Link TikTok (complet, cu https://)", type: string}
               - {name: afiseaza, label: "Arata pe site", type: boolean}
+      - {name: program_nota, label: "Nota inainte de program, pe pagina Contact (gol = nota veche)", type: text}
+      - {name: program_nota_scurt, label: "Nota scurta inainte de program (subsol, pagina principala, Despre noi; gol = fara nota)", type: string}
+      - {name: eticheta_deschis, label: "Arata 'Deschis acum / Inchis acum' (debifat = se arata textul de mai jos)", type: boolean}
+      - {name: eticheta_text, label: "Textul care inlocuieste 'Deschis acum / Inchis acum' (pagina principala si Contact)", type: string}
       - {name: text_subsol, label: "Text scurt din subsolul paginilor", type: string}
 
   - name: galerie

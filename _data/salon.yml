@@ -9,6 +9,10 @@ strada: "Str. Tache Ionescu nr. 27"
 detalii_adresa: "bl. Q2, parter"
 oras: "Pitesti"
 cod_postal: "110143"
+program_nota: "Interval orientativ. Lucram pe baza de programari. Va rugam sa ne contactati inainte de vizita, pentru ca este posibil sa fie inchis in afara programarilor."
+program_nota_scurt: "Interval orientativ, pe baza de programari."
+eticheta_deschis: false
+eticheta_text: "Scrie-ne pe WhatsApp si stabilim ziua si ora potrivita."
 text_subsol: "Salon de toaletaj canin in Pitesti. Catelusii pleaca aranjati si parfumati."
 
 retele:
