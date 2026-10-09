@@ -208,7 +208,10 @@ content:
       - name: sectiuni
         label: "Sectiuni pagina (trage de ⋮⋮ ca sa le muti; sterge ca sa le ascunzi; 'Add' ca sa adaugi) - pagina principala"
         type: block
-        list: true
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{index}. {tip} {titlu}"
         blockKey: tip
         blocks:
           - name: servicii
@@ -304,7 +307,10 @@ content:
       - name: sectiuni
         label: "Sectiuni pagina (trage de ⋮⋮ ca sa le muti; sterge ca sa le ascunzi; 'Add' ca sa adaugi)"
         type: block
-        list: true
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{index}. {tip} {titlu}"
         blockKey: tip
         blocks:
           - name: poveste
@@ -401,7 +407,10 @@ content:
       - name: sectiuni
         label: "Sectiuni pagina (trage de ⋮⋮ ca sa le muti; sterge ca sa le ascunzi; 'Add' ca sa adaugi)"
         type: block
-        list: true
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{index}. {tip} {titlu}"
         blockKey: tip
         blocks:
           - name: pachete
