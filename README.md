@@ -20,6 +20,7 @@ Publicare: 'Settings' > 'Pages' > 'Deploy from a branch' > `main` / `/ (root)`.
 
 In Pages CMS, 'Clipuri video': pentru fiecare clip se completeaza fie linkul complet TikTok / Facebook / Instagram, fie un fisier mp4 sau webm (sub 25 MB, pentru incarcare din browser). Datele sunt in `_data/video.yml`, fisierele in `video/`.
 Clipurile de pe retele se incarca doar cand vizitatorul apasa 'Vezi clipul' (vezi `script.js`). Lista goala ascunde sectiunea.
+Bifa "Arata si pe pagina Contact" (campul `contact` din `_data/video.yml`) afiseaza clipul si pe Contact, in `_includes/clipuri.html`; in Galerie apar mereu toate clipurile.
 
 ## Alte texte editabile din Pages CMS
 

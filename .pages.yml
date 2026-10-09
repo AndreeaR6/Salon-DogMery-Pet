@@ -129,6 +129,7 @@ content:
             label: "Coperta pentru fisier (optional)"
             type: image
             options: {media: galerie}
+          - {name: contact, label: "Arata si pe pagina Contact (bifat = apare si acolo; mereu apare in Galerie)", type: boolean}
 
   - name: recenzii
     label: Recenzii (Ce spun clientii)

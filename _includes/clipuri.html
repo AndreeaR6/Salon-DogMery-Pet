@@ -1,0 +1,51 @@
+{%- assign vid_lista = site.data.video.clipuri -%}
+{%- assign vid_nr = 0 -%}
+{%- for vid in vid_lista -%}{%- if clip_doar_contact != true or vid.contact == true -%}{%- assign vid_nr = vid_nr | plus: 1 -%}{%- endif -%}{%- endfor -%}
+{%- if vid_nr > 0 %}
+<section class="section{% if clip_doar_contact == true %} alt{% endif %}" id="clipuri">
+  <div class="wrap">
+    <div class="section-head"><h2>Clipuri video</h2></div>
+    <div class="clips">
+{%- for vid in vid_lista -%}
+{%- assign vid_titlu = vid.titlu | default: '' -%}
+{%- assign vid_link = vid.link | default: '' | strip -%}
+{%- assign vid_fisier = vid.fisier | default: '' | strip -%}
+{%- assign vid_retea = '' -%}
+{%- if vid_fisier != '' -%}{%- assign vid_retea = 'fisier' -%}
+{%- elsif vid_link contains 'tiktok.com' and vid_link contains '/video/' -%}{%- assign vid_retea = 'tiktok' -%}
+{%- elsif vid_link contains 'instagram.com' -%}{%- assign vid_retea = 'instagram' -%}
+{%- elsif vid_link contains 'facebook.com' or vid_link contains 'fb.watch' -%}{%- assign vid_retea = 'facebook' -%}
+{%- elsif vid_link != '' -%}{%- assign vid_retea = 'link' -%}
+{%- endif -%}
+{%- if clip_doar_contact == true and vid.contact != true -%}{%- assign vid_retea = '' -%}{%- endif -%}
+{%- if vid_retea == 'fisier' -%}
+{%- assign vid_cale = vid_fisier -%}{%- assign vid_c1 = vid_cale | slice: 0, 1 -%}{%- if vid_c1 == '/' -%}{%- assign vid_cale = vid_cale | remove_first: '/' -%}{%- endif -%}
+{%- assign vid_poza = vid.poza | default: '' | strip -%}{%- assign vid_p1 = vid_poza | slice: 0, 1 -%}{%- if vid_p1 == '/' -%}{%- assign vid_poza = vid_poza | remove_first: '/' -%}{%- endif %}
+      <figure class="clip">
+        <video controls preload="metadata" playsinline{% if vid_poza != '' %} poster="{{ vid_poza | escape }}"{% endif %} src="{{ vid_cale | escape }}"></video>
+        {%- if vid_titlu != '' %}<figcaption>{{ vid_titlu | escape }}</figcaption>{% endif %}
+      </figure>
+{%- elsif vid_retea == 'tiktok' -%}
+{%- assign vid_id = vid_link | split: '/video/' | last | split: '?' | first | split: '/' | first %}
+      <figure class="clip" data-clip="tiktok" data-url="{{ vid_link | escape }}" data-id="{{ vid_id | escape }}">
+        <div class="clip-box"><p class="clip-name">{% if vid_titlu != '' %}{{ vid_titlu | escape }}{% else %}Clip TikTok{% endif %}</p><button class="btn btn-small" type="button" data-clip-load>Vezi clipul</button><p class="muted clip-note">Se incarca de pe TikTok, care poate folosi cookie-uri. <a href="{{ vid_link | escape }}" rel="noopener">Deschide pe TikTok</a></p></div>
+      </figure>
+{%- elsif vid_retea == 'instagram' -%}
+{%- assign vid_url = vid_link | split: '?' | first %}
+      <figure class="clip" data-clip="instagram" data-url="{{ vid_url | escape }}">
+        <div class="clip-box"><p class="clip-name">{% if vid_titlu != '' %}{{ vid_titlu | escape }}{% else %}Clip Instagram{% endif %}</p><button class="btn btn-small" type="button" data-clip-load>Vezi clipul</button><p class="muted clip-note">Se incarca de pe Instagram, care poate folosi cookie-uri. <a href="{{ vid_url | escape }}" rel="noopener">Deschide pe Instagram</a></p></div>
+      </figure>
+{%- elsif vid_retea == 'facebook' %}
+      <figure class="clip" data-clip="facebook" data-url="{{ vid_link | escape }}">
+        <div class="clip-box"><p class="clip-name">{% if vid_titlu != '' %}{{ vid_titlu | escape }}{% else %}Clip Facebook{% endif %}</p><button class="btn btn-small" type="button" data-clip-load>Vezi clipul</button><p class="muted clip-note">Se incarca de pe Facebook, care poate folosi cookie-uri. <a href="{{ vid_link | escape }}" rel="noopener">Deschide pe Facebook</a></p></div>
+      </figure>
+{%- elsif vid_retea == 'link' %}
+      <figure class="clip">
+        <div class="clip-box"><p class="clip-name">{% if vid_titlu != '' %}{{ vid_titlu | escape }}{% else %}Clip video{% endif %}</p><a class="btn btn-small" href="{{ vid_link | escape }}" rel="noopener">Deschide clipul</a></div>
+      </figure>
+{%- endif -%}
+{%- endfor %}
+    </div>
+  </div>
+</section>
+{%- endif %}
