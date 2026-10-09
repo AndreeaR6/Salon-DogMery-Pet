@@ -35,3 +35,31 @@ content:
           - name: h
             label: Inaltime (px)
             type: number
+
+  - name: preturi
+    label: Preturi
+    type: file
+    path: _data/preturi.yml
+    format: yaml
+    fields:
+      - name: complet
+        label: Pachet complet (lei)
+        type: object
+        fields:
+          - {name: mica, label: Talie mica, type: number}
+          - {name: medie, label: Talie medie, type: number}
+          - {name: mare, label: Talie mare, type: number}
+      - name: spalat
+        label: Doar spalat (lei)
+        type: object
+        fields:
+          - {name: mica, label: Talie mica, type: number}
+          - {name: medie, label: Talie medie, type: number}
+          - {name: mare, label: Talie mare, type: number}
+      - name: tuns
+        label: Doar tuns (lei)
+        type: object
+        fields:
+          - {name: mica, label: Talie mica, type: number}
+          - {name: medie, label: Talie medie, type: number}
+          - {name: mare, label: Talie mare, type: number}
