@@ -707,7 +707,10 @@ content:
       - name: reguli
         label: Reguli
         type: object
-        list: true
+        list:
+          collapsible:
+            collapsed: false
+            summary: "{index}. {text}"
         fields:
           - {name: text, label: Regula, type: text}
 
