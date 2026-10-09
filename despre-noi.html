@@ -121,7 +121,7 @@
   <div class="wrap">
     <div class="section-head">
       <h2>Unde ne gasesti</h2>
-      <p>Suntem in Pitesti, pe Str. Tache Ionescu nr. 27, bl. Q2, parter. Programul e Luni - Vineri {{ t_lvd }} - {{ t_lvp }} si Sambata {{ t_sad }} - {{ t_sap }}. <a href="contact.html">Vezi pagina de contact</a>.</p>
+      <p>Suntem in {{ salon.oras | escape }}, pe {{ salon.strada | escape }}, {{ salon.detalii_adresa | escape }}. Programul e Luni - Vineri {{ t_lvd }} - {{ t_lvp }} si Sambata {{ t_sad }} - {{ t_sap }}. <a href="contact.html">Vezi pagina de contact</a>.</p>
     </div>
   </div>
 </section>
@@ -142,11 +142,11 @@
     <div class="foot-grid">
       <div>
         <a class="brand" href="index.html"><span class="mark" aria-hidden="true">M</span><span>DogMery <b>Pet</b></span></a>
-        <p>Salon de toaletaj canin in Pitesti. Catelusii pleaca aranjati si parfumati.</p>
+        <p>{{ salon.text_subsol | escape }}</p>
         <div class="socials">
-          <a href="https://www.facebook.com/profile.php?id=100066822849450" rel="noopener" aria-label="Facebook"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-facebook"/></svg></a>
-          <a href="https://www.instagram.com/salon_dogmery_pet/" rel="noopener" aria-label="Instagram"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-instagram"/></svg></a>
-          <a href="https://www.tiktok.com/@salon_dogmery_pet" rel="noopener" aria-label="TikTok"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-tiktok"/></svg></a>
+          <a href="{{ salon.facebook | escape }}" rel="noopener" aria-label="Facebook"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-facebook"/></svg></a>
+          <a href="{{ salon.instagram | escape }}" rel="noopener" aria-label="Instagram"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-instagram"/></svg></a>
+          <a href="{{ salon.tiktok | escape }}" rel="noopener" aria-label="TikTok"><svg class="ico" aria-hidden="true"><use href="img/icons.svg#i-tiktok"/></svg></a>
         </div>
       </div>
       <div>
@@ -161,7 +161,7 @@
       </div>
       <div>
         <h2>Contact</h2>
-        <p>Str. Tache Ionescu nr. 27, bl. Q2, parter<br>Pitesti, 110143</p>
+        <p>{{ salon.strada | escape }}, {{ salon.detalii_adresa | escape }}<br>{{ salon.oras | escape }}, {{ salon.cod_postal | escape }}</p>
         <p><a href="tel:+{{ salon.telefon_intl | remove: '+' }}">{{ salon.telefon }}</a><br><a href="https://api.whatsapp.com/send?phone={{ salon.telefon_intl | remove: '+' }}" rel="noopener">WhatsApp</a></p>
       </div>
       <div>

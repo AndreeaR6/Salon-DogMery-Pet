@@ -34,4 +34,7 @@ Clipurile de pe retele se incarca doar cand vizitatorul apasa 'Vezi clipul' (vez
 - 'Imagini principale': `_data/imagini.yml` (banner, colaje, poza din 'Despre noi'). Pozele noi se incarca in `img/site/`. Dimensiunile nu se mai scriu in cod; pagina se potriveste singura.
 - 'Culori site': `_data/culori.yml`. Se scriu cu `#` si cod hex (ex. `#e6399b`). Valorile invalide sunt ignorate si ramane culoarea din `style.css`. Se aplica prin `_includes/culori.html`, pus in `<head>` dupa `style.css`.
 - Culorile fixe din `style.css` care nu sunt in lista (alb, verdele WhatsApp, umbre) nu se schimba din panou.
+- 'Pagina principala' (`_data/acasa.yml`) are acum si 'Ce face salonul' si 'Cum decurge o programare' (in text, `[telefon]` se inlocuieste cu numarul curent).
+- 'Telefon si program' (`_data/salon.yml`) are acum si adresa, linkurile catre Facebook/Instagram/TikTok si textul din subsol. Adresa si linkurile apar in toate paginile.
+- Nu se schimba automat din panou: meta descrierile si datele structurate pentru Google (JSON-LD, inclusiv adresa si `streetAddress`), titlurile de sectiune din restul paginilor, textele butoanelor.
 
