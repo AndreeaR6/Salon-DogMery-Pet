@@ -288,6 +288,11 @@ content:
                   - {name: link, label: "Link (ex. contact.html, servicii.html, tel:+40..., sau link complet)", type: string}
                   - {name: contur, label: "Buton cu contur, fara fundal colorat", type: boolean}
                   - {name: culoare, label: "Culoare buton (optional, ex. #c0207a; gol = culoarea site-ului)", type: string}
+                  - {name: marime, label: "Marime (mic / mediu / mare; gol = mediu)", type: string}
+                  - {name: colturi, label: "Colturi (rotunde / putin / drepte; gol = rotunde)", type: string}
+                  - {name: bordura, label: "Bordura (fara / subtire / groasa; gol = normala)", type: string}
+                  - {name: text_stil, label: "Text (normal / gros; gol = gros)", type: string}
+                  - {name: aliniere, label: "Aliniere pentru tot randul de butoane (stanga / centru / dreapta; conteaza doar la primul buton; gol = stanga)", type: string}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
               - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
               - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
@@ -351,6 +356,11 @@ content:
                   - {name: link, label: "Link (ex. contact.html, servicii.html, tel:+40..., sau link complet)", type: string}
                   - {name: contur, label: "Buton cu contur, fara fundal colorat", type: boolean}
                   - {name: culoare, label: "Culoare buton (optional, ex. #c0207a; gol = culoarea site-ului)", type: string}
+                  - {name: marime, label: "Marime (mic / mediu / mare; gol = mediu)", type: string}
+                  - {name: colturi, label: "Colturi (rotunde / putin / drepte; gol = rotunde)", type: string}
+                  - {name: bordura, label: "Bordura (fara / subtire / groasa; gol = normala)", type: string}
+                  - {name: text_stil, label: "Text (normal / gros; gol = gros)", type: string}
+                  - {name: aliniere, label: "Aliniere pentru tot randul de butoane (stanga / centru / dreapta; conteaza doar la primul buton; gol = stanga)", type: string}
               - {name: poza, label: "Poza din dreapta (gol = poza din 'Imagini principale')", type: image, options: {media: imagini}}
               - {name: alt, label: "Descriere poza", type: string}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
@@ -388,6 +398,11 @@ content:
                   - {name: link, label: "Link (ex. contact.html, servicii.html, tel:+40..., sau link complet)", type: string}
                   - {name: contur, label: "Buton cu contur, fara fundal colorat", type: boolean}
                   - {name: culoare, label: "Culoare buton (optional, ex. #c0207a; gol = culoarea site-ului)", type: string}
+                  - {name: marime, label: "Marime (mic / mediu / mare; gol = mediu)", type: string}
+                  - {name: colturi, label: "Colturi (rotunde / putin / drepte; gol = rotunde)", type: string}
+                  - {name: bordura, label: "Bordura (fara / subtire / groasa; gol = normala)", type: string}
+                  - {name: text_stil, label: "Text (normal / gros; gol = gros)", type: string}
+                  - {name: aliniere, label: "Aliniere pentru tot randul de butoane (stanga / centru / dreapta; conteaza doar la primul buton; gol = stanga)", type: string}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
               - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
               - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
@@ -477,6 +492,11 @@ content:
                   - {name: link, label: "Link (ex. contact.html, servicii.html, tel:+40..., sau link complet)", type: string}
                   - {name: contur, label: "Buton cu contur, fara fundal colorat", type: boolean}
                   - {name: culoare, label: "Culoare buton (optional, ex. #c0207a; gol = culoarea site-ului)", type: string}
+                  - {name: marime, label: "Marime (mic / mediu / mare; gol = mediu)", type: string}
+                  - {name: colturi, label: "Colturi (rotunde / putin / drepte; gol = rotunde)", type: string}
+                  - {name: bordura, label: "Bordura (fara / subtire / groasa; gol = normala)", type: string}
+                  - {name: text_stil, label: "Text (normal / gros; gol = gros)", type: string}
+                  - {name: aliniere, label: "Aliniere pentru tot randul de butoane (stanga / centru / dreapta; conteaza doar la primul buton; gol = stanga)", type: string}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
               - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
               - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
@@ -561,6 +581,11 @@ content:
                   - {name: link, label: "Link (ex. contact.html, servicii.html, tel:+40..., sau link complet)", type: string}
                   - {name: contur, label: "Buton cu contur, fara fundal colorat", type: boolean}
                   - {name: culoare, label: "Culoare buton (optional, ex. #c0207a; gol = culoarea site-ului)", type: string}
+                  - {name: marime, label: "Marime (mic / mediu / mare; gol = mediu)", type: string}
+                  - {name: colturi, label: "Colturi (rotunde / putin / drepte; gol = rotunde)", type: string}
+                  - {name: bordura, label: "Bordura (fara / subtire / groasa; gol = normala)", type: string}
+                  - {name: text_stil, label: "Text (normal / gros; gol = gros)", type: string}
+                  - {name: aliniere, label: "Aliniere pentru tot randul de butoane (stanga / centru / dreapta; conteaza doar la primul buton; gol = stanga)", type: string}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
               - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
               - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}
@@ -650,6 +675,11 @@ content:
                   - {name: link, label: "Link (ex. contact.html, servicii.html, tel:+40..., sau link complet)", type: string}
                   - {name: contur, label: "Buton cu contur, fara fundal colorat", type: boolean}
                   - {name: culoare, label: "Culoare buton (optional, ex. #c0207a; gol = culoarea site-ului)", type: string}
+                  - {name: marime, label: "Marime (mic / mediu / mare; gol = mediu)", type: string}
+                  - {name: colturi, label: "Colturi (rotunde / putin / drepte; gol = rotunde)", type: string}
+                  - {name: bordura, label: "Bordura (fara / subtire / groasa; gol = normala)", type: string}
+                  - {name: text_stil, label: "Text (normal / gros; gol = gros)", type: string}
+                  - {name: aliniere, label: "Aliniere pentru tot randul de butoane (stanga / centru / dreapta; conteaza doar la primul buton; gol = stanga)", type: string}
               - {name: fundal_alt, label: "Fundal roz deschis (bifat) sau alb", type: boolean}
               - {name: culoare_fundal, label: "Culoare fundal sectiune (optional, ex. #fde7f3; gol = ca acum)", type: string}
               - {name: culoare_titlu, label: "Culoare titlu sectiune (optional, ex. #c0207a; gol = ca acum)", type: string}

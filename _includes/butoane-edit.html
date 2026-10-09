@@ -1,15 +1,29 @@
 {%- if btn_lista and btn_lista.size > 0 %}
-        <div class="actions">
+{%- assign btn_al = btn_lista[0].aliniere | default: '' | strip | downcase -%}
+{%- assign btn_cl = '' -%}
+{%- if btn_al == 'centru' -%}{%- assign btn_cl = ' center' -%}{%- elsif btn_al == 'dreapta' -%}{%- assign btn_cl = ' dreapta' -%}{%- endif %}
+        <div class="actions{{ btn_cl }}">
 {%- for btn in btn_lista -%}
 {%- assign btn_t = btn.text | default: '' | strip -%}
 {%- assign btn_l = btn.link | default: '' | strip -%}
 {%- if btn_t != '' -%}
 {%- if btn_l == '' or btn_l contains 'javascript:' -%}{%- assign btn_l = '#' -%}{%- endif -%}
 {%- assign btn_c = btn.culoare | default: '' | strip -%}
-{%- assign btn_st = '' -%}
+{%- assign btn_cs = '' -%}
 {%- if btn_c.size > 3 and btn_c.size < 10 and btn_c contains '#' -%}{%- unless btn_c contains ';' or btn_c contains '}' or btn_c contains '{' or btn_c contains '<' or btn_c contains ':' or btn_c contains '(' or btn_c contains ' ' -%}
-{%- if btn.contur == true -%}{%- capture btn_st %} style="color:{{ btn_c | escape }};border-color:{{ btn_c | escape }}"{% endcapture -%}{%- else -%}{%- capture btn_st %} style="background:{{ btn_c | escape }};border-color:{{ btn_c | escape }}"{% endcapture -%}{%- endif -%}
-{%- endunless -%}{%- endif %}
+{%- if btn.contur == true -%}{%- capture btn_cs -%}color:{{ btn_c | escape }};border-color:{{ btn_c | escape }}{%- endcapture -%}{%- else -%}{%- capture btn_cs -%}background:{{ btn_c | escape }};border-color:{{ btn_c | escape }}{%- endcapture -%}{%- endif -%}
+{%- endunless -%}{%- endif -%}
+{%- assign btn_ex = '' -%}
+{%- assign btn_v = btn.marime | default: '' | strip | downcase -%}
+{%- if btn_v == 'mic' -%}{%- assign btn_ex = btn_ex | append: ';padding:9px 18px;font-size:.95rem' -%}{%- elsif btn_v == 'mare' -%}{%- assign btn_ex = btn_ex | append: ';padding:17px 34px;font-size:1.15rem' -%}{%- endif -%}
+{%- assign btn_v = btn.colturi | default: '' | strip | downcase -%}
+{%- if btn_v == 'drepte' -%}{%- assign btn_ex = btn_ex | append: ';border-radius:0' -%}{%- elsif btn_v == 'putin' -%}{%- assign btn_ex = btn_ex | append: ';border-radius:10px' -%}{%- endif -%}
+{%- assign btn_v = btn.bordura | default: '' | strip | downcase -%}
+{%- if btn_v == 'fara' -%}{%- assign btn_ex = btn_ex | append: ';border-width:0' -%}{%- elsif btn_v == 'subtire' -%}{%- assign btn_ex = btn_ex | append: ';border-width:1px' -%}{%- elsif btn_v == 'groasa' -%}{%- assign btn_ex = btn_ex | append: ';border-width:4px' -%}{%- endif -%}
+{%- assign btn_v = btn.text_stil | default: '' | strip | downcase -%}
+{%- if btn_v == 'normal' -%}{%- assign btn_ex = btn_ex | append: ';font-weight:400' -%}{%- endif -%}
+{%- assign btn_st = '' -%}
+{%- if btn_cs != '' -%}{%- capture btn_st %} style="{{ btn_cs }}{{ btn_ex }}"{% endcapture -%}{%- elsif btn_ex != '' -%}{%- assign btn_ex2 = btn_ex | remove_first: ';' -%}{%- capture btn_st %} style="{{ btn_ex2 }}"{% endcapture -%}{%- endif %}
           <a class="btn{% if btn.contur == true %} btn-ghost{% endif %}" href="{{ btn_l | escape }}"{{ btn_st }}>{{ btn_t | escape }}</a>
 {%- endif -%}
 {%- endfor %}
