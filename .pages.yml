@@ -704,6 +704,7 @@ content:
     path: _data/reguli.yml
     format: yaml
     fields:
+      - {name: pe_rand, label: "Cate carduri pe rand (1, 2, 3 sau 4; gol = automat). Pe telefon e mereu 1 pe rand.", type: number}
       - name: reguli
         label: Reguli
         type: object
